@@ -1,13 +1,3 @@
-url: https://github.niaid.nih.gov/pages/bcbb/tbportals.depot.api
-
-home:
-  title: An R package to facilitate usage of the [TB Portals](https://tbportals.niaid.nih.gov/) DEPOT Tidy API.
-  description: >
-    If you are looking for a wrapper to easily interact with the API to the Tidy Data from TB Portals then
-    this package can provide the functionality you are looking for. Besides offering support for saving credentials
-    information locally so that you can reuse for Authentication, the package offers a convenient function for
-    sending API queries with flexible end points.  See [API swagger documentation](https://analytic.tbportals.niaid.nih.gov/index.html)
-    for specific end points.
 template:
   params:
     bootswatch: flatly
