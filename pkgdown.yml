@@ -1,0 +1,10 @@
+pandoc: 2.7.3
+pkgdown: 1.6.1
+pkgdown_sha: ~
+articles:
+  setting_up_connection: setting_up_connection.html
+last_built: 2021-04-15T16:59Z
+urls:
+  reference: https://github.niaid.nih.gov/pages/bcbb/tbportals.depot.api/reference
+  article: https://github.niaid.nih.gov/pages/bcbb/tbportals.depot.api/articles
+

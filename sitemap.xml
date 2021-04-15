@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://github.niaid.nih.gov/pages/bcbb/tbportals.depot.api/index.html</loc>
+  </url>
+  <url>
+    <loc>https://github.niaid.nih.gov/pages/bcbb/tbportals.depot.api/reference/get_secret.html</loc>
+  </url>
+  <url>
+    <loc>https://github.niaid.nih.gov/pages/bcbb/tbportals.depot.api/reference/get_secret_email.html</loc>
+  </url>
+  <url>
+    <loc>https://github.niaid.nih.gov/pages/bcbb/tbportals.depot.api/reference/get_token.html</loc>
+  </url>
+  <url>
+    <loc>https://github.niaid.nih.gov/pages/bcbb/tbportals.depot.api/reference/store_secret_credentials.html</loc>
+  </url>
+  <url>
+    <loc>https://github.niaid.nih.gov/pages/bcbb/tbportals.depot.api/reference/tidy_depot_api.html</loc>
+  </url>
+  <url>
+    <loc>https://github.niaid.nih.gov/pages/bcbb/tbportals.depot.api/articles/setting_up_connection.html</loc>
+  </url>
+</urlset>
