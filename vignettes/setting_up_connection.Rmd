@@ -1,0 +1,61 @@
+---
+title: "Setting up connection to API"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Setting up connection to API}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+#### Establishing credentials and saving them locally into .Renviron
+
+Prior to using the tbportals.depot.api R package, it will be necessary to request access to the data from [TB portals website](https://tbportals.niaid.nih.gov/download-data).  Once the DUA process has been completed, you will be able to request access to the API that serves the Tidy data from TB Portals DEPOT database.
+
+You should receive an email with a secret that is only for your use and which can be used along with the email address you provided to establish an API token.  After you have this information, see below for the code to save these credentials locally to create your unique token.  You will need to be running Rstudio as the code below will generate an interactive window for input of this information securely.
+
+```{r eval=FALSE}
+library(tbportals.depot.api)
+
+# Save the secret credentials locally in your own .Renviron file
+store_secret_credentials()
+
+# After inputting the information via the prompts, you can access it with the following functions
+get_secret()
+get_secret_email()
+```
+#### Generating an API token
+
+Once secret credentials have been saved locally, they will be available for generating the API token.  A convenience function is provided to allow for generation of a token, which needs to be done periodically without having to directly input the secret or email address associated with the secret provided these have been saved locally.  Alternatively, these arguments can be provided to the function but this is a lot less safe as it is stored to your local R history file.
+
+```{r eval=FALSE}
+# Generate a temporary token for use with API calls, no arguments necessary if secret credentials saved
+TOKEN <- get_token()
+
+# Alternatively, directly input secret credentials, riskier practice due to this being saved in your history
+TOKEN <- get_token(email_address = "PASTE_YOUR_EMAIL_ADRESS", secret = "PASTE_YOUR_SECRET")
+```
+
+#### Making an API call
+
+After you have generated a temporary token string, you can now make API calls. For a list of end points that are available, please see [API documentation](https://analytic.tbportals.niaid.nih.gov/index.html).  A convenience function is provided that can take the name of an end point and return a class of tidy_depot_api with the resulting data.frame of the returned JSON content along with information about the specific call itself including status codes in the case of a malformed request.
+
+```{r eval=FALSE}
+# See an example of making a request for the data contained in the Biochemistry end point
+REQUEST <- tidy_depot_api(path = "Biochemistry", token = TOKEN)
+
+# The JSON data from the API is returned in the content section as a data.frame
+REQUEST$content
+
+# The end point can be found in the path section
+REQUEST$path
+
+# Specific information about the httr request can be found in the response section
+REQUEST$response
+```

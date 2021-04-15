@@ -1,0 +1,86 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# tbportals.depot.api
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of tbportals.depot.api is to provide a convenient wrapper functionality in R to the TB Portals Analytic API containing the Tidy data from DEPOT.  For more information about TB Portals, check out their [TB Portals website](https://tbportals.niaid.nih.gov/).
+
+## Installation
+
+You can install the released version of tbportals.depot.api from [CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("tbportals.depot.api")
+```
+
+## Example
+
+Please see Article, "Setting up connection to API", prior to following along with the code below as it assumes you have saved your credentials locally which are required for interacting with the API.
+
+This is a basic example which shows you how to solve a common problem (for other end points check out [link](https://analytic.tbportals.niaid.nih.gov/index.html):
+
+```{r error=FALSE, warning=FALSE, message=FALSE}
+library(tbportals.depot.api)
+library(tidyverse)
+library(magrittr)
+library(ggplot2)
+library(ggpubr)
+library(arsenal)
+
+#Generat Token using your locally saved credentials (see article for how to set up)
+TOKEN <- get_token()
+
+## Pull the patient case data and explore some aspects of the publicly available cases
+patient_cases <- tidy_depot_api(path = "Patient-Case", token = TOKEN)
+```
+
+Now that patient case data has been pulled, let's explore structure of the resulting data:
+
+```{r }
+#Data.frame dimensions of the resulting JSON data from the API call"
+patient_cases$content %>% dim()
+
+#End point used for the API call
+patient_cases$path
+
+#The httr response content containing the specific information about the call
+patient_cases$response
+```
+
+Let's explore some aspects of the patient cases:
+
+```{r results='asis'}
+# Store data.frame of patient case characteristics
+patient_cases_df <- patient_cases$content
+
+# Select attributes of interest
+patient_cases_df %<>%
+  select(condition_id, patient_id, age_of_onset, gender, country, case_definition, type_of_resistance)
+
+# Summarise number of conditions by patient_id
+patient_cases_df %<>%
+  group_by(patient_id) %>%
+  mutate(num_conditions = n_distinct(condition_id)) %>%
+  select(-condition_id) %>%
+  distinct() %>%
+  type.convert()
+
+# Patient counts by type of resistance and other case characteristics
+tableby(type_of_resistance ~ age_of_onset + gender + country + case_definition, data = patient_cases_df) %>%
+  summary()
+```
