@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # tbportals.depot.api
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/niaid/tbportals.depot.api/workflows/R-CMD-check/badge.svg)](https://github.com/niaid/tbportals.depot.api/actions)
 <!-- badges: end -->
 
 tbportals.depot.api R package aims to provide a convenient wrapper functionality in R to the TB Portals Analytic API containing the tidy analytic data from TB Portals DEPOT database.  For more information about TB Portals, check out the [TB Portals website](https://tbportals.niaid.nih.gov/).
