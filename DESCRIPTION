@@ -21,7 +21,8 @@ Imports:
     devtools,
     lifecycle,
     magrittr,
-    dplyr
+    dplyr,
+    uuid
 RoxygenNote: 7.1.1
 VignetteBuilder: knitr
 URL: https://github.niaid.nih.gov/pages/bcbb/tbportals.depot.api
