@@ -16,9 +16,9 @@ knitr::opts_chunk$set(
 
 #### Establishing credentials and saving them locally into .Renviron
 
-Prior to using the tbportals.depot.api R package, it will be necessary to request access to the data from [TB portals website](https://tbportals.niaid.nih.gov/download-data).  Once the DUA process has been completed, you will be able to request access to the API that serves the Tidy data from TB Portals DEPOT database.
+Prior to using the tbportals.depot.api R package, it will be necessary to request access to the data from [TB portals website](https://tbportals.niaid.nih.gov/download-data).  Once the DUA process has been completed, you will be able to request access to the API that serves the tidy analytic data from TB Portals.
 
-You should receive an email with a secret that is only for your use and which can be used along with the email address you provided to establish an API token.  After you have this information, see below for the code to save these credentials locally to create your unique token.  You will need to be running Rstudio as the code below will generate an interactive window for input of this information securely.
+You should receive an email with a secret that is only for your use and which can be used along with the email address you provided to establish an API token.  After you have this information, see below for the code to save these credentials locally to create your unique token.  You will need to be running Rstudio as the code below will generate an interactive window to input this information securely.
 
 ```{r eval=FALSE}
 library(tbportals.depot.api)
@@ -32,7 +32,7 @@ get_secret_email()
 ```
 #### Generating an API token
 
-Once secret credentials have been saved locally, they will be available for generating the API token.  A convenience function is provided to allow for generation of a token, which needs to be done periodically without having to directly input the secret or email address associated with the secret provided these have been saved locally.  Alternatively, these arguments can be provided to the function but this is a lot less safe as it is stored to your local R history file.
+Once secret credentials have been saved locally, they will be available for generating the API token.  A convenience function is provided to allow for generation of a token, which needs to be done periodically without having to directly input the secret or email address associated with the secret provided these have been saved locally.  Alternatively, these arguments can be provided to the function but this is not best practice as it is stored to your local R history file. Be sure to delete your history if using the latter approach.
 
 ```{r eval=FALSE}
 # Generate a temporary token for use with API calls, no arguments necessary if secret credentials saved

@@ -6,6 +6,20 @@
 \usage{
 get_secret()
 }
+\value{
+string of the secret
+}
 \description{
-Get secret in local Renvironment for reuse
+\code{get_secret} is a function that retrieves the secret credentials stored in the local .Renviron
+file from the \code{store_secret_credentials}.
+}
+\details{
+\code{get_secret} should most likely never be run by the user as it is an internal function that will be
+passed to other functions like \code{get_token}.  Nevertheless, it may be useful for a user who wants to
+check the secret that was saved in the local .Renviron file for errors.  If the secret is incorrect,
+the user may consider rerunning \code{store_secret_credentials} and copying and pasting the correct secret
+as part of that prompt.
+}
+\author{
+Gabriel Rosenfeld, \email{gabriel.rosenfeld@nih.gov}
 }

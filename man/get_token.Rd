@@ -15,5 +15,16 @@ get_token(email_address = get_secret_email(), secret = get_secret())
 The token string used for Authentication header in API calls
 }
 \description{
-Generate a token from the TB DEPOT tidy API
+\code{get_token} is a function that retrieves a token string from the API that
+is required as part of submitting a correct \code{tidy_depot_api} request in the token parameter.
+}
+\details{
+\code{get_token} should work as a function call without having to pass any user parameters provided
+the user has correctly run \code{store_secret_credentials} to save these credentials locally in an
+.Renviron file.  \code{get_token} will then use that information to request a token string from the API
+and return this string.  The string can then be used for the \code{tidy_depot_api} function int he token
+parameter to request data and validate the user's credentials.
+}
+\author{
+Gabriel Rosenfeld, \email{gabriel.rosenfeld@nih.gov}
 }

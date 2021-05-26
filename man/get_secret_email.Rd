@@ -6,6 +6,20 @@
 \usage{
 get_secret_email()
 }
+\value{
+string of the email address
+}
 \description{
-Get email associated with secret in local Renvironment for reuse
+\code{get_secret_email} is a function that retrieves the email address associated with the credentials stored in the local .Renviron
+file from the \code{store_secret_credentials}.
+}
+\details{
+\code{get_secret_email} should most likely never be run by the user as it is an internal function that will be
+passed to other functions like \code{get_token}.  Nevertheless, it may be useful for a user who wants to
+check the email address that was saved in the local .Renviron file for errors.  If the email address is incorrect,
+the user may consider rerunning \code{store_secret_credentials} and inputting the correct email address as
+part of the prompt.
+}
+\author{
+Gabriel Rosenfeld, \email{gabriel.rosenfeld@nih.gov}
 }

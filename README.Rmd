@@ -18,21 +18,19 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of tbportals.depot.api is to provide a convenient wrapper functionality in R to the TB Portals Analytic API containing the Tidy data from DEPOT.  For more information about TB Portals, check out their [TB Portals website](https://tbportals.niaid.nih.gov/).
+tbportals.depot.api R package aims to provide a convenient wrapper functionality in R to the TB Portals Analytic API containing the tidy analytic data from TB Portals DEPOT database.  For more information about TB Portals, check out the [TB Portals website](https://tbportals.niaid.nih.gov/).
 
 ## Installation
 
-You can install the released version of tbportals.depot.api from [CRAN](https://CRAN.R-project.org) with:
-
 ``` r
-install.packages("tbportals.depot.api")
+devtools::install_github("niaid/tbportals.depot.api")
 ```
 
 ## Example
 
-Please see Article, "Setting up connection to API", prior to following along with the code below as it assumes you have saved your credentials locally which are required for interacting with the API.
+Please see Article, "Setting up connection to API", before following along with the code example below as it assumes you have saved your credentials locally which are required for interacting with the API.
 
-This is a basic example which shows you how to solve a common problem (for other end points check out [link](https://analytic.tbportals.niaid.nih.gov/index.html):
+This is a basic example which shows you how to solve a common problem of pulling all the data from an endpoint (for other end points check out [link](https://analytic.tbportals.niaid.nih.gov/index.html):
 
 ```{r error=FALSE, warning=FALSE, message=FALSE}
 library(tbportals.depot.api)
@@ -49,7 +47,7 @@ TOKEN <- get_token()
 patient_cases <- tidy_depot_api(path = "Patient-Case", token = TOKEN)
 ```
 
-Now that patient case data has been pulled, let's explore structure of the resulting data:
+Now that patient case data has been pulled, let's explore structure of the resulting data.  The request is returned as its own class with the structured data from the API call in the "content", the endpoint url nin the "path", and the actually http response in the "response".
 
 ```{r }
 #Data.frame dimensions of the resulting JSON data from the API call"
@@ -62,7 +60,7 @@ patient_cases$path
 patient_cases$response
 ```
 
-Let's explore some aspects of the patient cases:
+Let's explore some aspects of the patient cases stratifying by the type of drug resistance associated with the case to get a sense of the number of publicly shared data available.
 
 ```{r results='asis'}
 # Store data.frame of patient case characteristics
@@ -70,7 +68,7 @@ patient_cases_df <- patient_cases$content
 
 # Select attributes of interest
 patient_cases_df %<>%
-  select(condition_id, patient_id, age_of_onset, gender, country, case_definition, type_of_resistance)
+  select(condition_id, patient_id, age_of_onset, gender, bmi, case_definition, type_of_resistance)
 
 # Summarise number of conditions by patient_id
 patient_cases_df %<>%
@@ -81,6 +79,13 @@ patient_cases_df %<>%
   type.convert()
 
 # Patient counts by type of resistance and other case characteristics
-tableby(type_of_resistance ~ age_of_onset + gender + country + case_definition, data = patient_cases_df) %>%
+tableby(type_of_resistance ~ age_of_onset + gender + bmi + case_definition, data = patient_cases_df) %>%
   summary()
+```
+
+If interested in other available endpoints, you can use the list_endpoints function for a data.frame of currently available endpoints.
+
+```{r results='asis'}
+# This function lists endpoints as a data.frame along with a brief description
+list_endpoints()
 ```

@@ -1,6 +1,5 @@
 test_that("api request works", {
 
-  TOKEN <- get_token()
   INTERNET <- httr::GET("www.google.com")$status_code
   INTERNET = ifelse(INTERNET == 200, T, F)
 

@@ -18,7 +18,11 @@ Imports:
     glue,
     jsonlite,
     httr,
-    devtools
+    devtools,
+    lifecycle,
+    magrittr,
+    dplyr
 RoxygenNote: 7.1.1
 VignetteBuilder: knitr
 URL: https://github.niaid.nih.gov/pages/bcbb/tbportals.depot.api
+Roxygen: list(markdown = TRUE)

@@ -1,0 +1,73 @@
+---
+title: "Pulling data from the API and filtering on records in a DEPOT created cohort"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{pulling_data_from_depot_cohort}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+#### Identifying the right cohort from DEPOT
+
+Prior to using this functionality, a user must be registered to use the [DEPOT tool](https://depot.tbportals.niaid.nih.gov) and must have created and saved a cohort with the tool. Users can find the cohorts they saved [here](https://depot.tbportals.niaid.nih.gov/#/saved-cohorts).
+
+In the website above with your saved cohorts, you will see a table with the following columns "NAME" corresponding to the name of the cohort you created using DEPOT and "ID" which is the unique cohort ID you will need if wanting to pull the data for just these cases using the tbportals.depot.api package.
+
+#### Pulling data from an endpoint for just the cases in the DEPOT cohort of interest
+
+
+```{r eval=FALSE}
+# See an example of making a request for the data contained in the Biochemistry end point
+REQUEST <- tidy_depot_api(path = "Biochemistry", token = TOKEN, cohortId = "PASTE cohort ID number Here")
+
+# The JSON data from the API is returned in the content section as a data.frame
+REQUEST$content
+
+# The end point can be found in the path section
+REQUEST$path
+
+# Specific information about the httr request can be found in the response section
+REQUEST$response
+
+```
+
+
+#### Filtering on the records relating to the cohort ID of interest
+
+Given the requirements of TB portals, the following example below will be for purely fake hypothetical data that has similar structure as you would receive from the API call.  Only the first few columns showing fake records with ids, relative dates, and specimen info columns are shown without corresponding lab test types.  The final column for filtering on the cohort records is also shown.
+
+```{r eval=TRUE}
+library(dplyr)
+library(uuid)
+
+# Structure of a hypothetical data.frame from REQUESTS$content
+df <- data.frame("patient_id" = UUIDgenerate(n = 5),
+                 "condition_id" = UUIDgenerate(n = 5),
+                 "specimen_id" = UUIDgenerate(n = 5),
+                 "observationfhir_id" = UUIDgenerate(n = 5),
+                 "test_date" = sample(0:100, size = 5),
+                 "specimen_collection_site" = rep("blood", 5)) %>%
+  mutate(
+    specimen_collection_site = test_date - sample(0:7, size = 5),
+    in_requested_cohort = c("No", "Yes", "Yes", "No", "No"))
+
+
+df
+```
+
+To filter on records within the DEPOT cohort of interest, a user can use the in_requested_cohort column matching on records with a "Yes".
+
+```{r eval=TRUE}
+# Filter on a hypothetical data.frame using only the records from a cohort ID of interest from the API call
+df_cohort <- df %>%
+  filter(in_requested_cohort == "Yes")
+
+df_cohort
+```

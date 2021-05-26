@@ -1,3 +1,7 @@
-template:
-  params:
-    bootswatch: flatly
+articles:
+- title: All vignettes
+  desc: ~
+  contents:
+  - '`pulling_data_from_depot_cohort`'
+  - '`setting_up_connection`'
+
