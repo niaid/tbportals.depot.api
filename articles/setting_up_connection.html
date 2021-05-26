@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Setting up connection to API • tbportals.depot.api</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
@@ -46,17 +46,8 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/setting_up_connection.html">Setting up connection to API</a>
-    </li>
-  </ul>
+  <a href="../articles/index.html">Articles</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right"></ul>
@@ -85,8 +76,8 @@
 <div id="establishing-credentials-and-saving-them-locally-into--renviron" class="section level4">
 <h4 class="hasAnchor">
 <a href="#establishing-credentials-and-saving-them-locally-into--renviron" class="anchor"></a>Establishing credentials and saving them locally into .Renviron</h4>
-<p>Prior to using the tbportals.depot.api R package, it will be necessary to request access to the data from <a href="https://tbportals.niaid.nih.gov/download-data">TB portals website</a>. Once the DUA process has been completed, you will be able to request access to the API that serves the Tidy data from TB Portals DEPOT database.</p>
-<p>You should receive an email with a secret that is only for your use and which can be used along with the email address you provided to establish an API token. After you have this information, see below for the code to save these credentials locally to create your unique token. You will need to be running Rstudio as the code below will generate an interactive window for input of this information securely.</p>
+<p>Prior to using the tbportals.depot.api R package, it will be necessary to request access to the data from <a href="https://tbportals.niaid.nih.gov/download-data">TB portals website</a>. Once the DUA process has been completed, you will be able to request access to the API that serves the tidy analytic data from TB Portals.</p>
+<p>You should receive an email with a secret that is only for your use and which can be used along with the email address you provided to establish an API token. After you have this information, see below for the code to save these credentials locally to create your unique token. You will need to be running Rstudio as the code below will generate an interactive window to input this information securely.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.niaid.nih.gov/pages/bcbb/tbportals.depot.api">tbportals.depot.api</a></span><span class="op">)</span>
 
@@ -100,7 +91,7 @@
 <div id="generating-an-api-token" class="section level4">
 <h4 class="hasAnchor">
 <a href="#generating-an-api-token" class="anchor"></a>Generating an API token</h4>
-<p>Once secret credentials have been saved locally, they will be available for generating the API token. A convenience function is provided to allow for generation of a token, which needs to be done periodically without having to directly input the secret or email address associated with the secret provided these have been saved locally. Alternatively, these arguments can be provided to the function but this is a lot less safe as it is stored to your local R history file.</p>
+<p>Once secret credentials have been saved locally, they will be available for generating the API token. A convenience function is provided to allow for generation of a token, which needs to be done periodically without having to directly input the secret or email address associated with the secret provided these have been saved locally. Alternatively, these arguments can be provided to the function but this is not best practice as it is stored to your local R history file. Be sure to delete your history if using the latter approach.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Generate a temporary token for use with API calls, no arguments necessary if secret credentials saved</span>
 <span class="va">TOKEN</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_token.html">get_token</a></span><span class="op">(</span><span class="op">)</span>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get secret in local Renvironment for reuse — get_secret • tbportals.depot.api</title>
+<title>List data end points for API — list_endpoints • tbportals.depot.api</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,9 @@
 
 
 
-<meta property="og:title" content="Get secret in local Renvironment for reuse — get_secret" />
-<meta property="og:description" content="get_secret is a function that retrieves the secret credentials stored in the local .Renviron
-file from the store_secret_credentials." />
+<meta property="og:title" content="List data end points for API — list_endpoints" />
+<meta property="og:description" content="list_endpoints generates a convenient data.frame listing the endpoint name under &quot;endpoint&quot;
+along with a high-level general description of the endpoint data under &quot;description&quot;" />
 
 
 
@@ -107,29 +107,28 @@ file from the store_secret_credentials." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get secret in local Renvironment for reuse</h1>
+    <h1>List data end points for API</h1>
     
-    <div class="hidden name"><code>get_secret.Rd</code></div>
+    <div class="hidden name"><code>list_endpoints.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>get_secret</code> is a function that retrieves the secret credentials stored in the local .Renviron
-file from the <code>store_secret_credentials</code>.</p>
+    <p><code>list_endpoints</code> generates a convenient data.frame listing the endpoint name under "endpoint"
+along with a high-level general description of the endpoint data under "description"</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_secret</span><span class='op'>(</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>list_endpoints</span><span class='op'>(</span><span class='op'>)</span></pre>
 
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>string of the secret</p>
+    <p>data frame of available endpoints</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p><code>get_secret</code> should most likely never be run by the user as it is an internal function that will be
-passed to other functions like <code>get_token</code>.  Nevertheless, it may be useful for a user who wants to
-check the secret that was saved in the local .Renviron file for errors.  If the secret is incorrect,
-the user may consider rerunning <code>store_secret_credentials</code> and copying and pasting the correct secret
-as part of that prompt.</p>
+    <p><code>list_endpoints</code> will list the available endpoints that return data from the Tidy Depot API along with
+a description of the type of data provided.  It is a useful function to ensure that the name provided
+as part of the "path" argument to <code>tidy_depo_api</code> function call.  If the name provided to the path
+argument is incorrent then an error will be thrown and no API call returned.</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Gabriel Rosenfeld, <a href='mailto:gabriel.rosenfeld@nih.gov'>gabriel.rosenfeld@nih.gov</a></p>

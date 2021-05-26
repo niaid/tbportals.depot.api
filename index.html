@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Convenient R wrapper for TB Portals DEPOT Tidy API • tbportals.depot.api</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
@@ -48,17 +48,8 @@
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/setting_up_connection.html">Setting up connection to API</a>
-    </li>
-  </ul>
+  <a href="articles/index.html">Articles</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right"></ul>
@@ -78,13 +69,12 @@
 <a href="#tbportalsdepotapi" class="anchor"></a>tbportals.depot.api</h1></div>
 <!-- badges: start -->
 <!-- badges: end -->
-<p>The goal of tbportals.depot.api is to provide a convenient wrapper functionality in R to the TB Portals Analytic API containing the Tidy data from DEPOT. For more information about TB Portals, check out their <a href="https://tbportals.niaid.nih.gov/">TB Portals website</a>.</p>
+<p>tbportals.depot.api aims to provide a convenient wrapper functionality in R to the TB Portals Analytic API containing the tidy data from TB Portals DEPOT database. For more information about TB Portals, check out their <a href="https://tbportals.niaid.nih.gov/">TB Portals website</a>.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the released version of tbportals.depot.api from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"tbportals.depot.api"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"niaid/tbportals.depot.api"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
@@ -108,7 +98,7 @@
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#Data.frame dimensions of the resulting JSON data from the API call"</span>
 <span class="va">patient_cases</span><span class="op">$</span><span class="va">content</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; [1] 4041  204</span>
+<span class="co">#&gt; [1] 4536  204</span>
 
 <span class="co">#End point used for the API call</span>
 <span class="va">patient_cases</span><span class="op">$</span><span class="va">path</span>
@@ -116,11 +106,11 @@
 
 <span class="co">#The httr response content containing the specific information about the call</span>
 <span class="va">patient_cases</span><span class="op">$</span><span class="va">response</span>
-<span class="co">#&gt; Response [https://analytic.tbportals.niaid.nih.gov/api/Patient-Case?returnCsv=false]</span>
-<span class="co">#&gt;   Date: 2021-04-15 12:57</span>
+<span class="co">#&gt; Response [https://analytic.tbportals.niaid.nih.gov/api/Patient-Case?returnCsv=false&amp;cohortId=]</span>
+<span class="co">#&gt;   Date: 2021-05-20 17:30</span>
 <span class="co">#&gt;   Status: 200</span>
 <span class="co">#&gt;   Content-Type: application/json; charset=utf-8</span>
-<span class="co">#&gt;   Size: 30.4 MB</span></code></pre></div>
+<span class="co">#&gt;   Size: 34.5 MB</span></code></pre></div>
 <p>Let’s explore some aspects of the patient cases:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Store data.frame of patient case characteristics</span>
@@ -128,7 +118,7 @@
 
 <span class="co"># Select attributes of interest</span>
 <span class="va">patient_cases_df</span> <span class="op">%&lt;&gt;%</span>
-  <span class="fu">select</span><span class="op">(</span><span class="va">condition_id</span>, <span class="va">patient_id</span>, <span class="va">age_of_onset</span>, <span class="va">gender</span>, <span class="va">country</span>, <span class="va">case_definition</span>, <span class="va">type_of_resistance</span><span class="op">)</span>
+  <span class="fu">select</span><span class="op">(</span><span class="va">condition_id</span>, <span class="va">patient_id</span>, <span class="va">age_of_onset</span>, <span class="va">gender</span>, <span class="va">bmi</span>, <span class="va">case_definition</span>, <span class="va">type_of_resistance</span><span class="op">)</span>
 
 <span class="co"># Summarise number of conditions by patient_id</span>
 <span class="va">patient_cases_df</span> <span class="op">%&lt;&gt;%</span>
@@ -139,7 +129,7 @@
   <span class="fu"><a href="https://rdrr.io/r/utils/type.convert.html">type.convert</a></span><span class="op">(</span><span class="op">)</span>
 
 <span class="co"># Patient counts by type of resistance and other case characteristics</span>
-<span class="fu">tableby</span><span class="op">(</span><span class="va">type_of_resistance</span> <span class="op">~</span> <span class="va">age_of_onset</span> <span class="op">+</span> <span class="va">gender</span> <span class="op">+</span> <span class="va">country</span> <span class="op">+</span> <span class="va">case_definition</span>, data <span class="op">=</span> <span class="va">patient_cases_df</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<span class="fu">tableby</span><span class="op">(</span><span class="va">type_of_resistance</span> <span class="op">~</span> <span class="va">age_of_onset</span> <span class="op">+</span> <span class="va">gender</span> <span class="op">+</span> <span class="va">bmi</span> <span class="op">+</span> <span class="va">case_definition</span>, data <span class="op">=</span> <span class="va">patient_cases_df</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <colgroup>
@@ -155,13 +145,13 @@
 </colgroup>
 <thead><tr class="header">
 <th align="left"></th>
-<th align="center">MDR non XDR (N=1845)</th>
-<th align="center">Mono DR (N=306)</th>
-<th align="center">Poly DR (N=133)</th>
-<th align="center">Pre-XDR (N=14)</th>
-<th align="center">Sensitive (N=987)</th>
-<th align="center">XDR (N=755)</th>
-<th align="center">Total (N=4040)</th>
+<th align="center">MDR non XDR (N=2168)</th>
+<th align="center">Mono DR (N=315)</th>
+<th align="center">Poly DR (N=141)</th>
+<th align="center">Pre-XDR (N=24)</th>
+<th align="center">Sensitive (N=1069)</th>
+<th align="center">XDR (N=819)</th>
+<th align="center">Total (N=4536)</th>
 <th align="right">p value</th>
 </tr></thead>
 <tbody>
@@ -174,17 +164,17 @@
 <td align="center"></td>
 <td align="center"></td>
 <td align="center"></td>
-<td align="right">0.429</td>
+<td align="right">0.294</td>
 </tr>
 <tr class="even">
 <td align="left">Mean (SD)</td>
-<td align="center">41.095 (13.377)</td>
-<td align="center">41.111 (15.132)</td>
-<td align="center">43.286 (14.774)</td>
-<td align="center">40.714 (12.098)</td>
-<td align="center">41.827 (15.953)</td>
-<td align="center">40.955 (12.909)</td>
-<td align="center">41.320 (14.145)</td>
+<td align="center">41.231 (13.196)</td>
+<td align="center">41.390 (15.113)</td>
+<td align="center">43.106 (14.742)</td>
+<td align="center">43.458 (14.709)</td>
+<td align="center">42.213 (15.824)</td>
+<td align="center">41.248 (12.941)</td>
+<td align="center">41.547 (14.010)</td>
 <td align="right"></td>
 </tr>
 <tr class="odd">
@@ -192,7 +182,7 @@
 <td align="center">3.000 - 85.000</td>
 <td align="center">8.000 - 87.000</td>
 <td align="center">19.000 - 93.000</td>
-<td align="center">24.000 - 63.000</td>
+<td align="center">24.000 - 90.000</td>
 <td align="center">2.000 - 87.000</td>
 <td align="center">15.000 - 84.000</td>
 <td align="center">2.000 - 93.000</td>
@@ -207,32 +197,32 @@
 <td align="center"></td>
 <td align="center"></td>
 <td align="center"></td>
-<td align="right">0.282</td>
+<td align="right">0.328</td>
 </tr>
 <tr class="odd">
 <td align="left">Female</td>
-<td align="center">482 (26.1%)</td>
-<td align="center">86 (28.1%)</td>
-<td align="center">38 (28.6%)</td>
-<td align="center">3 (21.4%)</td>
-<td align="center">300 (30.4%)</td>
-<td align="center">212 (28.1%)</td>
-<td align="center">1121 (27.7%)</td>
+<td align="center">559 (25.8%)</td>
+<td align="center">86 (27.3%)</td>
+<td align="center">39 (27.7%)</td>
+<td align="center">6 (25.0%)</td>
+<td align="center">318 (29.7%)</td>
+<td align="center">224 (27.4%)</td>
+<td align="center">1232 (27.2%)</td>
 <td align="right"></td>
 </tr>
 <tr class="even">
 <td align="left">Male</td>
-<td align="center">1363 (73.9%)</td>
-<td align="center">220 (71.9%)</td>
-<td align="center">95 (71.4%)</td>
-<td align="center">11 (78.6%)</td>
-<td align="center">687 (69.6%)</td>
-<td align="center">543 (71.9%)</td>
-<td align="center">2919 (72.3%)</td>
+<td align="center">1609 (74.2%)</td>
+<td align="center">229 (72.7%)</td>
+<td align="center">102 (72.3%)</td>
+<td align="center">18 (75.0%)</td>
+<td align="center">751 (70.3%)</td>
+<td align="center">595 (72.6%)</td>
+<td align="center">3304 (72.8%)</td>
 <td align="right"></td>
 </tr>
 <tr class="odd">
-<td align="left"><strong>country</strong></td>
+<td align="left"><strong>bmi</strong></td>
 <td align="center"></td>
 <td align="center"></td>
 <td align="center"></td>
@@ -243,102 +233,36 @@
 <td align="right">&lt; 0.001</td>
 </tr>
 <tr class="even">
-<td align="left">Azerbaijan</td>
-<td align="center">178 (9.6%)</td>
-<td align="center">6 (2.0%)</td>
-<td align="center">3 (2.3%)</td>
-<td align="center">0 (0.0%)</td>
-<td align="center">54 (5.5%)</td>
-<td align="center">97 (12.8%)</td>
-<td align="center">338 (8.4%)</td>
+<td align="left">N-Miss</td>
+<td align="center">330</td>
+<td align="center">151</td>
+<td align="center">59</td>
+<td align="center">0</td>
+<td align="center">583</td>
+<td align="center">67</td>
+<td align="center">1190</td>
 <td align="right"></td>
 </tr>
 <tr class="odd">
-<td align="left">Belarus</td>
-<td align="center">445 (24.1%)</td>
-<td align="center">27 (8.8%)</td>
-<td align="center">15 (11.3%)</td>
-<td align="center">0 (0.0%)</td>
-<td align="center">156 (15.8%)</td>
-<td align="center">289 (38.3%)</td>
-<td align="center">932 (23.1%)</td>
+<td align="left">Mean (SD)</td>
+<td align="center">20.762 (3.455)</td>
+<td align="center">20.939 (4.737)</td>
+<td align="center">20.946 (4.248)</td>
+<td align="center">19.842 (4.843)</td>
+<td align="center">21.530 (3.925)</td>
+<td align="center">20.650 (3.651)</td>
+<td align="center">20.855 (3.683)</td>
 <td align="right"></td>
 </tr>
 <tr class="even">
-<td align="left">Georgia</td>
-<td align="center">373 (20.2%)</td>
-<td align="center">78 (25.5%)</td>
-<td align="center">69 (51.9%)</td>
-<td align="center">0 (0.0%)</td>
-<td align="center">452 (45.8%)</td>
-<td align="center">90 (11.9%)</td>
-<td align="center">1062 (26.3%)</td>
-<td align="right"></td>
-</tr>
-<tr class="odd">
-<td align="left">India</td>
-<td align="center">3 (0.2%)</td>
-<td align="center">7 (2.3%)</td>
-<td align="center">3 (2.3%)</td>
-<td align="center">0 (0.0%)</td>
-<td align="center">7 (0.7%)</td>
-<td align="center">1 (0.1%)</td>
-<td align="center">21 (0.5%)</td>
-<td align="right"></td>
-</tr>
-<tr class="even">
-<td align="left">Kazakhstan</td>
-<td align="center">114 (6.2%)</td>
-<td align="center">10 (3.3%)</td>
-<td align="center">12 (9.0%)</td>
-<td align="center">7 (50.0%)</td>
-<td align="center">64 (6.5%)</td>
-<td align="center">38 (5.0%)</td>
-<td align="center">245 (6.1%)</td>
-<td align="right"></td>
-</tr>
-<tr class="odd">
-<td align="left">Moldova</td>
-<td align="center">377 (20.4%)</td>
-<td align="center">43 (14.1%)</td>
-<td align="center">22 (16.5%)</td>
-<td align="center">0 (0.0%)</td>
-<td align="center">181 (18.3%)</td>
-<td align="center">86 (11.4%)</td>
-<td align="center">709 (17.5%)</td>
-<td align="right"></td>
-</tr>
-<tr class="even">
-<td align="left">Nigeria</td>
-<td align="center">34 (1.8%)</td>
-<td align="center">83 (27.1%)</td>
-<td align="center">0 (0.0%)</td>
-<td align="center">0 (0.0%)</td>
-<td align="center">0 (0.0%)</td>
-<td align="center">0 (0.0%)</td>
-<td align="center">117 (2.9%)</td>
-<td align="right"></td>
-</tr>
-<tr class="odd">
-<td align="left">Romania</td>
-<td align="center">167 (9.1%)</td>
-<td align="center">35 (11.4%)</td>
-<td align="center">7 (5.3%)</td>
-<td align="center">0 (0.0%)</td>
-<td align="center">21 (2.1%)</td>
-<td align="center">65 (8.6%)</td>
-<td align="center">295 (7.3%)</td>
-<td align="right"></td>
-</tr>
-<tr class="even">
-<td align="left">Ukraine</td>
-<td align="center">154 (8.3%)</td>
-<td align="center">17 (5.6%)</td>
-<td align="center">2 (1.5%)</td>
-<td align="center">7 (50.0%)</td>
-<td align="center">52 (5.3%)</td>
-<td align="center">89 (11.8%)</td>
-<td align="center">321 (7.9%)</td>
+<td align="left">Range</td>
+<td align="center">12.800 - 40.300</td>
+<td align="center">12.900 - 61.100</td>
+<td align="center">13.400 - 40.700</td>
+<td align="center">12.100 - 29.000</td>
+<td align="center">11.700 - 36.500</td>
+<td align="center">11.800 - 38.600</td>
+<td align="center">11.700 - 61.100</td>
 <td align="right"></td>
 </tr>
 <tr class="odd">
@@ -354,75 +278,75 @@
 </tr>
 <tr class="even">
 <td align="left">Chronic TB</td>
-<td align="center">34 (1.8%)</td>
+<td align="center">41 (1.9%)</td>
 <td align="center">0 (0.0%)</td>
 <td align="center">0 (0.0%)</td>
-<td align="center">3 (21.4%)</td>
+<td align="center">4 (16.7%)</td>
 <td align="center">0 (0.0%)</td>
-<td align="center">29 (3.8%)</td>
-<td align="center">66 (1.6%)</td>
+<td align="center">43 (5.3%)</td>
+<td align="center">88 (1.9%)</td>
 <td align="right"></td>
 </tr>
 <tr class="odd">
 <td align="left">Failure</td>
-<td align="center">221 (12.0%)</td>
-<td align="center">25 (8.2%)</td>
-<td align="center">9 (6.8%)</td>
-<td align="center">2 (14.3%)</td>
-<td align="center">15 (1.5%)</td>
-<td align="center">260 (34.4%)</td>
-<td align="center">532 (13.2%)</td>
+<td align="center">261 (12.0%)</td>
+<td align="center">25 (7.9%)</td>
+<td align="center">9 (6.4%)</td>
+<td align="center">2 (8.3%)</td>
+<td align="center">19 (1.8%)</td>
+<td align="center">270 (33.0%)</td>
+<td align="center">586 (12.9%)</td>
 <td align="right"></td>
 </tr>
 <tr class="even">
 <td align="left">Lost to follow up</td>
-<td align="center">177 (9.6%)</td>
-<td align="center">10 (3.3%)</td>
-<td align="center">10 (7.5%)</td>
-<td align="center">1 (7.1%)</td>
-<td align="center">33 (3.3%)</td>
-<td align="center">52 (6.9%)</td>
-<td align="center">283 (7.0%)</td>
+<td align="center">181 (8.3%)</td>
+<td align="center">10 (3.2%)</td>
+<td align="center">10 (7.1%)</td>
+<td align="center">1 (4.2%)</td>
+<td align="center">36 (3.4%)</td>
+<td align="center">54 (6.6%)</td>
+<td align="center">292 (6.4%)</td>
 <td align="right"></td>
 </tr>
 <tr class="odd">
 <td align="left">New</td>
-<td align="center">924 (50.1%)</td>
-<td align="center">214 (69.9%)</td>
-<td align="center">86 (64.7%)</td>
-<td align="center">4 (28.6%)</td>
-<td align="center">802 (81.3%)</td>
-<td align="center">182 (24.1%)</td>
-<td align="center">2212 (54.8%)</td>
+<td align="center">1105 (51.0%)</td>
+<td align="center">221 (70.2%)</td>
+<td align="center">94 (66.7%)</td>
+<td align="center">9 (37.5%)</td>
+<td align="center">866 (81.0%)</td>
+<td align="center">196 (23.9%)</td>
+<td align="center">2491 (54.9%)</td>
 <td align="right"></td>
 </tr>
 <tr class="even">
 <td align="left">Other</td>
-<td align="center">39 (2.1%)</td>
+<td align="center">43 (2.0%)</td>
 <td align="center">4 (1.3%)</td>
-<td align="center">6 (4.5%)</td>
-<td align="center">1 (7.1%)</td>
-<td align="center">15 (1.5%)</td>
-<td align="center">35 (4.6%)</td>
-<td align="center">100 (2.5%)</td>
+<td align="center">6 (4.3%)</td>
+<td align="center">2 (8.3%)</td>
+<td align="center">17 (1.6%)</td>
+<td align="center">38 (4.6%)</td>
+<td align="center">110 (2.4%)</td>
 <td align="right"></td>
 </tr>
 <tr class="odd">
 <td align="left">Relapse</td>
-<td align="center">449 (24.3%)</td>
-<td align="center">52 (17.0%)</td>
-<td align="center">21 (15.8%)</td>
-<td align="center">3 (21.4%)</td>
-<td align="center">120 (12.2%)</td>
-<td align="center">197 (26.1%)</td>
-<td align="center">842 (20.8%)</td>
+<td align="center">536 (24.7%)</td>
+<td align="center">54 (17.1%)</td>
+<td align="center">21 (14.9%)</td>
+<td align="center">6 (25.0%)</td>
+<td align="center">129 (12.1%)</td>
+<td align="center">218 (26.6%)</td>
+<td align="center">964 (21.3%)</td>
 <td align="right"></td>
 </tr>
 <tr class="even">
 <td align="left">Unknown</td>
-<td align="center">1 (0.1%)</td>
+<td align="center">1 (0.0%)</td>
 <td align="center">1 (0.3%)</td>
-<td align="center">1 (0.8%)</td>
+<td align="center">1 (0.7%)</td>
 <td align="center">0 (0.0%)</td>
 <td align="center">2 (0.2%)</td>
 <td align="center">0 (0.0%)</td>
