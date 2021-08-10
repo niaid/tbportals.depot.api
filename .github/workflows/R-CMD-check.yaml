@@ -31,6 +31,8 @@ jobs:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
       RSPM: ${{ matrix.config.rspm }}
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      DEPOT_API_SECRET_EMAIL: ${{ secrets.DEPOT_API_SECRET_EMAIL }}
+      DEPOT_API_SECRET: ${{ secrets.DEPOT_API_SECRET }}
 
     steps:
       - uses: actions/checkout@v2
@@ -40,6 +42,12 @@ jobs:
           r-version: ${{ matrix.config.r }}
 
       - uses: r-lib/actions/setup-pandoc@v1
+      
+      - name: Create and populate .Renviron file
+        run: |
+          echo DEPOT_API_SECRET_EMAIL="$DEPOT_API_SECRET_EMAIL" >> ~/.Renviron
+          echo DEPOT_API_SECRET="$DEPOT_API_SECRET" >> ~/.Renviron
+        shell: bash
 
       - name: Query dependencies
         run: |
