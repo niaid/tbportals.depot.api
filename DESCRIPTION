@@ -23,6 +23,7 @@ Suggests:
     rmarkdown,
     testthat, 
     rstudioapi
+
 Imports: 
     glue,
     jsonlite,
