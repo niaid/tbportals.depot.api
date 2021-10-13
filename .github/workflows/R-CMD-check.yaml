@@ -76,6 +76,8 @@ jobs:
       - name: Check
         env:
           _R_CHECK_CRAN_INCOMING_REMOTE_: false
+          DEPOT_API_SECRET_EMAIL: ${{ secrets.DEPOT_API_SECRET_EMAIL }}
+          DEPOT_API_SECRET: ${{ secrets.DEPOT_API_SECRET }}
         run: |
           options(crayon.enabled = TRUE)
           rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran"), error_on = "warning", check_dir = "check")
