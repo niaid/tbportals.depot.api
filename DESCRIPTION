@@ -31,7 +31,7 @@ Imports:
     lifecycle,
     magrittr,
     dplyr,
-    uuid
+    uuid,
     readr
 RoxygenNote: 7.1.1
 VignetteBuilder: knitr
