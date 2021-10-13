@@ -22,9 +22,7 @@ Suggests:
     knitr,
     rmarkdown,
     testthat, 
-    rstudioapi,
-    remotes
-
+    rstudioapi
 Imports: 
     glue,
     jsonlite,
