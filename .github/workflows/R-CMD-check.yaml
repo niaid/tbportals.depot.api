@@ -78,7 +78,9 @@ jobs:
           options(crayon.enabled = TRUE)
           rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran"), error_on = "warning", check_dir = "check")
         env:
-          _R_CHECK_CRAN_INCOMING_REMOTE_: false
+          _R_CHECK_CRAN_INCOMING_REMOTE_: true
+          RSPM: ${{ matrix.config.rspm }}
+          GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
           DEPOT_API_SECRET_EMAIL: ${{ secrets.DEPOT_API_SECRET_EMAIL }}
           DEPOT_API_SECRET: ${{ secrets.DEPOT_API_SECRET }}
         shell: Rscript {0}
