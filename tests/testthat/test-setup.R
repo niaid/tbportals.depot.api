@@ -20,7 +20,7 @@ test_that("get_secret_email function works", {
   #  expect_error(get_secret_email(), "Please set env var DEPOT_API_SECRET_EMAIL to the email address where you received your secret using store_secret_credentials function")
   #}
   if(Sys.getenv("DEPOT_API_SECRET_EMAIL") == ""){
-    expect_error(get_secret(), "Please set env var DEPOT_API_SECRET_EMAIL to the email address where you received your secret using store_secret_credentials function")
+    expect_error(get_secret(), "No DEPOT_API_SECRET_EMAIL - Please set env var DEPOT_API_SECRET_EMAIL to the email address where you received your secret using store_secret_credentials function")
   }else{
     expect_equal(get_secret_email(), Sys.getenv("DEPOT_API_SECRET_EMAIL"))
   }
