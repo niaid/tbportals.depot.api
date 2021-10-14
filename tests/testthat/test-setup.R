@@ -32,8 +32,10 @@ test_that("get_token function works", {
   #INTERNET = ifelse(INTERNET == 200, T, F)
   INTERNET = T
 
-  .s <- get_secret()
-  .e <- get_secret_email()
+  #.s <- get_secret()
+  #.e <- get_secret_email()
+  .s <- Sys.getenv("DEPOT_API_SECRET")
+  .e <- Sys.getenv("DEPOT_API_SECRET_EMAIL")
   if(INTERNET & .s != "" & .e != ""){
     expect_equal(typeof(get_token()), "character")
     expect_equal(get_token(email_address = "not_valid@gmail.com", secret = "not_valid"), "Invalid credentials")
