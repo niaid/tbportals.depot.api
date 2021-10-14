@@ -70,7 +70,7 @@ store_secret_credentials <- function() {
 #' @export
 get_secret <- function() {
 
-  if (!file.exists("~/.Renviron") & Sys.getenv('DEPOT_API_SECRET')) {
+  if (!file.exists("~/.Renviron") & is.null(Sys.getenv('DEPOT_API_SECRET'))) {
     stop("Please set env var DEPOT_API_SECRET to your secret that you received using store_secret_credentials function",
          call. = FALSE)
   }
@@ -110,7 +110,7 @@ get_secret <- function() {
 #' @export
 get_secret_email <- function() {
 
-  if (!file.exists("~/.Renviron") & Sys.getenv('DEPOT_API_SECRET_EMAIL')) {
+  if (!file.exists("~/.Renviron") & is.null(Sys.getenv('DEPOT_API_SECRET_EMAIL'))) {
     stop("Please set env var DEPOT_API_SECRET_EMAIL to the email address where you received your secret using store_secret_credentials function",
          call. = FALSE)
   }
