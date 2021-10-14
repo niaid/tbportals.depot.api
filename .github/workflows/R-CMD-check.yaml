@@ -74,14 +74,15 @@ jobs:
         shell: Rscript {0}
     
       - name: Create and populate .Renviron file
-        run: |
-          if [ runner.os == "Windows" ]; then
-            Add-Content ~\.Renviron DEPOT_API_SECRET_EMAIL="$DEPOT_API_SECRET_EMAIL"
-            Add-Content ~\.Renviron DEPOT_API_SECRET="$DEPOT_API_SECRET"
-          else
-            echo DEPOT_API_SECRET_EMAIL="$DEPOT_API_SECRET_EMAIL" >> ~/.Renviron
-            echo DEPOT_API_SECRET="$DEPOT_API_SECRET" >> ~/.Renviron
-        shell: bash
+        run:
+          echo DEPOT_API_SECRET_EMAIL="$DEPOT_API_SECRET_EMAIL" >> ~/.Renviron
+          echo DEPOT_API_SECRET="$DEPOT_API_SECRET" >> ~/.Renviron
+        
+      - name: Create and populate .Renviron file (Windows)
+        run:
+          Add-Content ~\.Renviron DEPOT_API_SECRET_EMAIL="$DEPOT_API_SECRET_EMAIL"
+          Add-Content ~\.Renviron DEPOT_API_SECRET="$DEPOT_API_SECRET"
+        if: matrix.os == 'windows-latest'
 
       - name: Check
         env:
