@@ -78,14 +78,9 @@ jobs:
           echo DEPOT_API_SECRET_EMAIL="$DEPOT_API_SECRET_EMAIL" >> ~/.Renviron
           echo DEPOT_API_SECRET="$DEPOT_API_SECRET" >> ~/.Renviron
         shell: bash
-        
-        if: runner.os == 'windows'
-        run: |
-          echo DEPOT_API_SECRET_EMAIL="$DEPOT_API_SECRET_EMAIL" >> ~/.Renviron
-          echo DEPOT_API_SECRET="$DEPOT_API_SECRET" >> ~/.Renviron
-        shell: cmd
-        
-        if: matrix.os == 'windows-latest'
+      
+      - name: Create and populate .Renviron file - Windows
+        if: runner.os == 'Windows'
         run: |
           echo DEPOT_API_SECRET_EMAIL="$DEPOT_API_SECRET_EMAIL" >> ~/.Renviron
           echo DEPOT_API_SECRET="$DEPOT_API_SECRET" >> ~/.Renviron
