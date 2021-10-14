@@ -84,6 +84,7 @@ jobs:
         run:
           Add-Content ~\.Renviron DEPOT_API_SECRET_EMAIL="$DEPOT_API_SECRET_EMAIL"
           Add-Content ~\.Renviron DEPOT_API_SECRET="$DEPOT_API_SECRET"
+        shell: powershell   
 
       - name: Check
         env:
