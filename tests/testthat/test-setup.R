@@ -14,11 +14,11 @@ test_that("get_secret function works", {
 })
 
 test_that("get_secret_email function works", {
-  if(file.exists("~/.Renviron")){
-    readRenviron("~/.Renviron")
-  }else{
-    expect_error(get_secret_email(), "Please set env var DEPOT_API_SECRET_EMAIL to the email address where you received your secret using store_secret_credentials function")
-  }
+  #if(file.exists("~/.Renviron")){
+  #  readRenviron("~/.Renviron")
+  #}else{
+  #  expect_error(get_secret_email(), "Please set env var DEPOT_API_SECRET_EMAIL to the email address where you received your secret using store_secret_credentials function")
+  #}
   if(Sys.getenv("DEPOT_API_SECRET_EMAIL") == ""){
     expect_error(get_secret(), "No DEPOT_API_SECRET_EMAIL - Please set env var DEPOT_API_SECRET_EMAIL to the email address where you received your secret using store_secret_credentials function")
   }else{
