@@ -38,16 +38,25 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
 <li>
-  <a href="../articles/index.html">Articles</a>
+      <a href="../articles/pulling_data_from_depot_cohort.html">Pulling data from the API and filtering on records in a DEPOT created cohort</a>
+    </li>
+    <li>
+      <a href="../articles/setting_up_connection.html">Setting up connection to API</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="../news/index.html">News</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right"></ul>
@@ -125,23 +134,23 @@
 
 <span class="va">df</span>
 <span class="co">#&gt;                             patient_id                         condition_id</span>
-<span class="co">#&gt; 1 e486971a-5895-48e9-9ebd-a73bd6f8f54c 9c695f00-e9b7-4dbf-bf00-120a73bab301</span>
-<span class="co">#&gt; 2 9cea2a96-beca-414d-b440-b8753cce88c7 a480fc8b-8683-4fab-afc2-8b94910336bb</span>
-<span class="co">#&gt; 3 ccbb6a59-ee7e-4f08-a82f-32d545486553 3b7ac53c-a0d1-41fc-943e-5ffa10933bae</span>
-<span class="co">#&gt; 4 48b2cde4-40b4-4711-8c5d-3f2d474868f6 1b36521d-5d31-4983-a100-8d65e53a822c</span>
-<span class="co">#&gt; 5 31865bef-fc26-4f89-a6b9-af1f9602d63f dc1f72fe-0efa-4cb4-95ea-c52c594b574f</span>
+<span class="co">#&gt; 1 edb4a4f0-fbed-425f-a8ca-1d525b0f5783 b2d1405d-713a-4ca5-9f24-737c46d95d90</span>
+<span class="co">#&gt; 2 e3d18795-5f4f-47b9-adba-e887bd8fee1b dd71b05a-278f-409a-829c-4ee34d8c55dc</span>
+<span class="co">#&gt; 3 776e9f92-9353-477d-938e-c0904571c387 d1543146-3b4a-4b46-9daa-6ec1f7175566</span>
+<span class="co">#&gt; 4 3f7b534d-d7e0-4224-9b34-cc874bb52c04 e7a89af4-422e-4132-9483-4944d83e6fb7</span>
+<span class="co">#&gt; 5 3e83a81d-3b58-4353-a687-710e869d0e91 03930247-0d81-4b4e-95b0-1ba9a6dd18c5</span>
 <span class="co">#&gt;                            specimen_id                   observationfhir_id</span>
-<span class="co">#&gt; 1 77e01a0b-597c-424e-b0ef-bb564bec9ab1 ae2c33c8-62af-4820-9c6a-78827f06b6da</span>
-<span class="co">#&gt; 2 52735ebd-6ee5-4607-990b-5d5216f0b3e6 e931e2e1-9bb4-4324-8e1f-059aa809281b</span>
-<span class="co">#&gt; 3 8147918f-fd0c-4c88-8f92-3751048457f7 2d1d835a-603b-498b-b137-e73cd2efe4d5</span>
-<span class="co">#&gt; 4 a969c983-416a-40eb-b637-9c1b835c2de6 d5ba4676-8e69-4294-ab4f-542942ecb4d5</span>
-<span class="co">#&gt; 5 6cdc946a-0134-4fca-8643-57efa26d03de ff231bc4-7bef-4cf8-9c93-8d01e7cae206</span>
+<span class="co">#&gt; 1 a6836ec5-0630-470f-98af-e83a936587ac e55813b3-3c73-4260-879b-eba90f193edd</span>
+<span class="co">#&gt; 2 53fe8a8c-6450-447a-acc7-94ffac57ed0e 139a1b5b-e324-449e-89a7-2b77b8f07b46</span>
+<span class="co">#&gt; 3 f10c1835-f7cc-4157-8731-ae5521fec0b9 94156090-5092-4a12-b2e3-7604aba4bf80</span>
+<span class="co">#&gt; 4 4ae29568-157b-4c93-b28b-220389f60872 ecdf7447-9bde-4b94-9814-86e4b148cc02</span>
+<span class="co">#&gt; 5 deee8230-55fd-4362-82fa-b3dfedb7553b d24a5143-25cb-4a00-9204-9200c029aca2</span>
 <span class="co">#&gt;   test_date specimen_collection_site in_requested_cohort</span>
-<span class="co">#&gt; 1         1                       -1                  No</span>
-<span class="co">#&gt; 2        65                       59                 Yes</span>
-<span class="co">#&gt; 3        95                       88                 Yes</span>
-<span class="co">#&gt; 4        21                       16                  No</span>
-<span class="co">#&gt; 5        62                       59                  No</span></code></pre></div>
+<span class="co">#&gt; 1        89                       83                  No</span>
+<span class="co">#&gt; 2        92                       91                 Yes</span>
+<span class="co">#&gt; 3        70                       68                 Yes</span>
+<span class="co">#&gt; 4        46                       46                  No</span>
+<span class="co">#&gt; 5        52                       45                  No</span></code></pre></div>
 <p>To filter on records within the DEPOT cohort of interest, a user can use the in_requested_cohort column matching on records with a “Yes”.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Filter on a hypothetical data.frame using only the records from a cohort ID of interest from the API call</span>
@@ -150,14 +159,14 @@
 
 <span class="va">df_cohort</span>
 <span class="co">#&gt;                             patient_id                         condition_id</span>
-<span class="co">#&gt; 1 9cea2a96-beca-414d-b440-b8753cce88c7 a480fc8b-8683-4fab-afc2-8b94910336bb</span>
-<span class="co">#&gt; 2 ccbb6a59-ee7e-4f08-a82f-32d545486553 3b7ac53c-a0d1-41fc-943e-5ffa10933bae</span>
+<span class="co">#&gt; 1 e3d18795-5f4f-47b9-adba-e887bd8fee1b dd71b05a-278f-409a-829c-4ee34d8c55dc</span>
+<span class="co">#&gt; 2 776e9f92-9353-477d-938e-c0904571c387 d1543146-3b4a-4b46-9daa-6ec1f7175566</span>
 <span class="co">#&gt;                            specimen_id                   observationfhir_id</span>
-<span class="co">#&gt; 1 52735ebd-6ee5-4607-990b-5d5216f0b3e6 e931e2e1-9bb4-4324-8e1f-059aa809281b</span>
-<span class="co">#&gt; 2 8147918f-fd0c-4c88-8f92-3751048457f7 2d1d835a-603b-498b-b137-e73cd2efe4d5</span>
+<span class="co">#&gt; 1 53fe8a8c-6450-447a-acc7-94ffac57ed0e 139a1b5b-e324-449e-89a7-2b77b8f07b46</span>
+<span class="co">#&gt; 2 f10c1835-f7cc-4157-8731-ae5521fec0b9 94156090-5092-4a12-b2e3-7604aba4bf80</span>
 <span class="co">#&gt;   test_date specimen_collection_site in_requested_cohort</span>
-<span class="co">#&gt; 1        65                       59                 Yes</span>
-<span class="co">#&gt; 2        95                       88                 Yes</span></code></pre></div>
+<span class="co">#&gt; 1        92                       91                 Yes</span>
+<span class="co">#&gt; 2        70                       68                 Yes</span></code></pre></div>
 </div>
   </div>
 
@@ -170,7 +179,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Gabriel Rosenfeld.</p>
+  <p>Developed by <a href="mailto:gabriel.rosenfeld@nih.gov">Gabriel Rosenfeld</a>, <a href="mailto:qinlu.wang@nih.gov">Qinlu Wang</a>.</p>
 </div>
 
 <div class="pkgdown">

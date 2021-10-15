@@ -40,16 +40,25 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
 <li>
-  <a href="articles/index.html">Articles</a>
+      <a href="articles/pulling_data_from_depot_cohort.html">Pulling data from the API and filtering on records in a DEPOT created cohort</a>
+    </li>
+    <li>
+      <a href="articles/setting_up_connection.html">Setting up connection to API</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="news/index.html">News</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right"></ul>
@@ -68,37 +77,39 @@
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#tbportalsdepotapi" class="anchor"></a>tbportals.depot.api</h1></div>
 <!-- badges: start -->
-<!-- badges: end -->
-<p>tbportals.depot.api aims to provide a convenient wrapper functionality in R to the TB Portals Analytic API containing the tidy data from TB Portals DEPOT database. For more information about TB Portals, check out their <a href="https://tbportals.niaid.nih.gov/">TB Portals website</a>.</p>
+
+<p>tbportals.depot.api R package aims to provide a convenient wrapper functionality in R to the TB Portals Analytic API containing the tidy analytic data from TB Portals DEPOT database. For more information about TB Portals, check out the <a href="https://tbportals.niaid.nih.gov/">TB Portals website</a>.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"niaid/tbportals.depot.api"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="co"># Install release version from CRAN</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"tbportals.depot.api"</span><span class="op">)</span>
+
+<span class="co"># Install development version from GitHub</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"niaid/tbportals.depot.api"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="example" class="section level2">
+<div id="usage" class="section level2">
 <h2 class="hasAnchor">
-<a href="#example" class="anchor"></a>Example</h2>
-<p>Please see Article, “Setting up connection to API”, prior to following along with the code below as it assumes you have saved your credentials locally which are required for interacting with the API.</p>
-<p>This is a basic example which shows you how to solve a common problem (for other end points check out <a href="https://analytic.tbportals.niaid.nih.gov/index.html">link</a>:</p>
+<a href="#usage" class="anchor"></a>Usage</h2>
+<p>Please see Article, “Setting up connection to API”, before following along with the code example below as it assumes you have saved your credentials locally which are required for interacting with the API.</p>
+<p>This is a basic example which shows you how to solve a common problem of pulling all the data from an endpoint (for other end points check out <a href="https://analytic.tbportals.niaid.nih.gov/index.html">link</a>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.niaid.nih.gov/pages/bcbb/tbportals.depot.api">tbportals.depot.api</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">tidyverse</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org">magrittr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">ggplot2</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">ggpubr</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">arsenal</span><span class="op">)</span>
 
-<span class="co">#Generat Token using your locally saved credentials (see article for how to set up)</span>
+<span class="co"># Generate Token using your locally saved credentials (see article for how to set up)</span>
 <span class="va">TOKEN</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_token.html">get_token</a></span><span class="op">(</span><span class="op">)</span>
 
-<span class="co">## Pull the patient case data and explore some aspects of the publicly available cases</span>
+<span class="co"># Pull the patient case data and explore some aspects of the publicly available cases</span>
 <span class="va">patient_cases</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/tidy_depot_api.html">tidy_depot_api</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"Patient-Case"</span>, token <span class="op">=</span> <span class="va">TOKEN</span><span class="op">)</span></code></pre></div>
-<p>Now that patient case data has been pulled, let’s explore structure of the resulting data:</p>
+<p>Now that patient case data has been pulled, let’s explore structure of the resulting data. The request is returned as its own class with the structured data from the API call in the “content”, the endpoint url nin the “path”, and the actually http response in the “response”.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#Data.frame dimensions of the resulting JSON data from the API call"</span>
 <span class="va">patient_cases</span><span class="op">$</span><span class="va">content</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; [1] 4536  204</span>
+<span class="co">#&gt; [1] 5339  204</span>
 
 <span class="co">#End point used for the API call</span>
 <span class="va">patient_cases</span><span class="op">$</span><span class="va">path</span>
@@ -107,11 +118,11 @@
 <span class="co">#The httr response content containing the specific information about the call</span>
 <span class="va">patient_cases</span><span class="op">$</span><span class="va">response</span>
 <span class="co">#&gt; Response [https://analytic.tbportals.niaid.nih.gov/api/Patient-Case?returnCsv=false&amp;cohortId=]</span>
-<span class="co">#&gt;   Date: 2021-05-20 17:30</span>
+<span class="co">#&gt;   Date: 2021-08-10 21:19</span>
 <span class="co">#&gt;   Status: 200</span>
 <span class="co">#&gt;   Content-Type: application/json; charset=utf-8</span>
-<span class="co">#&gt;   Size: 34.5 MB</span></code></pre></div>
-<p>Let’s explore some aspects of the patient cases:</p>
+<span class="co">#&gt;   Size: 41 MB</span></code></pre></div>
+<p>Let’s explore some aspects of the patient cases stratifying by the type of drug resistance associated with the case to get a sense of the number of publicly shared data available.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Store data.frame of patient case characteristics</span>
 <span class="va">patient_cases_df</span> <span class="op">&lt;-</span> <span class="va">patient_cases</span><span class="op">$</span><span class="va">content</span>
@@ -145,13 +156,13 @@
 </colgroup>
 <thead><tr class="header">
 <th align="left"></th>
-<th align="center">MDR non XDR (N=2168)</th>
-<th align="center">Mono DR (N=315)</th>
-<th align="center">Poly DR (N=141)</th>
-<th align="center">Pre-XDR (N=24)</th>
-<th align="center">Sensitive (N=1069)</th>
-<th align="center">XDR (N=819)</th>
-<th align="center">Total (N=4536)</th>
+<th align="center">MDR non XDR (N=2346)</th>
+<th align="center">Mono DR (N=380)</th>
+<th align="center">Poly DR (N=173)</th>
+<th align="center">Pre-XDR (N=37)</th>
+<th align="center">Sensitive (N=1540)</th>
+<th align="center">XDR (N=863)</th>
+<th align="center">Total (N=5339)</th>
 <th align="right">p value</th>
 </tr></thead>
 <tbody>
@@ -164,26 +175,26 @@
 <td align="center"></td>
 <td align="center"></td>
 <td align="center"></td>
-<td align="right">0.294</td>
+<td align="right">0.004</td>
 </tr>
 <tr class="even">
 <td align="left">Mean (SD)</td>
-<td align="center">41.231 (13.196)</td>
-<td align="center">41.390 (15.113)</td>
-<td align="center">43.106 (14.742)</td>
-<td align="center">43.458 (14.709)</td>
-<td align="center">42.213 (15.824)</td>
-<td align="center">41.248 (12.941)</td>
-<td align="center">41.547 (14.010)</td>
+<td align="center">41.231 (13.194)</td>
+<td align="center">41.779 (14.909)</td>
+<td align="center">42.399 (14.913)</td>
+<td align="center">41.838 (13.779)</td>
+<td align="center">43.051 (15.468)</td>
+<td align="center">41.393 (12.941)</td>
+<td align="center">41.863 (14.048)</td>
 <td align="right"></td>
 </tr>
 <tr class="odd">
 <td align="left">Range</td>
 <td align="center">3.000 - 85.000</td>
 <td align="center">8.000 - 87.000</td>
-<td align="center">19.000 - 93.000</td>
-<td align="center">24.000 - 90.000</td>
-<td align="center">2.000 - 87.000</td>
+<td align="center">18.000 - 93.000</td>
+<td align="center">21.000 - 90.000</td>
+<td align="center">2.000 - 88.000</td>
 <td align="center">15.000 - 84.000</td>
 <td align="center">2.000 - 93.000</td>
 <td align="right"></td>
@@ -197,28 +208,28 @@
 <td align="center"></td>
 <td align="center"></td>
 <td align="center"></td>
-<td align="right">0.328</td>
+<td align="right">0.546</td>
 </tr>
 <tr class="odd">
 <td align="left">Female</td>
-<td align="center">559 (25.8%)</td>
-<td align="center">86 (27.3%)</td>
-<td align="center">39 (27.7%)</td>
-<td align="center">6 (25.0%)</td>
-<td align="center">318 (29.7%)</td>
-<td align="center">224 (27.4%)</td>
-<td align="center">1232 (27.2%)</td>
+<td align="center">604 (25.7%)</td>
+<td align="center">105 (27.6%)</td>
+<td align="center">50 (28.9%)</td>
+<td align="center">9 (24.3%)</td>
+<td align="center">438 (28.4%)</td>
+<td align="center">232 (26.9%)</td>
+<td align="center">1438 (26.9%)</td>
 <td align="right"></td>
 </tr>
 <tr class="even">
 <td align="left">Male</td>
-<td align="center">1609 (74.2%)</td>
-<td align="center">229 (72.7%)</td>
-<td align="center">102 (72.3%)</td>
-<td align="center">18 (75.0%)</td>
-<td align="center">751 (70.3%)</td>
-<td align="center">595 (72.6%)</td>
-<td align="center">3304 (72.8%)</td>
+<td align="center">1742 (74.3%)</td>
+<td align="center">275 (72.4%)</td>
+<td align="center">123 (71.1%)</td>
+<td align="center">28 (75.7%)</td>
+<td align="center">1102 (71.6%)</td>
+<td align="center">631 (73.1%)</td>
+<td align="center">3901 (73.1%)</td>
 <td align="right"></td>
 </tr>
 <tr class="odd">
@@ -230,28 +241,28 @@
 <td align="center"></td>
 <td align="center"></td>
 <td align="center"></td>
-<td align="right">&lt; 0.001</td>
+<td align="right">0.007</td>
 </tr>
 <tr class="even">
 <td align="left">N-Miss</td>
-<td align="center">330</td>
-<td align="center">151</td>
-<td align="center">59</td>
+<td align="center">353</td>
+<td align="center">163</td>
+<td align="center">68</td>
 <td align="center">0</td>
-<td align="center">583</td>
-<td align="center">67</td>
-<td align="center">1190</td>
+<td align="center">649</td>
+<td align="center">68</td>
+<td align="center">1301</td>
 <td align="right"></td>
 </tr>
 <tr class="odd">
 <td align="left">Mean (SD)</td>
-<td align="center">20.762 (3.455)</td>
-<td align="center">20.939 (4.737)</td>
-<td align="center">20.946 (4.248)</td>
-<td align="center">19.842 (4.843)</td>
-<td align="center">21.530 (3.925)</td>
-<td align="center">20.650 (3.651)</td>
-<td align="center">20.855 (3.683)</td>
+<td align="center">20.667 (3.442)</td>
+<td align="center">20.699 (4.355)</td>
+<td align="center">20.502 (3.996)</td>
+<td align="center">19.586 (4.291)</td>
+<td align="center">21.126 (3.751)</td>
+<td align="center">20.626 (3.675)</td>
+<td align="center">20.748 (3.640)</td>
 <td align="right"></td>
 </tr>
 <tr class="even">
@@ -278,89 +289,108 @@
 </tr>
 <tr class="even">
 <td align="left">Chronic TB</td>
-<td align="center">41 (1.9%)</td>
+<td align="center">47 (2.0%)</td>
 <td align="center">0 (0.0%)</td>
 <td align="center">0 (0.0%)</td>
-<td align="center">4 (16.7%)</td>
-<td align="center">0 (0.0%)</td>
-<td align="center">43 (5.3%)</td>
-<td align="center">88 (1.9%)</td>
+<td align="center">6 (16.2%)</td>
+<td align="center">1 (0.1%)</td>
+<td align="center">53 (6.1%)</td>
+<td align="center">107 (2.0%)</td>
 <td align="right"></td>
 </tr>
 <tr class="odd">
 <td align="left">Failure</td>
-<td align="center">261 (12.0%)</td>
-<td align="center">25 (7.9%)</td>
-<td align="center">9 (6.4%)</td>
-<td align="center">2 (8.3%)</td>
-<td align="center">19 (1.8%)</td>
-<td align="center">270 (33.0%)</td>
-<td align="center">586 (12.9%)</td>
+<td align="center">268 (11.4%)</td>
+<td align="center">28 (7.4%)</td>
+<td align="center">9 (5.2%)</td>
+<td align="center">2 (5.4%)</td>
+<td align="center">27 (1.8%)</td>
+<td align="center">277 (32.1%)</td>
+<td align="center">611 (11.4%)</td>
 <td align="right"></td>
 </tr>
 <tr class="even">
 <td align="left">Lost to follow up</td>
-<td align="center">181 (8.3%)</td>
-<td align="center">10 (3.2%)</td>
-<td align="center">10 (7.1%)</td>
-<td align="center">1 (4.2%)</td>
-<td align="center">36 (3.4%)</td>
-<td align="center">54 (6.6%)</td>
-<td align="center">292 (6.4%)</td>
+<td align="center">191 (8.1%)</td>
+<td align="center">10 (2.6%)</td>
+<td align="center">11 (6.4%)</td>
+<td align="center">3 (8.1%)</td>
+<td align="center">37 (2.4%)</td>
+<td align="center">55 (6.4%)</td>
+<td align="center">307 (5.8%)</td>
 <td align="right"></td>
 </tr>
 <tr class="odd">
 <td align="left">New</td>
-<td align="center">1105 (51.0%)</td>
-<td align="center">221 (70.2%)</td>
-<td align="center">94 (66.7%)</td>
-<td align="center">9 (37.5%)</td>
-<td align="center">866 (81.0%)</td>
-<td align="center">196 (23.9%)</td>
-<td align="center">2491 (54.9%)</td>
+<td align="center">1217 (51.9%)</td>
+<td align="center">272 (71.6%)</td>
+<td align="center">124 (71.7%)</td>
+<td align="center">16 (43.2%)</td>
+<td align="center">1290 (83.8%)</td>
+<td align="center">213 (24.7%)</td>
+<td align="center">3132 (58.7%)</td>
 <td align="right"></td>
 </tr>
 <tr class="even">
 <td align="left">Other</td>
-<td align="center">43 (2.0%)</td>
-<td align="center">4 (1.3%)</td>
-<td align="center">6 (4.3%)</td>
-<td align="center">2 (8.3%)</td>
-<td align="center">17 (1.6%)</td>
-<td align="center">38 (4.6%)</td>
-<td align="center">110 (2.4%)</td>
+<td align="center">49 (2.1%)</td>
+<td align="center">5 (1.3%)</td>
+<td align="center">6 (3.5%)</td>
+<td align="center">3 (8.1%)</td>
+<td align="center">18 (1.2%)</td>
+<td align="center">40 (4.6%)</td>
+<td align="center">121 (2.3%)</td>
 <td align="right"></td>
 </tr>
 <tr class="odd">
 <td align="left">Relapse</td>
-<td align="center">536 (24.7%)</td>
-<td align="center">54 (17.1%)</td>
-<td align="center">21 (14.9%)</td>
-<td align="center">6 (25.0%)</td>
-<td align="center">129 (12.1%)</td>
-<td align="center">218 (26.6%)</td>
-<td align="center">964 (21.3%)</td>
+<td align="center">573 (24.4%)</td>
+<td align="center">64 (16.8%)</td>
+<td align="center">22 (12.7%)</td>
+<td align="center">7 (18.9%)</td>
+<td align="center">165 (10.7%)</td>
+<td align="center">225 (26.1%)</td>
+<td align="center">1056 (19.8%)</td>
 <td align="right"></td>
 </tr>
 <tr class="even">
 <td align="left">Unknown</td>
 <td align="center">1 (0.0%)</td>
 <td align="center">1 (0.3%)</td>
-<td align="center">1 (0.7%)</td>
+<td align="center">1 (0.6%)</td>
 <td align="center">0 (0.0%)</td>
-<td align="center">2 (0.2%)</td>
+<td align="center">2 (0.1%)</td>
 <td align="center">0 (0.0%)</td>
 <td align="center">5 (0.1%)</td>
 <td align="right"></td>
 </tr>
 </tbody>
 </table>
+<p>If interested in other available endpoints, you can use the list_endpoints function for a data.frame of currently available endpoints.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># This function lists endpoints as a data.frame along with a brief description</span>
+<span class="fu"><a href="reference/list_endpoints.html">list_endpoints</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code>            endpoint                                         description</code></pre>
+<p>1 Biochemistry Laboratory and biochemistry records information 2 CT Computed Tomagraphy records information 3 CT-Annotation Computed Tomagraphy records radiologist annotations 4 CXR Chest X ray records information 5 CXR-Manual-Annotation Chest X ray records radiologist annotations 6 CXR-Qure-Annotation Chest X ray records Qure AI algorithm annotations 7 DST Drug sensitivity testing results records 8 Genomics Pathogen genomics records information 9 Patient-Case Patient case record information 10 Specimen Specimen record information 11 Treatment-Regimen Treatment and regiment record information</p>
 </div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-    <div class="license">
+    <div class="links">
+<h2>Links</h2>
+<ul class="list-unstyled">
+<li>Download from CRAN (TBA) at <br><a href="https://github.com/niaid/tbportals.depot.api">https://​github.com/​niaid/​tbportals.depot.api</a>
+</li>
+<li>Browse source code at <br><a href="https://github.com/niaid/tbportals.depot.api">https://​github.com/​niaid/​tbportals.depot.api</a>
+</li>
+<li>Report a bug at <br><a href="https://github.com/niaid/tbportals.depot.api/issues">https://​github.com/​niaid/​tbportals.depot.api/​issues</a>
+</li>
+<li>Learn more about TB Portals at <br><a href="https://tbportals.niaid.nih.gov">https://​tbportals.niaid.nih.gov</a>
+</li>
+</ul>
+</div>
+<div class="license">
 <h2>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
@@ -370,16 +400,25 @@
 <div class="developers">
 <h2>Developers</h2>
 <ul class="list-unstyled">
-<li>Gabriel Rosenfeld <br><small class="roles"> Maintainer </small>  </li>
+<li>
+<a href="mailto:gabriel.rosenfeld@nih.gov">Gabriel Rosenfeld</a> <br><small class="roles"> Author </small>  </li>
+<li>
+<a href="mailto:qinlu.wang@nih.gov">Qinlu Wang</a> <br><small class="roles"> Maintainer </small>  </li>
 </ul>
 </div>
 
-  </div>
+  <div class="dev-status">
+<h2>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/niaid/tbportals.depot.api/actions"><img src="https://github.com/niaid/tbportals.depot.api/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+</ul>
+</div>
+</div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Gabriel Rosenfeld.</p>
+  <p>Developed by <a href="mailto:gabriel.rosenfeld@nih.gov">Gabriel Rosenfeld</a>, <a href="mailto:qinlu.wang@nih.gov">Qinlu Wang</a>.</p>
 </div>
 
 <div class="pkgdown">

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Generate a DEPOT tidy API request — tidy_depot_api • tbportals.depot.api</title>
+<title>Changelog • tbportals.depot.api</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,7 @@
 
 
 
-<meta property="og:title" content="Generate a DEPOT tidy API request — tidy_depot_api" />
-<meta property="og:description" content="tidy_depot_api executes an api request for the path endpoint (e.g. Patient-Case) and
-returns a tidy_depot_api class object with the API call results unless there is an error" />
+<meta property="og:title" content="Changelog" />
 
 
 
@@ -60,7 +58,7 @@ returns a tidy_depot_api class object with the API call results unless there is 
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-topic">
+    <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -116,55 +114,26 @@ returns a tidy_depot_api class object with the API call results unless there is 
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Generate a DEPOT tidy API request</h1>
-    
-    <div class="hidden name"><code>tidy_depot_api.Rd</code></div>
+      <h1 data-toc-skip>Changelog <small></small></h1>
+      
     </div>
 
-    <div class="ref-description">
-    <p><code>tidy_depot_api</code> executes an api request for the path endpoint (e.g. Patient-Case) and
-returns a tidy_depot_api class object with the API call results unless there is an error</p>
-    </div>
-
-    <pre class="usage"><span class='fu'>tidy_depot_api</span><span class='op'>(</span><span class='va'>path</span>, <span class='va'>token</span>, cohortId <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span></pre>
-
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>path</th>
-      <td><p>The name of an endpoint of interest (e.g. Biochemistry)</p></td>
-    </tr>
-    <tr>
-      <th>token</th>
-      <td><p>The token string returned from get_token() function</p></td>
-    </tr>
-    <tr>
-      <th>cohortId</th>
-      <td><p>The int string containing the cohortId of interest from DEPOT</p></td>
-    </tr>
-    </table>
-
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>An object of class tidy_depot_api containing API call results</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>This function depends upon setting up your user credentials to access the Tidy Depot API locally including your email address
-and secret key using <code>store_secret_credentials</code> in Rstudio.  This will prompt you to store that information in a local .Renviron
-file.  Afterwards, retrieve a unique token string using the <code>get_token</code> function which is passed as the token arguent to the
-<code>tidy_depot_api</code> function along with the path end point of interest.  Any erros will be returned instead of the API call notifying
-that there may be an issue with either your credentials or the endpoint name.</p>
-    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
-
-    <p>Gabriel Rosenfeld, <a href='mailto:gabriel.rosenfeld@nih.gov'>gabriel.rosenfeld@nih.gov</a></p>
-
+    <div id="tbportalsdepotapi-010-2021-08-27" class="section level1">
+<h1 class="page-header" data-toc-text="0.1.0">
+<a href="#tbportalsdepotapi-010-2021-08-27" class="anchor"></a>tbportals.depot.api 0.1.0 (2021-08-27)</h1>
+<ul>
+<li>Generated the major functions within the package: <code><a href="../reference/get_secret.html">get_secret()</a></code>, <code><a href="../reference/get_secret_email.html">get_secret_email()</a></code>, <code><a href="../reference/get_token.html">get_token()</a></code>, <code><a href="../reference/list_endpoints.html">list_endpoints()</a></code>, <code><a href="../reference/store_secret_credentials.html">store_secret_credentials()</a></code>, and <code><a href="../reference/tidy_depot_api.html">tidy_depot_api()</a></code>. More detailed explaination of these functions can be found at <code>Reference</code> section.</li>
+<li>Initial instructions regarding how to download and use the package.</li>
+</ul>
+</div>
   </div>
+
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
     </nav>
   </div>
+
 </div>
 
 
