@@ -1,7 +1,44 @@
+authors:
+  Gabriel Rosenfeld:
+    href: mailto:gabriel.rosenfeld@nih.gov
+  Qinlu Wang:
+    href: mailto:qinlu.wang@nih.gov
+
 articles:
 - title: All vignettes
-  desc: ~
+  navbar: ~
   contents:
-  - '`pulling_data_from_depot_cohort`'
-  - '`setting_up_connection`'
+  - pulling_data_from_depot_cohort
+  - setting_up_connection
+
+news:
+  cran_dates: false
+
+home:
+  links:
+  - text: Download from CRAN (TBA)
+    href: https://github.com/niaid/tbportals.depot.api
+  - text: Browse source code 
+    href: https://github.com/niaid/tbportals.depot.api
+  - text: Report a bug 
+    href: https://github.com/niaid/tbportals.depot.api/issues
+  - text: Learn more about TB Portals 
+    href: https://tbportals.niaid.nih.gov
+
+navbar:
+  title: ~
+  type: default
+  left:
+    - text: Reference
+      href: reference/index.html
+    - text: Articles
+      menu:
+      - text: Pulling data from the API and filtering on records in a DEPOT created cohort
+        href: articles/pulling_data_from_depot_cohort.html
+      - text: Setting up connection to API
+        href: articles/setting_up_connection.html
+    - text: News
+      href: news/index.html
+
+
 
