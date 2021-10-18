@@ -71,12 +71,12 @@ store_secret_credentials <- function() {
 get_secret <- function() {
 
   if (is.null(Sys.getenv('DEPOT_API_SECRET'))) {
-    stop("Please set env var DEPOT_API_SECRET to your secret that you received using store_secret_credentials function",
+    stop("Please set env var DEPOT_API_SECRET to your secret that you received using store_secret_credentials function. If you have done that, please restart your R/Rstudio and try again.",
          call. = FALSE)
   }
   pat <- Sys.getenv('DEPOT_API_SECRET')
   if (identical(pat, "")) {
-    stop("Please set env var DEPOT_API_SECRET to your secret that you received using store_secret_credentials function",
+    stop("Please set env var DEPOT_API_SECRET to your secret that you received using store_secret_credentials function. If you have done that, please restart your R/Rstudio and try again.",
          call. = FALSE)
   }
   return(Sys.getenv("DEPOT_API_SECRET"))
@@ -108,12 +108,12 @@ get_secret <- function() {
 get_secret_email <- function() {
 
   if (is.null(Sys.getenv('DEPOT_API_SECRET_EMAIL'))) {
-    stop("Please set env var DEPOT_API_SECRET_EMAIL to the email address where you received your secret using store_secret_credentials function",
+    stop("Please set env var DEPOT_API_SECRET_EMAIL to the email address where you received your secret using store_secret_credentials function. If you have done that, please restart your R/Rstudio and try again.",
          call. = FALSE)
   }
   pat <- Sys.getenv('DEPOT_API_SECRET_EMAIL')
   if (identical(pat, "")) {
-    stop("Please set env var DEPOT_API_SECRET_EMAIL to the email address where you received your secret using store_secret_credentials function",
+    stop("Please set env var DEPOT_API_SECRET_EMAIL to the email address where you received your secret using store_secret_credentials function. If you have done that, please restart your R/Rstudio and try again.",
          call. = FALSE)
   }
   return(Sys.getenv("DEPOT_API_SECRET_EMAIL"))
