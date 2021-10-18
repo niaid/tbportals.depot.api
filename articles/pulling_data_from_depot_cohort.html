@@ -134,23 +134,23 @@
 
 <span class="va">df</span>
 <span class="co">#&gt;                             patient_id                         condition_id</span>
-<span class="co">#&gt; 1 fbb36133-3f8c-4edd-9af6-3b06d26a6221 1e6152c1-5325-4d46-a933-80d41b424f6e</span>
-<span class="co">#&gt; 2 f60e2fb1-358f-47a0-8923-6428a9585048 b0e27697-6912-44bd-a4b6-92a70c5216fb</span>
-<span class="co">#&gt; 3 2606b5b1-a3fe-4aa2-94e2-34165346a744 e0ee3864-3343-41c4-9ffe-4f0525242420</span>
-<span class="co">#&gt; 4 4f08bf57-1115-4a63-8be0-e2758d84b8af f41d5384-569d-4910-97bb-b1ef1fb7b72a</span>
-<span class="co">#&gt; 5 a2ab519e-1357-4f1b-a590-3cfdcb789c42 c1ce2f41-9084-413c-af2a-7df033fbc40a</span>
+<span class="co">#&gt; 1 bdbb5738-37ef-4ff3-9a94-a2c0c8ed381f 1ae0dba3-0686-4578-9043-6d6207ef3b2e</span>
+<span class="co">#&gt; 2 30e5a0e6-f7a9-40c3-af78-fd493a0942a5 50544e42-d771-4b48-82fb-7bfb3de1a783</span>
+<span class="co">#&gt; 3 b3971a8b-662e-41e7-9da6-9ef19c2cea2f df4420ef-c2f0-4a55-99d6-05b28298b506</span>
+<span class="co">#&gt; 4 8110cc3a-6e13-4d0b-a771-24c0def105a1 ae76a8cf-500b-4b0b-b944-c7ddd11ec5da</span>
+<span class="co">#&gt; 5 d02c84cf-e8d1-4fde-b824-ab45d7eb04bd 59726cc5-78d7-4c7f-8d02-a0edc281acfe</span>
 <span class="co">#&gt;                            specimen_id                   observationfhir_id</span>
-<span class="co">#&gt; 1 d47b84b8-c9cc-4570-93b7-859913b0dff9 85799386-1cc2-4907-9569-1b33079b7ecb</span>
-<span class="co">#&gt; 2 b5eb8c82-bd11-4f13-8923-f63eeab75806 8460e120-d918-4776-b478-0266d68b08ff</span>
-<span class="co">#&gt; 3 5c0e877b-9e3b-489b-8ac4-1e290b1741e2 d47efa9e-ee84-4f29-9455-57ba0e816eee</span>
-<span class="co">#&gt; 4 39cbbed0-2b9a-4ae5-b8b4-4eb05b0d29c0 95deabbd-5d00-4ea1-b71f-9ed729d57070</span>
-<span class="co">#&gt; 5 9d1b5b8e-e825-426b-b2ba-a6957ef5755b d40d08ce-7c13-426f-9606-122129a7e432</span>
+<span class="co">#&gt; 1 5ca620df-21ff-4fd6-8088-40247742c848 0a334d3e-8f95-424b-b683-adec7619a8c2</span>
+<span class="co">#&gt; 2 ed8b2ad1-3685-474b-85a1-9bcf4ac0900b 7e3f5fe5-9993-4da4-b358-ed9f28bd53bc</span>
+<span class="co">#&gt; 3 cdd40f11-83e8-41f5-882c-aba3fc5fa9e8 57626b85-e311-483f-bb00-35c5112e11d0</span>
+<span class="co">#&gt; 4 3c2fec2b-f294-474b-bf2f-1cee20258f0c 2fb42cf3-77a6-4834-91a9-ce608a74f94f</span>
+<span class="co">#&gt; 5 b4d16de7-f86c-4e43-aa7f-cd4c13b15b37 bb1566fb-c171-4e7c-a6fc-821f55fdbb9a</span>
 <span class="co">#&gt;   test_date specimen_collection_site in_requested_cohort</span>
-<span class="co">#&gt; 1        21                       15                  No</span>
-<span class="co">#&gt; 2        34                       34                 Yes</span>
-<span class="co">#&gt; 3        90                       83                 Yes</span>
-<span class="co">#&gt; 4        61                       59                  No</span>
-<span class="co">#&gt; 5        10                        5                  No</span></code></pre></div>
+<span class="co">#&gt; 1        12                        9                  No</span>
+<span class="co">#&gt; 2        72                       71                 Yes</span>
+<span class="co">#&gt; 3        83                       76                 Yes</span>
+<span class="co">#&gt; 4        87                       82                  No</span>
+<span class="co">#&gt; 5        43                       41                  No</span></code></pre></div>
 <p>To filter on records within the DEPOT cohort of interest, a user can use the in_requested_cohort column matching on records with a “Yes”.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Filter on a hypothetical data.frame using only the records from a cohort ID of interest from the API call</span>
@@ -159,14 +159,14 @@
 
 <span class="va">df_cohort</span>
 <span class="co">#&gt;                             patient_id                         condition_id</span>
-<span class="co">#&gt; 1 f60e2fb1-358f-47a0-8923-6428a9585048 b0e27697-6912-44bd-a4b6-92a70c5216fb</span>
-<span class="co">#&gt; 2 2606b5b1-a3fe-4aa2-94e2-34165346a744 e0ee3864-3343-41c4-9ffe-4f0525242420</span>
+<span class="co">#&gt; 1 30e5a0e6-f7a9-40c3-af78-fd493a0942a5 50544e42-d771-4b48-82fb-7bfb3de1a783</span>
+<span class="co">#&gt; 2 b3971a8b-662e-41e7-9da6-9ef19c2cea2f df4420ef-c2f0-4a55-99d6-05b28298b506</span>
 <span class="co">#&gt;                            specimen_id                   observationfhir_id</span>
-<span class="co">#&gt; 1 b5eb8c82-bd11-4f13-8923-f63eeab75806 8460e120-d918-4776-b478-0266d68b08ff</span>
-<span class="co">#&gt; 2 5c0e877b-9e3b-489b-8ac4-1e290b1741e2 d47efa9e-ee84-4f29-9455-57ba0e816eee</span>
+<span class="co">#&gt; 1 ed8b2ad1-3685-474b-85a1-9bcf4ac0900b 7e3f5fe5-9993-4da4-b358-ed9f28bd53bc</span>
+<span class="co">#&gt; 2 cdd40f11-83e8-41f5-882c-aba3fc5fa9e8 57626b85-e311-483f-bb00-35c5112e11d0</span>
 <span class="co">#&gt;   test_date specimen_collection_site in_requested_cohort</span>
-<span class="co">#&gt; 1        34                       34                 Yes</span>
-<span class="co">#&gt; 2        90                       83                 Yes</span></code></pre></div>
+<span class="co">#&gt; 1        72                       71                 Yes</span>
+<span class="co">#&gt; 2        83                       76                 Yes</span></code></pre></div>
 </div>
   </div>
 
