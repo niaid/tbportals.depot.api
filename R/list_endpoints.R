@@ -21,7 +21,7 @@
 #'
 #' @export
 list_endpoints <- function(){
-  temp <- data.frame(
+  data.table(
     endpoint = c("Biochemistry", "CT", "CT-Annotation",
                  "CXR", "CXR-Manual-Annotation", "CXR-Qure-Annotation",
                  "DST", "Genomics", "Patient-Case", "Specimen",
@@ -38,6 +38,4 @@ list_endpoints <- function(){
                     "Specimen record information",
                     "Treatment and regiment record information")
   )
-
-  knitr::kable(temp)
 }
