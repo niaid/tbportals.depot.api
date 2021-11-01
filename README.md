@@ -64,7 +64,7 @@ patient_cases$path
 # The httr response content containing the specific information about the call
 patient_cases$response
 #> Response [https://analytic.tbportals.niaid.nih.gov/api/Patient-Case?returnCsv=false&cohortId=]
-#>   Date: 2021-11-01 15:08
+#>   Date: 2021-11-01 15:49
 #>   Status: 200
 #>   Content-Type: application/json; charset=utf-8
 #>   Size: 44.9 MB
@@ -125,14 +125,16 @@ endpoints.
 list_endpoints()
 ```
 
-                endpoint                                         description
-
-1 Biochemistry Laboratory and biochemistry records information 2 CT
-Computed Tomagraphy records information 3 CT-Annotation Computed
-Tomagraphy records radiologist annotations 4 CXR Chest X ray records
-information 5 CXR-Manual-Annotation Chest X ray records radiologist
-annotations 6 CXR-Qure-Annotation Chest X ray records Qure AI algorithm
-annotations 7 DST Drug sensitivity testing results records 8 Genomics
-Pathogen genomics records information 9 Patient-Case Patient case record
-information 10 Specimen Specimen record information 11 Treatment-Regimen
-Treatment and regiment record information
+| endpoint              | description                                         |
+|:----------------------|:----------------------------------------------------|
+| Biochemistry          | Laboratory and biochemistry records information     |
+| CT                    | Computed Tomagraphy records information             |
+| CT-Annotation         | Computed Tomagraphy records radiologist annotations |
+| CXR                   | Chest X ray records information                     |
+| CXR-Manual-Annotation | Chest X ray records radiologist annotations         |
+| CXR-Qure-Annotation   | Chest X ray records Qure AI algorithm annotations   |
+| DST                   | Drug sensitivity testing results records            |
+| Genomics              | Pathogen genomics records information               |
+| Patient-Case          | Patient case record information                     |
+| Specimen              | Specimen record information                         |
+| Treatment-Regimen     | Treatment and regiment record information           |
