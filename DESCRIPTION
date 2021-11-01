@@ -28,6 +28,7 @@ Imports:
     jsonlite,
     httr,
     devtools,
+    data.table,
     lifecycle,
     magrittr,
     dplyr,
