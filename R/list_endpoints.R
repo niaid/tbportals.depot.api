@@ -22,7 +22,8 @@
 #' @export
 list_endpoints <- function(){
   data.table(
-    endpoint = c("Biochemistry", "CT", "CT-Annotation",
+    #endpoint = c("Biochemistry", "CT", "CT-Annotation",
+    endpoint = c("XX", "CT", "CT-Annotation",
                  "CXR", "CXR-Manual-Annotation", "CXR-Qure-Annotation",
                  "DST", "Genomics", "Patient-Case", "Specimen",
                  "Treatment-Regimen"),

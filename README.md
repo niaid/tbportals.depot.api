@@ -64,7 +64,7 @@ patient_cases$path
 # The httr response content containing the specific information about the call
 patient_cases$response
 #> Response [https://analytic.tbportals.niaid.nih.gov/api/Patient-Case?returnCsv=false&cohortId=]
-#>   Date: 2021-11-01 14:47
+#>   Date: 2021-11-01 15:08
 #>   Status: 200
 #>   Content-Type: application/json; charset=utf-8
 #>   Size: 44.9 MB
