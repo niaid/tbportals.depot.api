@@ -126,7 +126,7 @@
                  <span class="st">"specimen_id"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/uuid/man/UUIDgenerate.html">UUIDgenerate</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,
                  <span class="st">"observationfhir_id"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/uuid/man/UUIDgenerate.html">UUIDgenerate</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,
                  <span class="st">"test_date"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">100</span>, size <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,
-                 <span class="st">"specimen_collection_site"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"blood"</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+                 <span class="st">"specimen_collection_site"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"blood"</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
     specimen_collection_site <span class="op">=</span> <span class="va">test_date</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">7</span>, size <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,
     in_requested_cohort <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"No"</span>, <span class="st">"Yes"</span>, <span class="st">"Yes"</span>, <span class="st">"No"</span>, <span class="st">"No"</span><span class="op">)</span><span class="op">)</span>
@@ -134,39 +134,39 @@
 
 <span class="va">df</span>
 <span class="co">#&gt;                             patient_id                         condition_id</span>
-<span class="co">#&gt; 1 689fe089-4d40-41da-b7e8-d9781a3351e9 30971811-9acd-4ea4-8015-b39541253b0a</span>
-<span class="co">#&gt; 2 7053b606-4492-43cb-9557-1c0524995223 e595c566-7a68-4e8a-92f0-bff20dc01ec2</span>
-<span class="co">#&gt; 3 5e19b6d9-a181-429a-85d3-215efd8dd26e 5a0f2797-2f1d-44a6-b773-866f02a9f757</span>
-<span class="co">#&gt; 4 a3f8e027-296e-4985-bdab-c428539cae17 3fc45586-c6c4-49a4-a578-587dd662647d</span>
-<span class="co">#&gt; 5 2ba90303-674a-4ed3-a02f-f45b4c36276e 6b8369f9-550d-4071-bf54-f238a34971c5</span>
+<span class="co">#&gt; 1 e659b1c5-8799-4f6f-9de2-a0affaf07557 267cf344-4ef3-4c88-9713-b8cc03ec4837</span>
+<span class="co">#&gt; 2 761fe1a4-ce1c-4091-bbcf-e4b5467329b7 13d61822-ed80-4b27-ba6b-8dbb533c25a0</span>
+<span class="co">#&gt; 3 ebb88c27-4f75-4920-abe2-d273d23c1da6 359acb91-c801-44d3-a312-b0a37c2ded8d</span>
+<span class="co">#&gt; 4 8cf4c57e-1f53-42bd-8275-c1b44ff6d0a6 4f99adf0-01aa-4020-a695-3e5b7eb78f30</span>
+<span class="co">#&gt; 5 de8bd29f-5d60-4003-9311-af828ab319e5 a36bcfe7-80ed-4121-b497-656a4f4b0603</span>
 <span class="co">#&gt;                            specimen_id                   observationfhir_id</span>
-<span class="co">#&gt; 1 0cf5ab77-ec0c-4756-964c-d74cbb9e3cc3 28ed697d-8fe7-49cd-8866-d2d718049bcb</span>
-<span class="co">#&gt; 2 87c42244-04f4-44e1-ba6c-55fb1e7037f3 5e55350a-416a-444c-85c6-ba33eb3d50e2</span>
-<span class="co">#&gt; 3 fcd7f6a7-3601-420c-8ee0-e86b661223d5 4760f97c-7eb2-4a35-80b6-470d64055282</span>
-<span class="co">#&gt; 4 2e1fdbdf-36c1-410d-8987-60288d1e1ce3 6df25442-b86f-4d03-9679-d55d84f17b88</span>
-<span class="co">#&gt; 5 5c1de412-bcc3-4fdf-8afc-e605f6d17993 2906332d-33e8-48b8-81f9-740988e3133c</span>
+<span class="co">#&gt; 1 85fc78fc-f20e-47cc-a307-5586e535ef8a 8082d99e-f806-4dc1-bed5-502228ae559f</span>
+<span class="co">#&gt; 2 89416eb8-1bc1-49db-802c-c6b17d9f3b1e ba3a9fc3-645d-45a6-a801-8016cdab9295</span>
+<span class="co">#&gt; 3 9d462dc3-a769-4d4f-8b23-34582a8fa4a4 44f98e79-4ed3-4898-b072-305705223637</span>
+<span class="co">#&gt; 4 f1e5b47f-e2fd-439f-81ff-64029ec9e062 3f2a0084-7fa5-4e2a-9fb8-ddf43f79bdd0</span>
+<span class="co">#&gt; 5 598ff114-13df-477a-9878-fcb7a0564fd9 f6cfd01e-0ca6-4358-9f69-c6b041574820</span>
 <span class="co">#&gt;   test_date specimen_collection_site in_requested_cohort</span>
-<span class="co">#&gt; 1        84                       82                  No</span>
-<span class="co">#&gt; 2        39                       35                 Yes</span>
-<span class="co">#&gt; 3        13                        8                 Yes</span>
-<span class="co">#&gt; 4        85                       84                  No</span>
-<span class="co">#&gt; 5        42                       42                  No</span></code></pre></div>
+<span class="co">#&gt; 1        25                       22                  No</span>
+<span class="co">#&gt; 2        99                       99                 Yes</span>
+<span class="co">#&gt; 3        54                       48                 Yes</span>
+<span class="co">#&gt; 4        42                       41                  No</span>
+<span class="co">#&gt; 5        46                       41                  No</span></code></pre></div>
 <p>To filter on records within the DEPOT cohort of interest, a user can use the in_requested_cohort column matching on records with a “Yes”.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Filter on a hypothetical data.frame using only the records from a cohort ID of interest from the API call</span>
-<span class="va">df_cohort</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op">%&gt;%</span>
+<span class="va">df_cohort</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">in_requested_cohort</span> <span class="op">==</span> <span class="st">"Yes"</span><span class="op">)</span>
 
 <span class="va">df_cohort</span>
 <span class="co">#&gt;                             patient_id                         condition_id</span>
-<span class="co">#&gt; 1 7053b606-4492-43cb-9557-1c0524995223 e595c566-7a68-4e8a-92f0-bff20dc01ec2</span>
-<span class="co">#&gt; 2 5e19b6d9-a181-429a-85d3-215efd8dd26e 5a0f2797-2f1d-44a6-b773-866f02a9f757</span>
+<span class="co">#&gt; 1 761fe1a4-ce1c-4091-bbcf-e4b5467329b7 13d61822-ed80-4b27-ba6b-8dbb533c25a0</span>
+<span class="co">#&gt; 2 ebb88c27-4f75-4920-abe2-d273d23c1da6 359acb91-c801-44d3-a312-b0a37c2ded8d</span>
 <span class="co">#&gt;                            specimen_id                   observationfhir_id</span>
-<span class="co">#&gt; 1 87c42244-04f4-44e1-ba6c-55fb1e7037f3 5e55350a-416a-444c-85c6-ba33eb3d50e2</span>
-<span class="co">#&gt; 2 fcd7f6a7-3601-420c-8ee0-e86b661223d5 4760f97c-7eb2-4a35-80b6-470d64055282</span>
+<span class="co">#&gt; 1 89416eb8-1bc1-49db-802c-c6b17d9f3b1e ba3a9fc3-645d-45a6-a801-8016cdab9295</span>
+<span class="co">#&gt; 2 9d462dc3-a769-4d4f-8b23-34582a8fa4a4 44f98e79-4ed3-4898-b072-305705223637</span>
 <span class="co">#&gt;   test_date specimen_collection_site in_requested_cohort</span>
-<span class="co">#&gt; 1        39                       35                 Yes</span>
-<span class="co">#&gt; 2        13                        8                 Yes</span></code></pre></div>
+<span class="co">#&gt; 1        99                       99                 Yes</span>
+<span class="co">#&gt; 2        54                       48                 Yes</span></code></pre></div>
 </div>
   </div>
 
