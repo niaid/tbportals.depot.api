@@ -17,3 +17,4 @@ test_that("list_endpoints() works", {
                     "Treatment and regiment record information")
   ))
 })
+
