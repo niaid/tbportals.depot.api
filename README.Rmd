@@ -90,5 +90,5 @@ If interested in other available endpoints, you can use the list_endpoints funct
 
 ```{r results='asis'}
 # This function lists endpoints as a data.frame along with a brief description
-list_endpoints()
+list_endpoints(format = "html") # format = "html" for printing in markdown/html file
 ```

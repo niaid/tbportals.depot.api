@@ -20,8 +20,8 @@
 #' list_endpoints()
 #'
 #' @export
-list_endpoints <- function(){
-  temp <- data.frame(
+list_endpoints <- function(format = "data_frame"){
+  temp = data.frame(
     endpoint = c("Biochemistry", "CT", "CT-Annotation",
                  "CXR", "CXR-Manual-Annotation", "CXR-Qure-Annotation",
                  "DST", "Genomics", "Patient-Case", "Specimen",
@@ -39,5 +39,10 @@ list_endpoints <- function(){
                     "Treatment and regiment record information")
   )
 
-  knitr::kable(temp)
+  if(format == "html"){
+    knitr::kable(temp)
+  }else{
+    temp
+  }
+
 }
