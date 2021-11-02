@@ -89,6 +89,7 @@ tableby(type_of_resistance ~ age_of_onset + gender + bmi + case_definition, data
 If interested in other available endpoints, you can use the list_endpoints function for a data.frame of currently available endpoints.
 
 ```{r results='asis'}
-# This function lists endpoints as a data.frame along with a brief description
-list_endpoints(format = "html") # format = "html" for printing in markdown/html file
+# This function lists endpoints as a data.frame along with a brief description. 
+# To show it in this markdown file, we add knitr::kable()
+knitr::kable(list_endpoints())
 ```

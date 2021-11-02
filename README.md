@@ -64,7 +64,7 @@ patient_cases$path
 # The httr response content containing the specific information about the call
 patient_cases$response
 #> Response [https://analytic.tbportals.niaid.nih.gov/api/Patient-Case?returnCsv=false&cohortId=]
-#>   Date: 2021-11-02 15:05
+#>   Date: 2021-11-02 15:26
 #>   Status: 200
 #>   Content-Type: application/json; charset=utf-8
 #>   Size: 45.4 MB
@@ -121,8 +121,9 @@ list\_endpoints function for a data.frame of currently available
 endpoints.
 
 ``` r
-# This function lists endpoints as a data.frame along with a brief description
-list_endpoints(format = "html") # format = "html" for printing in markdown/html file
+# This function lists endpoints as a data.frame along with a brief description. 
+# To show it in this markdown file, we add knitr::kable()
+knitr::kable(list_endpoints())
 ```
 
 | endpoint              | description                                         |
