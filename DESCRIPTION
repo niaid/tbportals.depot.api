@@ -11,11 +11,12 @@ Authors@R:
              email = "gabriel.rosenfeld@nih.gov"),
       person(given = "Qinlu",
              family = "Wang",
-             role = "cre"))
+             role = "cre", 
+             email = "qinlu.wang@nih.gov"))
 Description: Provides a convenient way of interacting with the TB Portals DEPOT Tidy API.
     Includes methods for setting up authorization as well as creating API calls to the various
     end points that are available.
-License: CC0
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Suggests: 
