@@ -2,8 +2,8 @@ Package: tbportals.depot.api
 Type: Package
 Title: Convenient R wrapper for TB Portals DEPOT Tidy API
 Version: 0.1.0
-Author: Gabriel Rosenfeld
-Maintainer: Gabriel Rosenfeld <gabriel.rosenfeld@nih.gov>
+Author: Gabriel Rosenfeld <gabriel.rosenfeld@nih.gov>
+Maintainer: Qinlu Wang <qinlu.wang@nih.gov>
 Authors@R: 
     c(person(given = "Gabriel",
              family = "Rosenfeld",
