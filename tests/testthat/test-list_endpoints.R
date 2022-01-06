@@ -14,7 +14,7 @@ test_that("list_endpoints() works", {
                     "Pathogen genomics records information",
                     "Patient case record information",
                     "Specimen record information",
-                    "Treatment and regiment record information")
+                    "Treatment and regimen record information")
   ))
 })
 
