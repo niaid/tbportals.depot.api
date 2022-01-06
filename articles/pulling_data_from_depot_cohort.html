@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tbportals.depot.api</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.0</span>
       </span>
     </div>
 
@@ -59,7 +61,14 @@
   <a href="../news/index.html">News</a>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+  <a href="https://github.niaid.nih.gov/pages/bcbb/" class="external-link">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -75,22 +84,22 @@
       <h1 data-toc-skip>Pulling data from the API and filtering on records in a DEPOT created cohort</h1>
             
       
-      
+      <small class="dont-index">Source: <a href="https://github.niaid.nih.gov/pages/bcbb/blob/HEAD/vignettes/pulling_data_from_depot_cohort.Rmd" class="external-link"><code>vignettes/pulling_data_from_depot_cohort.Rmd</code></a></small>
       <div class="hidden name"><code>pulling_data_from_depot_cohort.Rmd</code></div>
 
     </div>
 
     
     
-<div id="identifying-the-right-cohort-from-depot" class="section level4">
-<h4 class="hasAnchor">
-<a href="#identifying-the-right-cohort-from-depot" class="anchor"></a>Identifying the right cohort from DEPOT</h4>
-<p>Prior to using this functionality, a user must be registered to use the <a href="https://depot.tbportals.niaid.nih.gov">DEPOT tool</a> and must have created and saved a cohort with the tool. Users can find the cohorts they saved <a href="https://depot.tbportals.niaid.nih.gov/#/saved-cohorts">here</a>.</p>
+<div class="section level4">
+<h4 id="identifying-the-right-cohort-from-depot">Identifying the right cohort from DEPOT<a class="anchor" aria-label="anchor" href="#identifying-the-right-cohort-from-depot"></a>
+</h4>
+<p>Prior to using this functionality, a user must be registered to use the <a href="https://depot.tbportals.niaid.nih.gov" class="external-link">DEPOT tool</a> and must have created and saved a cohort with the tool. Users can find the cohorts they saved <a href="https://depot.tbportals.niaid.nih.gov/#/saved-cohorts" class="external-link">here</a>.</p>
 <p>In the website above with your saved cohorts, you will see a table with the following columns “NAME” corresponding to the name of the cohort you created using DEPOT and “ID” which is the unique cohort ID you will need if wanting to pull the data for just these cases using the tbportals.depot.api package.</p>
 </div>
-<div id="pulling-data-from-an-endpoint-for-just-the-cases-in-the-depot-cohort-of-interest" class="section level4">
-<h4 class="hasAnchor">
-<a href="#pulling-data-from-an-endpoint-for-just-the-cases-in-the-depot-cohort-of-interest" class="anchor"></a>Pulling data from an endpoint for just the cases in the DEPOT cohort of interest</h4>
+<div class="section level4">
+<h4 id="pulling-data-from-an-endpoint-for-just-the-cases-in-the-depot-cohort-of-interest">Pulling data from an endpoint for just the cases in the DEPOT cohort of interest<a class="anchor" aria-label="anchor" href="#pulling-data-from-an-endpoint-for-just-the-cases-in-the-depot-cohort-of-interest"></a>
+</h4>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># See an example of making a request for the data contained in the Biochemistry end point</span>
 <span class="va">REQUEST</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tidy_depot_api.html">tidy_depot_api</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"Biochemistry"</span>, token <span class="op">=</span> <span class="va">TOKEN</span>, cohortId <span class="op">=</span> <span class="st">"PASTE cohort ID number Here"</span><span class="op">)</span>
@@ -104,12 +113,12 @@
 <span class="co"># Specific information about the httr request can be found in the response section</span>
 <span class="va">REQUEST</span><span class="op">$</span><span class="va">response</span></code></pre></div>
 </div>
-<div id="filtering-on-the-records-relating-to-the-cohort-id-of-interest" class="section level4">
-<h4 class="hasAnchor">
-<a href="#filtering-on-the-records-relating-to-the-cohort-id-of-interest" class="anchor"></a>Filtering on the records relating to the cohort ID of interest</h4>
+<div class="section level4">
+<h4 id="filtering-on-the-records-relating-to-the-cohort-id-of-interest">Filtering on the records relating to the cohort ID of interest<a class="anchor" aria-label="anchor" href="#filtering-on-the-records-relating-to-the-cohort-id-of-interest"></a>
+</h4>
 <p>Given the requirements of TB portals, the following example below will be for purely fake hypothetical data that has similar structure as you would receive from the API call. Only the first few columns showing fake records with ids, relative dates, and specimen info columns are shown without corresponding lab test types. The final column for filtering on the cohort records is also shown.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Attaching package: 'dplyr'</span>
 <span class="co">#&gt; The following objects are masked from 'package:stats':</span>
@@ -118,55 +127,64 @@
 <span class="co">#&gt; The following objects are masked from 'package:base':</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;     intersect, setdiff, setequal, union</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.rforge.net/uuid">uuid</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://www.rforge.net/uuid" class="external-link">uuid</a></span><span class="op">)</span>
 
 <span class="co"># Structure of a hypothetical data.frame from REQUESTS$content</span>
-<span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="st">"patient_id"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/uuid/man/UUIDgenerate.html">UUIDgenerate</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,
-                 <span class="st">"condition_id"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/uuid/man/UUIDgenerate.html">UUIDgenerate</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,
-                 <span class="st">"specimen_id"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/uuid/man/UUIDgenerate.html">UUIDgenerate</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,
-                 <span class="st">"observationfhir_id"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/uuid/man/UUIDgenerate.html">UUIDgenerate</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,
-                 <span class="st">"test_date"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">100</span>, size <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,
-                 <span class="st">"specimen_collection_site"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"blood"</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
-    specimen_collection_site <span class="op">=</span> <span class="va">test_date</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">7</span>, size <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,
-    in_requested_cohort <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"No"</span>, <span class="st">"Yes"</span>, <span class="st">"Yes"</span>, <span class="st">"No"</span>, <span class="st">"No"</span><span class="op">)</span><span class="op">)</span>
+<span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="st">"patient_id"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/uuid/man/UUIDgenerate.html" class="external-link">UUIDgenerate</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,
+                 <span class="st">"condition_id"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/uuid/man/UUIDgenerate.html" class="external-link">UUIDgenerate</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,
+                 <span class="st">"specimen_id"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/uuid/man/UUIDgenerate.html" class="external-link">UUIDgenerate</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,
+                 <span class="st">"observationfhir_id"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/uuid/man/UUIDgenerate.html" class="external-link">UUIDgenerate</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,
+                 <span class="st">"test_date"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">100</span>, size <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,
+                 <span class="st">"specimen_collection_site"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"blood"</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>
+    specimen_collection_date <span class="op">=</span> <span class="va">test_date</span>,
+    in_requested_cohort <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"No"</span>, <span class="st">"Yes"</span>, <span class="st">"Yes"</span>, <span class="st">"No"</span>, <span class="st">"No"</span><span class="op">)</span><span class="op">)</span>
 
 
 <span class="va">df</span>
 <span class="co">#&gt;                             patient_id                         condition_id</span>
-<span class="co">#&gt; 1 bd00e0ec-bb3b-43a8-8c3a-aaba94c97066 f986166f-dd8d-465a-a98a-8c0ad9f1ab82</span>
-<span class="co">#&gt; 2 3c056829-f5b6-46ab-a6a8-395dfad61316 6201e287-1cf5-4d4c-9636-76671924be68</span>
-<span class="co">#&gt; 3 fa4a2cc6-2e1b-4ded-8bb0-3e967f16ec3a b5668d25-504d-405c-accb-9cef63477c9f</span>
-<span class="co">#&gt; 4 464b48a2-6b03-4d7d-9080-4974dcd71669 1309344e-11fa-4f05-a56b-cf0778131ae0</span>
-<span class="co">#&gt; 5 8aa9e3f3-930c-4484-a6e4-72c6d8f5bfa9 c097f82b-e037-4a40-b5c7-ba32b77d01df</span>
+<span class="co">#&gt; 1 c0c37c15-86d2-40d0-b901-93928ba02542 191eb33f-b983-4f85-986f-f0af54a9b49b</span>
+<span class="co">#&gt; 2 7725e078-da1d-471e-9c37-791e9e792f0e 1ef646e8-258b-4b7e-add2-f498ccb6af37</span>
+<span class="co">#&gt; 3 4990cf0f-a7fd-4096-b432-badc2d152eaf 913a8ce9-d85b-4ac5-be89-2970a65a9503</span>
+<span class="co">#&gt; 4 1c98b7f4-8c98-4555-b305-e8f74b422d68 462c51b3-5168-4248-9a13-453bd9606483</span>
+<span class="co">#&gt; 5 eb6cd96f-6d73-41e7-a017-afcb7a1bd954 752e4387-88ac-4cb0-9ab4-1d29dd351f40</span>
 <span class="co">#&gt;                            specimen_id                   observationfhir_id</span>
-<span class="co">#&gt; 1 7897f5dc-0841-4e62-b969-becf4390a03c 576b085b-a82e-4459-98b2-d8688b443cd0</span>
-<span class="co">#&gt; 2 f0e1fdfc-7238-45b6-bc9c-8dadba4883de ac9a6956-2d87-40fb-84ec-d614b4ac7718</span>
-<span class="co">#&gt; 3 2e6c38ae-6001-41a7-8b63-da5caf537661 cfdf8b49-27c9-4690-a81d-1dd8346cad1c</span>
-<span class="co">#&gt; 4 f270c374-a68e-4152-9f70-824a24d4357d 8f0ce606-c0b8-4599-9a13-9867491fa859</span>
-<span class="co">#&gt; 5 874e6468-0be0-4869-b331-e1a0c6d6803b 15c68f3b-c945-4700-9e6a-05aeda84e3d1</span>
-<span class="co">#&gt;   test_date specimen_collection_site in_requested_cohort</span>
-<span class="co">#&gt; 1        94                       89                  No</span>
-<span class="co">#&gt; 2        13                        7                 Yes</span>
-<span class="co">#&gt; 3        56                       55                 Yes</span>
-<span class="co">#&gt; 4        47                       43                  No</span>
-<span class="co">#&gt; 5        42                       40                  No</span></code></pre></div>
+<span class="co">#&gt; 1 356c3a56-1f82-4434-8341-d194863deac1 5e9dab48-38cc-42c0-b371-d9b7d2cae100</span>
+<span class="co">#&gt; 2 632b537b-fdf0-4bbb-8824-e66b32aa7b10 e6b37b86-47e0-4466-8b8e-d560df919ce9</span>
+<span class="co">#&gt; 3 04e2b3e8-4306-4e52-b878-ccc08a6054d2 aa86863e-687a-47c3-86bc-ea1bf5bc2076</span>
+<span class="co">#&gt; 4 98b96b8c-93fe-4829-8b1a-d7406907e5b9 6582dbe0-ec42-4939-bccb-5e53f88a1d55</span>
+<span class="co">#&gt; 5 fc09797c-89e7-41a8-a59b-fd46ee823081 93220d98-df3c-471f-a990-e664a8b16060</span>
+<span class="co">#&gt;   test_date specimen_collection_site specimen_collection_date</span>
+<span class="co">#&gt; 1        62                    blood                       62</span>
+<span class="co">#&gt; 2        91                    blood                       91</span>
+<span class="co">#&gt; 3        71                    blood                       71</span>
+<span class="co">#&gt; 4         3                    blood                        3</span>
+<span class="co">#&gt; 5        53                    blood                       53</span>
+<span class="co">#&gt;   in_requested_cohort</span>
+<span class="co">#&gt; 1                  No</span>
+<span class="co">#&gt; 2                 Yes</span>
+<span class="co">#&gt; 3                 Yes</span>
+<span class="co">#&gt; 4                  No</span>
+<span class="co">#&gt; 5                  No</span></code></pre></div>
 <p>To filter on records within the DEPOT cohort of interest, a user can use the in_requested_cohort column matching on records with a “Yes”.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Filter on a hypothetical data.frame using only the records from a cohort ID of interest from the API call</span>
-<span class="va">df_cohort</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">in_requested_cohort</span> <span class="op">==</span> <span class="st">"Yes"</span><span class="op">)</span>
+<span class="va">df_cohort</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">in_requested_cohort</span> <span class="op">==</span> <span class="st">"Yes"</span><span class="op">)</span>
 
 <span class="va">df_cohort</span>
 <span class="co">#&gt;                             patient_id                         condition_id</span>
-<span class="co">#&gt; 1 3c056829-f5b6-46ab-a6a8-395dfad61316 6201e287-1cf5-4d4c-9636-76671924be68</span>
-<span class="co">#&gt; 2 fa4a2cc6-2e1b-4ded-8bb0-3e967f16ec3a b5668d25-504d-405c-accb-9cef63477c9f</span>
+<span class="co">#&gt; 1 7725e078-da1d-471e-9c37-791e9e792f0e 1ef646e8-258b-4b7e-add2-f498ccb6af37</span>
+<span class="co">#&gt; 2 4990cf0f-a7fd-4096-b432-badc2d152eaf 913a8ce9-d85b-4ac5-be89-2970a65a9503</span>
 <span class="co">#&gt;                            specimen_id                   observationfhir_id</span>
-<span class="co">#&gt; 1 f0e1fdfc-7238-45b6-bc9c-8dadba4883de ac9a6956-2d87-40fb-84ec-d614b4ac7718</span>
-<span class="co">#&gt; 2 2e6c38ae-6001-41a7-8b63-da5caf537661 cfdf8b49-27c9-4690-a81d-1dd8346cad1c</span>
-<span class="co">#&gt;   test_date specimen_collection_site in_requested_cohort</span>
-<span class="co">#&gt; 1        13                        7                 Yes</span>
-<span class="co">#&gt; 2        56                       55                 Yes</span></code></pre></div>
+<span class="co">#&gt; 1 632b537b-fdf0-4bbb-8824-e66b32aa7b10 e6b37b86-47e0-4466-8b8e-d560df919ce9</span>
+<span class="co">#&gt; 2 04e2b3e8-4306-4e52-b878-ccc08a6054d2 aa86863e-687a-47c3-86bc-ea1bf5bc2076</span>
+<span class="co">#&gt;   test_date specimen_collection_site specimen_collection_date</span>
+<span class="co">#&gt; 1        91                    blood                       91</span>
+<span class="co">#&gt; 2        71                    blood                       71</span>
+<span class="co">#&gt;   in_requested_cohort</span>
+<span class="co">#&gt; 1                 Yes</span>
+<span class="co">#&gt; 2                 Yes</span></code></pre></div>
 </div>
   </div>
 
@@ -179,11 +197,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="mailto:gabriel.rosenfeld@nih.gov">Gabriel Rosenfeld</a>, <a href="mailto:qinlu.wang@nih.gov">Qinlu Wang</a>.</p>
+  <p></p>
+<p>Developed by <a href="mailto:gabriel.rosenfeld@nih.gov">Gabriel Rosenfeld</a>, <a href="mailto:qinlu.wang@nih.gov">Qinlu Wang</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -191,6 +211,8 @@
 
   
 
+
+  
 
   </body>
 </html>
