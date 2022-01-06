@@ -55,7 +55,7 @@ df <- data.frame("patient_id" = UUIDgenerate(n = 5),
                  "test_date" = sample(0:100, size = 5),
                  "specimen_collection_site" = rep("blood", 5)) %>%
   mutate(
-    specimen_collection_site = test_date - sample(0:7, size = 5),
+    specimen_collection_date = test_date,
     in_requested_cohort = c("No", "Yes", "Yes", "No", "No"))
 
 
