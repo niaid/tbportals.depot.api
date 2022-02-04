@@ -2,8 +2,15 @@ Package: tbportals.depot.api
 Type: Package
 Title: Convenient R Wrapper for TB Portals DEPOT Tidy API
 Version: 0.1.0
-Author: Gabriel Rosenfeld <gabriel.rosenfeld@nih.gov>
-Maintainer: Qinlu Wang <qinlu.wang@nih.gov>
+Authors@R: 
+    c(person(given = "Gabriel",
+             family = "Rosenfeld",
+             role = c("aut"),
+             email = "gabriel.rosenfeld@nih.gov"),
+      person(given = "Qinlu",
+             family = "Wang",
+             role = "cre", 
+             email = "qinlu.wang@nih.gov"))
 Description: Provides a convenient way of interacting with the TB Portals DEPOT Tidy API.
     Includes methods for setting up authorization as well as creating API calls to the various
     end points that are available.
