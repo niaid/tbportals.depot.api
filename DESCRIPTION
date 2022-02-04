@@ -1,9 +1,7 @@
 Package: tbportals.depot.api
 Type: Package
-Title: Convenient R wrapper for TB Portals DEPOT Tidy API
+Title: Convenient R Wrapper for TB Portals DEPOT Tidy API
 Version: 0.1.0
-Author: Gabriel Rosenfeld <gabriel.rosenfeld@nih.gov>
-Maintainer: Qinlu Wang <qinlu.wang@nih.gov>
 Authors@R: 
     c(person(given = "Gabriel",
              family = "Rosenfeld",
@@ -36,5 +34,5 @@ Imports:
     readr
 RoxygenNote: 7.1.1
 VignetteBuilder: knitr
-URL: https://github.niaid.nih.gov/pages/bcbb/tbportals.depot.api
+URL: https://github.com/niaid/tbportals.depot.api
 Roxygen: list(markdown = TRUE)
