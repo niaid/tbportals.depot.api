@@ -43,7 +43,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -143,23 +143,23 @@
 
 <span class="va">df</span>
 <span class="co">#&gt;                             patient_id                         condition_id</span>
-<span class="co">#&gt; 1 600c8537-d19e-4894-a052-f2323dfad6c2 ed276464-094b-484d-8010-9e41155676d7</span>
-<span class="co">#&gt; 2 2a4cd150-c4a8-4509-af23-6a3d13f13644 1cd461c9-8b0d-4cbc-bb3e-cd44f7916f81</span>
-<span class="co">#&gt; 3 f5ec61de-4aeb-4325-88df-6ded83bbef90 26e20bbc-bde9-4a70-b9f8-6290004a82b0</span>
-<span class="co">#&gt; 4 c04acb40-99f9-4ea2-ac1a-c1c29b3090b2 c9d426b1-2b48-4ebe-86f6-61a861cf9a8e</span>
-<span class="co">#&gt; 5 b15090a6-80b1-46a7-84b1-ea274fcce8de 6f639108-4fa8-496d-a0f2-8a89a11b8f2b</span>
+<span class="co">#&gt; 1 58289772-df04-4dc0-acc5-bbfa99d2e310 d1ec0659-9627-44f8-991b-e2d5d801c6cc</span>
+<span class="co">#&gt; 2 24521ee1-a141-4811-b7c3-c8b1dbbbbee7 159d868c-f0bd-4203-836e-56c723d9db0c</span>
+<span class="co">#&gt; 3 189e6fe0-eab5-4de4-8362-bb78d24b1fbc 93de102b-4b04-4f42-a66d-18a8e4f5f61e</span>
+<span class="co">#&gt; 4 643eef48-26d8-46f0-8df3-0c4bd6e98b07 281ca7b7-3a3a-4950-9bbf-13119db6c041</span>
+<span class="co">#&gt; 5 c0f9fa94-0207-4727-9b5c-fad37275c646 ca507c82-7712-40e9-9de1-d7dd1a90c326</span>
 <span class="co">#&gt;                            specimen_id                   observationfhir_id</span>
-<span class="co">#&gt; 1 4ec372d3-7700-4d34-a77e-9e9ab54da583 162da0bb-bf2d-4026-89b1-9ec4421ddbfd</span>
-<span class="co">#&gt; 2 87f5c599-3ad2-4e8d-b53a-78af72fe6c8e 6482df0c-1159-46ac-bcc9-3334304e2831</span>
-<span class="co">#&gt; 3 06e5b2f4-69b1-4f86-9dd1-8e94a132b53f b690e129-cfac-46c4-ba55-a6a7cfd27a9e</span>
-<span class="co">#&gt; 4 5d2d15f5-7ac1-45d4-9814-b52861143e30 d613876c-259f-43fc-b937-3dfef77c0f7a</span>
-<span class="co">#&gt; 5 1764b34d-4ca9-4baf-9d02-371a09aa8dc2 55a8d934-8f5c-4241-a4c7-b76ab92c1ed0</span>
+<span class="co">#&gt; 1 5171f8f7-0eba-475d-a282-2c0643fe5fab 8581e64e-1f85-4b6e-8fae-6e0f0eb065d9</span>
+<span class="co">#&gt; 2 5ce93f14-53f7-424d-848a-e9fb57855bd6 d2337a16-7a65-4bca-af48-2492ecc90051</span>
+<span class="co">#&gt; 3 eab7c477-2ed8-45fa-b522-c314345508d0 faa5886a-64cc-427a-bc80-a98e15fe9203</span>
+<span class="co">#&gt; 4 c368b0dd-3a16-4b0e-8273-8f1e1bc8e9fd 22cecb46-8a54-42bc-b489-3e6ae70f390f</span>
+<span class="co">#&gt; 5 d1039472-30e5-408e-bb7f-54d78b737210 f6c2b417-4497-4310-a937-9b9550182d7c</span>
 <span class="co">#&gt;   test_date specimen_collection_site specimen_collection_date</span>
-<span class="co">#&gt; 1        44                    blood                       44</span>
-<span class="co">#&gt; 2        45                    blood                       45</span>
-<span class="co">#&gt; 3         0                    blood                        0</span>
-<span class="co">#&gt; 4        84                    blood                       84</span>
-<span class="co">#&gt; 5        17                    blood                       17</span>
+<span class="co">#&gt; 1        18                    blood                       18</span>
+<span class="co">#&gt; 2         8                    blood                        8</span>
+<span class="co">#&gt; 3        19                    blood                       19</span>
+<span class="co">#&gt; 4        40                    blood                       40</span>
+<span class="co">#&gt; 5        73                    blood                       73</span>
 <span class="co">#&gt;   in_requested_cohort</span>
 <span class="co">#&gt; 1                  No</span>
 <span class="co">#&gt; 2                 Yes</span>
@@ -174,14 +174,14 @@
 
 <span class="va">df_cohort</span>
 <span class="co">#&gt;                             patient_id                         condition_id</span>
-<span class="co">#&gt; 1 2a4cd150-c4a8-4509-af23-6a3d13f13644 1cd461c9-8b0d-4cbc-bb3e-cd44f7916f81</span>
-<span class="co">#&gt; 2 f5ec61de-4aeb-4325-88df-6ded83bbef90 26e20bbc-bde9-4a70-b9f8-6290004a82b0</span>
+<span class="co">#&gt; 1 24521ee1-a141-4811-b7c3-c8b1dbbbbee7 159d868c-f0bd-4203-836e-56c723d9db0c</span>
+<span class="co">#&gt; 2 189e6fe0-eab5-4de4-8362-bb78d24b1fbc 93de102b-4b04-4f42-a66d-18a8e4f5f61e</span>
 <span class="co">#&gt;                            specimen_id                   observationfhir_id</span>
-<span class="co">#&gt; 1 87f5c599-3ad2-4e8d-b53a-78af72fe6c8e 6482df0c-1159-46ac-bcc9-3334304e2831</span>
-<span class="co">#&gt; 2 06e5b2f4-69b1-4f86-9dd1-8e94a132b53f b690e129-cfac-46c4-ba55-a6a7cfd27a9e</span>
+<span class="co">#&gt; 1 5ce93f14-53f7-424d-848a-e9fb57855bd6 d2337a16-7a65-4bca-af48-2492ecc90051</span>
+<span class="co">#&gt; 2 eab7c477-2ed8-45fa-b522-c314345508d0 faa5886a-64cc-427a-bc80-a98e15fe9203</span>
 <span class="co">#&gt;   test_date specimen_collection_site specimen_collection_date</span>
-<span class="co">#&gt; 1        45                    blood                       45</span>
-<span class="co">#&gt; 2         0                    blood                        0</span>
+<span class="co">#&gt; 1         8                    blood                        8</span>
+<span class="co">#&gt; 2        19                    blood                       19</span>
 <span class="co">#&gt;   in_requested_cohort</span>
 <span class="co">#&gt; 1                 Yes</span>
 <span class="co">#&gt; 2                 Yes</span></code></pre></div>
