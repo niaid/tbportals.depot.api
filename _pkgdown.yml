@@ -16,8 +16,6 @@ news:
 
 home:
   links:
-    - text: Browse source code
-      href: https://github.com/niaid/tbportals.depot.api
     - text: Report a bug
       href: https://github.com/niaid/tbportals.depot.api/issues
     - text: Learn more about TB Portals
