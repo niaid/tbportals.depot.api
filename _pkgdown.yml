@@ -24,6 +24,8 @@ home:
     href: https://github.com/niaid/tbportals.depot.api/issues
   - text: Learn more about TB Portals 
     href: https://tbportals.niaid.nih.gov
+  - text: Vulnerability Disclosure
+    href: https://www.hhs.gov/vulnerability-disclosure-policy/index.html
 
 navbar:
   title: ~
