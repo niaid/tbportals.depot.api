@@ -127,7 +127,7 @@
 <span class="co">#&gt; The following objects are masked from 'package:base':</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;     intersect, setdiff, setequal, union</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://www.rforge.net/uuid" class="external-link">uuid</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://www.rforge.net/uuid" class="external-link">uuid</a></span><span class="op">)</span>
 
 <span class="co"># Structure of a hypothetical data.frame from REQUESTS$content</span>
 <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="st">"patient_id"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/uuid/man/UUIDgenerate.html" class="external-link">UUIDgenerate</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,
@@ -143,23 +143,23 @@
 
 <span class="va">df</span>
 <span class="co">#&gt;                             patient_id                         condition_id</span>
-<span class="co">#&gt; 1 7182b9ef-11d8-4ea7-8024-6f54ea373da2 a5f47763-cfec-4b6f-b506-682f6a41a1ef</span>
-<span class="co">#&gt; 2 bcf04693-840d-44a1-ab2f-0cf930f563c4 956528d8-98e4-41a1-bd27-ff3eac3f531f</span>
-<span class="co">#&gt; 3 9849fe50-01a2-4025-b7e5-e8b707d2d483 4b6a759f-d128-4afe-b19c-b79001c45dae</span>
-<span class="co">#&gt; 4 eec2a2e1-a581-4365-8f5c-f92db4ea2ef9 c09f9ccb-6515-4742-a1bf-949d71187e78</span>
-<span class="co">#&gt; 5 2c16bf25-f5e4-4010-bb85-100a6a9ef3a3 f855c8b4-fd47-49b5-aff2-0d95f0005d9b</span>
+<span class="co">#&gt; 1 721335fe-823e-4044-a6c2-6d71b441d886 f08570c1-7e6f-412b-a4eb-a0fca3322fa5</span>
+<span class="co">#&gt; 2 66b47063-36cf-4169-ad75-bde932c045e4 c0ba297e-1ccb-4b2c-a9c2-fe73cc8b8866</span>
+<span class="co">#&gt; 3 a6894873-80ab-46ca-a767-b586e3eed4e5 0f8dd57c-9e42-4cb2-b849-b343ad4c4c15</span>
+<span class="co">#&gt; 4 5354270f-52ad-4e8c-8b51-b2046eb216fe b34a4d90-27e4-4824-bc2f-f3483bbfbce1</span>
+<span class="co">#&gt; 5 924e50e8-afca-48db-80e6-2707a88a465f 5c06dbd8-a073-454d-9fe5-2b84dea6a067</span>
 <span class="co">#&gt;                            specimen_id                   observationfhir_id</span>
-<span class="co">#&gt; 1 5ee4add9-a89a-4aa0-944e-3587d5ef9e62 3bf10805-a1cf-41a6-ada0-da9490a1eef4</span>
-<span class="co">#&gt; 2 514535b6-a729-4414-afdb-5e6e1cddad93 0d51f28f-5091-4036-b1b5-b936aaf677ac</span>
-<span class="co">#&gt; 3 1b524c72-d31f-42ca-ada7-a7bc3eb5ba38 1711b994-338a-40db-be4f-f23455f40d82</span>
-<span class="co">#&gt; 4 d5bc70a5-740e-4100-b1b5-5e245505eeaa 905cae9b-adfa-412e-8a1d-fa27fab00441</span>
-<span class="co">#&gt; 5 3ca5f2e2-71d7-4c38-b9fb-c4eda4befac6 ee404c26-2add-45bb-a479-4d0befedb653</span>
+<span class="co">#&gt; 1 b4219757-0d49-40d9-91e3-dfd02b09259a 7bdb1860-9f73-4e1a-8961-5b4d8dde49ce</span>
+<span class="co">#&gt; 2 1482fe11-80b9-450a-9641-4d8af2066be5 9b6fb2bc-0f51-43d6-b7b1-9eda57ec7f92</span>
+<span class="co">#&gt; 3 eb3459da-5fab-48a7-bfb7-887355d0b6b8 90ed63ca-94e0-4d42-a630-3ef8adc59773</span>
+<span class="co">#&gt; 4 e0deaeda-975e-4f2c-bff1-11a73fd87a4e edb0ccfb-b9dc-4a21-abe5-fc960b669a76</span>
+<span class="co">#&gt; 5 62a5871a-61f1-4eb2-b754-3f53dd587c38 dd306bb3-74d0-46bf-84ca-4153e1a2c1c3</span>
 <span class="co">#&gt;   test_date specimen_collection_site specimen_collection_date</span>
-<span class="co">#&gt; 1        66                    blood                       66</span>
-<span class="co">#&gt; 2        97                    blood                       97</span>
-<span class="co">#&gt; 3        60                    blood                       60</span>
-<span class="co">#&gt; 4        86                    blood                       86</span>
-<span class="co">#&gt; 5        40                    blood                       40</span>
+<span class="co">#&gt; 1        24                    blood                       24</span>
+<span class="co">#&gt; 2        93                    blood                       93</span>
+<span class="co">#&gt; 3        68                    blood                       68</span>
+<span class="co">#&gt; 4        91                    blood                       91</span>
+<span class="co">#&gt; 5        97                    blood                       97</span>
 <span class="co">#&gt;   in_requested_cohort</span>
 <span class="co">#&gt; 1                  No</span>
 <span class="co">#&gt; 2                 Yes</span>
@@ -174,14 +174,14 @@
 
 <span class="va">df_cohort</span>
 <span class="co">#&gt;                             patient_id                         condition_id</span>
-<span class="co">#&gt; 1 bcf04693-840d-44a1-ab2f-0cf930f563c4 956528d8-98e4-41a1-bd27-ff3eac3f531f</span>
-<span class="co">#&gt; 2 9849fe50-01a2-4025-b7e5-e8b707d2d483 4b6a759f-d128-4afe-b19c-b79001c45dae</span>
+<span class="co">#&gt; 1 66b47063-36cf-4169-ad75-bde932c045e4 c0ba297e-1ccb-4b2c-a9c2-fe73cc8b8866</span>
+<span class="co">#&gt; 2 a6894873-80ab-46ca-a767-b586e3eed4e5 0f8dd57c-9e42-4cb2-b849-b343ad4c4c15</span>
 <span class="co">#&gt;                            specimen_id                   observationfhir_id</span>
-<span class="co">#&gt; 1 514535b6-a729-4414-afdb-5e6e1cddad93 0d51f28f-5091-4036-b1b5-b936aaf677ac</span>
-<span class="co">#&gt; 2 1b524c72-d31f-42ca-ada7-a7bc3eb5ba38 1711b994-338a-40db-be4f-f23455f40d82</span>
+<span class="co">#&gt; 1 1482fe11-80b9-450a-9641-4d8af2066be5 9b6fb2bc-0f51-43d6-b7b1-9eda57ec7f92</span>
+<span class="co">#&gt; 2 eb3459da-5fab-48a7-bfb7-887355d0b6b8 90ed63ca-94e0-4d42-a630-3ef8adc59773</span>
 <span class="co">#&gt;   test_date specimen_collection_site specimen_collection_date</span>
-<span class="co">#&gt; 1        97                    blood                       97</span>
-<span class="co">#&gt; 2        60                    blood                       60</span>
+<span class="co">#&gt; 1        93                    blood                       93</span>
+<span class="co">#&gt; 2        68                    blood                       68</span>
 <span class="co">#&gt;   in_requested_cohort</span>
 <span class="co">#&gt; 1                 Yes</span>
 <span class="co">#&gt; 2                 Yes</span></code></pre></div>
