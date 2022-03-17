@@ -1,5 +1,5 @@
-Type: Package
 Package: tbportals.depot.api
+Type: Package
 Title: Convenient R Wrapper for TB Portals DEPOT Tidy API
 Version: 0.1.0
 Authors@R: c(
@@ -13,20 +13,20 @@ License: MIT + file LICENSE
 URL: https://github.com/niaid/tbportals.depot.api
 BugReports: https://github.com/niaid/tbportals.depot.api/issues
 Imports: 
+    devtools,
     dplyr,
     glue,
     httr,
     jsonlite,
-    magrittr,
-    readr
-Suggests: 
-    devtools,
     lifecycle,
+    magrittr,
+    readr,
+    uuid
+Suggests: 
     knitr,
     rmarkdown,
     rstudioapi,
-    testthat,
-    uuid
+    testthat
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
