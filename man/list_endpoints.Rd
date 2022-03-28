@@ -17,7 +17,7 @@ along with a high-level general description of the endpoint data under "descript
 \code{list_endpoints} will list the available endpoints that return data from the Tidy Depot API along with
 a description of the type of data provided.  It is a useful function to ensure that the name provided
 as part of the "path" argument to \code{tidy_depo_api} function call.  If the name provided to the path
-argument is incorrent then an error will be thrown and no API call returned.
+argument is incorrect then an error will be thrown and no API call returned.
 }
 \author{
 Gabriel Rosenfeld, \email{gabriel.rosenfeld@nih.gov}

@@ -49,13 +49,13 @@ patient_cases <- tidy_depot_api(path = "Patient-Case", token = TOKEN)
 
 Now that patient case data has been pulled, let’s explore structure of
 the resulting data. The request is returned as its own class with the
-structured data from the API call in the “content”, the endpoint url nin
+structured data from the API call in the “content”, the endpoint url in
 the “path”, and the actually http response in the “response”.
 
 ``` r
 # Dimensions of the resulting JSON data from the API call
 patient_cases$content %>% dim()
-#> [1] 6434  205
+#> [1] 6853  205
 
 # End point used for the API call
 patient_cases$path
@@ -64,10 +64,10 @@ patient_cases$path
 # The httr response content containing the specific information about the call
 patient_cases$response
 #> Response [https://analytic.tbportals.niaid.nih.gov/api/Patient-Case?returnCsv=false&cohortId=]
-#>   Date: 2022-01-06 23:29
+#>   Date: 2022-03-28 19:21
 #>   Status: 200
 #>   Content-Type: application/json; charset=utf-8
-#>   Size: 49.8 MB
+#>   Size: 53.2 MB
 ```
 
 Let’s explore some aspects of the patient cases stratifying by the type
@@ -95,26 +95,26 @@ tableby(type_of_resistance ~ age_of_onset + gender + bmi + case_definition, data
   summary()
 ```
 
-|                      | MDR non XDR (N=2820) | Mono DR (N=485) | Poly DR (N=195) | Pre-XDR (N=94)  | Sensitive (N=1884) |   XDR (N=956)   | Total (N=6434)  |    p value |
+|                      | MDR non XDR (N=3030) | Mono DR (N=507) | Poly DR (N=199) | Pre-XDR (N=141) | Sensitive (N=1963) |  XDR (N=1013)   | Total (N=6853)  |    p value |
 |:---------------------|:--------------------:|:---------------:|:---------------:|:---------------:|:------------------:|:---------------:|:---------------:|-----------:|
 | **age\_of\_onset**   |                      |                 |                 |                 |                    |                 |                 | &lt; 0.001 |
-|    Mean (SD)         |   41.177 (13.294)    | 41.278 (15.007) | 42.000 (14.719) | 42.723 (13.942) |  43.476 (15.507)   | 41.422 (12.795) | 41.942 (14.123) |            |
+|    Mean (SD)         |   41.267 (13.320)    | 41.690 (15.113) | 42.231 (14.784) | 43.809 (13.441) |  43.364 (15.492)   | 41.609 (12.865) | 42.030 (14.119) |            |
 |    Range             |    3.000 - 86.000    | 7.000 - 87.000  | 18.000 - 93.000 | 17.000 - 90.000 |   2.000 - 89.000   | 15.000 - 84.000 | 2.000 - 93.000  |            |
-| **gender**           |                      |                 |                 |                 |                    |                 |                 |      0.354 |
-|    Female            |     727 (25.8%)      |   142 (29.3%)   |   60 (30.8%)    |   22 (23.4%)    |    517 (27.4%)     |   255 (26.7%)   |  1723 (26.8%)   |            |
-|    Male              |     2093 (74.2%)     |   343 (70.7%)   |   135 (69.2%)   |   72 (76.6%)    |    1367 (72.6%)    |   701 (73.3%)   |  4711 (73.2%)   |            |
-| **bmi**              |                      |                 |                 |                 |                    |                 |                 |      0.016 |
-|    N-Miss            |         406          |       159       |       82        |        1        |        859         |       69        |      1576       |            |
-|    Mean (SD)         |    20.626 (3.514)    | 20.894 (4.402)  | 20.373 (3.883)  | 20.170 (4.473)  |   21.039 (3.688)   | 20.617 (3.599)  | 20.715 (3.664)  |            |
-|    Range             |   10.400 - 41.000    | 11.000 - 61.100 | 13.400 - 40.700 | 12.100 - 32.400 |  11.700 - 36.500   | 11.800 - 38.600 | 10.400 - 61.100 |            |
+| **gender**           |                      |                 |                 |                 |                    |                 |                 |      0.242 |
+|    Female            |     788 (26.0%)      |   147 (29.0%)   |   61 (30.7%)    |   29 (20.6%)    |    534 (27.2%)     |   267 (26.4%)   |  1826 (26.6%)   |            |
+|    Male              |     2242 (74.0%)     |   360 (71.0%)   |   138 (69.3%)   |   112 (79.4%)   |    1429 (72.8%)    |   746 (73.6%)   |  5027 (73.4%)   |            |
+| **bmi**              |                      |                 |                 |                 |                    |                 |                 |      0.056 |
+|    N-Miss            |         414          |       160       |       82        |        3        |        900         |       69        |      1628       |            |
+|    Mean (SD)         |    20.653 (3.774)    | 20.807 (4.347)  | 20.375 (3.844)  | 20.325 (4.327)  |   21.003 (3.691)   | 20.573 (3.587)  | 20.705 (3.784)  |            |
+|    Range             |   10.400 - 83.900    | 11.000 - 61.100 | 13.400 - 40.700 | 12.100 - 35.400 |  11.700 - 36.500   | 11.800 - 38.600 | 10.400 - 83.900 |            |
 | **case\_definition** |                      |                 |                 |                 |                    |                 |                 | &lt; 0.001 |
-|    Chronic TB        |      63 (2.2%)       |    1 (0.2%)     |    0 (0.0%)     |   18 (19.1%)    |      1 (0.1%)      |    56 (5.9%)    |   139 (2.2%)    |            |
-|    Failure           |     297 (10.5%)      |    30 (6.2%)    |    9 (4.6%)     |    3 (3.2%)     |     28 (1.5%)      |   285 (29.8%)   |   652 (10.1%)   |            |
-|    Lost to follow up |      224 (7.9%)      |    15 (3.1%)    |    14 (7.2%)    |    5 (5.3%)     |     44 (2.3%)      |    58 (6.1%)    |   360 (5.6%)    |            |
-|    New               |     1514 (53.7%)     |   363 (74.8%)   |   142 (72.8%)   |   46 (48.9%)    |    1576 (83.7%)    |   251 (26.3%)   |  3892 (60.5%)   |            |
-|    Other             |      58 (2.1%)       |    7 (1.4%)     |    6 (3.1%)     |    3 (3.2%)     |     23 (1.2%)      |    43 (4.5%)    |   140 (2.2%)    |            |
-|    Relapse           |     663 (23.5%)      |   68 (14.0%)    |   23 (11.8%)    |   19 (20.2%)    |    210 (11.1%)     |   262 (27.4%)   |  1245 (19.4%)   |            |
-|    Unknown           |       1 (0.0%)       |    1 (0.2%)     |    1 (0.5%)     |    0 (0.0%)     |      2 (0.1%)      |    1 (0.1%)     |    6 (0.1%)     |            |
+|    Chronic TB        |      72 (2.4%)       |    1 (0.2%)     |    0 (0.0%)     |   30 (21.3%)    |      2 (0.1%)      |    60 (5.9%)    |   165 (2.4%)    |            |
+|    Failure           |     307 (10.1%)      |    30 (5.9%)    |    9 (4.5%)     |    3 (2.1%)     |     30 (1.5%)      |   293 (28.9%)   |   672 (9.8%)    |            |
+|    Lost to follow up |      229 (7.6%)      |    15 (3.0%)    |    14 (7.0%)    |    7 (5.0%)     |     45 (2.3%)      |    62 (6.1%)    |   372 (5.4%)    |            |
+|    New               |     1635 (54.0%)     |   381 (75.1%)   |   145 (72.9%)   |   67 (47.5%)    |    1640 (83.5%)    |   276 (27.2%)   |  4144 (60.5%)   |            |
+|    Other             |      63 (2.1%)       |    7 (1.4%)     |    6 (3.0%)     |    3 (2.1%)     |     25 (1.3%)      |    46 (4.5%)    |   150 (2.2%)    |            |
+|    Relapse           |     723 (23.9%)      |   71 (14.0%)    |   24 (12.1%)    |   31 (22.0%)    |    219 (11.2%)     |   275 (27.1%)   |  1343 (19.6%)   |            |
+|    Unknown           |       1 (0.0%)       |    2 (0.4%)     |    1 (0.5%)     |    0 (0.0%)     |      2 (0.1%)      |    1 (0.1%)     |    7 (0.1%)     |            |
 
 If interested in other available endpoints, you can use the
 list\_endpoints function for a data.frame of currently available

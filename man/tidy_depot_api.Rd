@@ -23,8 +23,8 @@ returns a tidy_depot_api class object with the API call results unless there is 
 \details{
 This function depends upon setting up your user credentials to access the Tidy Depot API locally including your email address
 and secret key using \code{store_secret_credentials} in Rstudio.  This will prompt you to store that information in a local .Renviron
-file.  Afterwards, retrieve a unique token string using the \code{get_token} function which is passed as the token arguent to the
-\code{tidy_depot_api} function along with the path end point of interest.  Any erros will be returned instead of the API call notifying
+file.  Afterwards, retrieve a unique token string using the \code{get_token} function which is passed as the token argument to the
+\code{tidy_depot_api} function along with the path end point of interest.  Any errors will be returned instead of the API call notifying
 that there may be an issue with either your credentials or the endpoint name.
 }
 \author{
