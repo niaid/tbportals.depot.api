@@ -1,7 +1,7 @@
 Type: Package
 Package: tbportals.depot.api
 Title: Convenient R Wrapper for TB Portals DEPOT Tidy API
-Version: 0.1.0
+Version: 1.0.0
 Authors@R: c(
     person("Gabriel", "Rosenfeld", , "gabriel.rosenfeld@nih.gov", role = "aut"),
     person("Qinlu", "Wang", , "qinlu.wang@nih.gov", role = "cre")

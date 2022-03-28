@@ -13,7 +13,7 @@ Stores user credentials in a local .Renviron file
 \code{store_secret_credentials} is a function to be executed interactively in Rstudio.
 It will prompt the user to input the email associated with the API credentials they have
 been provided in the form of a secret as well as the secret itself and save it locally as a
-.Renviron file so that they can be resued moving forward without having to reenter the info.
+.Renviron file so that they can be reused moving forward without having to reenter the info.
 }
 \details{
 \code{store_secret_credentials} should only be used within Rstudio or else will throw an error. It is best practice to run

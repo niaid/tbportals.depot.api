@@ -50,7 +50,7 @@ TOKEN <- get_token()
 patient_cases <- tidy_depot_api(path = "Patient-Case", token = TOKEN)
 ```
 
-Now that patient case data has been pulled, let's explore structure of the resulting data.  The request is returned as its own class with the structured data from the API call in the "content", the endpoint url nin the "path", and the actually http response in the "response".
+Now that patient case data has been pulled, let's explore structure of the resulting data.  The request is returned as its own class with the structured data from the API call in the "content", the endpoint url in the "path", and the actually http response in the "response".
 
 ```{r error=FALSE, warning=FALSE, message=FALSE}
 # Dimensions of the resulting JSON data from the API call
