@@ -17,9 +17,6 @@ website](https://tbportals.niaid.nih.gov/).
 ## Installation
 
 ``` r
-# Install release version from CRAN
-install.packages("tbportals.depot.api") # Not available yet
-
 # Install development version from GitHub
 devtools::install_github("niaid/tbportals.depot.api")
 ```
