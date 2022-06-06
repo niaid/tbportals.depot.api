@@ -1,8 +1,8 @@
 pandoc: 2.7.3
-pkgdown: 2.0.2
+pkgdown: 2.0.3
 pkgdown_sha: ~
 articles:
   pulling_data_from_depot_cohort: pulling_data_from_depot_cohort.html
   setting_up_connection: setting_up_connection.html
-last_built: 2022-03-28T19:26Z
+last_built: 2022-06-06T14:14Z
 
