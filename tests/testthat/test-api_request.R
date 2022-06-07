@@ -3,8 +3,8 @@ test_that("api request works", {
   INTERNET <- TRUE
 
   if (INTERNET) {
-    #TOKEN <- get_token()
-    TOKEN <- secret_make_key()
+    TOKEN <- get_token()
+    #TOKEN <- secret_make_key()
   }else{
     TOKEN <- "Invalid credentials"
   }
