@@ -17,16 +17,13 @@ website](https://tbportals.niaid.nih.gov/).
 ## Installation
 
 ``` r
-# Install release version from CRAN
-install.packages("tbportals.depot.api") # Not available yet
-
 # Install development version from GitHub
 devtools::install_github("niaid/tbportals.depot.api")
 ```
 
 ## Usage
 
-Please see Article, “Setting up connection to API”, before following
+Please see Article, [Setting up connection to API](https://niaid.github.io/tbportals.depot.api/articles/setting_up_connection.html), before following
 along with the code example below as it assumes you have saved your
 credentials locally which are required for interacting with the API.
 
