@@ -18,7 +18,8 @@ Imports:
     httr,
     jsonlite,
     magrittr,
-    readr
+    readr,
+    projmgr
 Suggests: 
     devtools,
     lifecycle,
