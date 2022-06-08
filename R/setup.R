@@ -164,7 +164,13 @@ get_secret_email <- function() {
 #' @export
 get_token <- function(email_address = get_secret_email(),
                       secret = get_secret()) {
-  return(httr::content(httr::GET(url = httr::modify_url("https://analytic.tbportals.niaid.nih.gov/api/Token",
+  return(
+    ifelse(!is.raw(httr::content(httr::GET(url = httr::modify_url("https://analytic.tbportals.niaid.nih.gov/api/Token",
                                                         query = list(emailAddress = email_address,
-                                                                     secret = secret)))))
+                                                                     secret = secret))))),
+           httr::content(httr::GET(url = httr::modify_url("https://analytic.tbportals.niaid.nih.gov/api/Token",
+                                                          query = list(emailAddress = email_address,
+                                                                       secret = secret)))),
+           "Invalid credentials")
+    )
 }

@@ -1,4 +1,5 @@
 devtools::load_all()
+library(projmgr)
 
 test_that("get_secret function works", {
   if (Sys.getenv("DEPOT_API_SECRET") == "") {
@@ -18,14 +19,16 @@ test_that("get_secret_email function works", {
 
 test_that("get_token function works", {
 
-  INTERNET <- TRUE
+  #INTERNET <- TRUE
+  INTERNET <- check_internet()
 
   .s <- get_secret()
   .e <- get_secret_email()
   if (INTERNET & .s != "" & .e != "") {
     expect_equal(typeof(get_token()), "character")
+    #expect_equal(typeof(get_token()), "raw")
     expect_equal(get_token(email_address = "not_valid@gmail.com",
-                           secret = "not_valid"), "Invalid credentials")
+                       secret = "not_valid"), "Invalid credentials")
   }else{
     skip("API not available either due to no internet or incorrect credentials")
   }
