@@ -25,8 +25,8 @@ test_that("get_token function works", {
   .s <- get_secret()
   .e <- get_secret_email()
   if (INTERNET & .s != "" & .e != "") {
-    #expect_equal(typeof(get_token()), "character")
-    expect_equal(typeof(get_token()), "raw")
+    expect_equal(typeof(get_token()), "character")
+    #expect_equal(typeof(get_token()), "raw")
     expect_equal(get_token(email_address = "not_valid@gmail.com",
                        secret = "not_valid"), "Invalid credentials")
   }else{
