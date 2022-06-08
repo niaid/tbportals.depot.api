@@ -1,3 +1,5 @@
+library(projmgr)
+
 test_that("api request works", {
 
   #INTERNET <- TRUE
