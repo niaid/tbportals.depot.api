@@ -91,8 +91,8 @@
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Install development version from GitHub</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"niaid/tbportals.depot.api"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Install development version from GitHub</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"niaid/tbportals.depot.api"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
@@ -100,53 +100,53 @@
 <p>Please see Article, <a href="https://niaid.github.io/tbportals.depot.api/articles/setting_up_connection.html" class="external-link">Setting up connection to API</a>, before following along with the code example below as it assumes you have saved your credentials locally which are required for interacting with the API.</p>
 <p>This is a basic example which shows you how to solve a common problem of pulling all the data from an endpoint (for other end points check out <a href="https://analytic.tbportals.niaid.nih.gov/index.html" class="external-link">link</a>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/niaid/tbportals.depot.api" class="external-link">tbportals.depot.api</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org" class="external-link">magrittr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/mayoverse/arsenal" class="external-link">arsenal</a></span><span class="op">)</span>
-
-<span class="co"># Generate Token using your locally saved credentials (see article for how to set up)</span>
-<span class="va">TOKEN</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_token.html">get_token</a></span><span class="op">(</span><span class="op">)</span>
-
-<span class="co"># Pull the patient case data and explore some aspects of the publicly available cases</span>
-<span class="va">patient_cases</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/tidy_depot_api.html">tidy_depot_api</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"Patient-Case"</span>, token <span class="op">=</span> <span class="va">TOKEN</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/niaid/tbportals.depot.api" class="external-link">tbportals.depot.api</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org" class="external-link">magrittr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/mayoverse/arsenal" class="external-link">arsenal</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Generate Token using your locally saved credentials (see article for how to set up)</span></span>
+<span><span class="va">TOKEN</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_token.html">get_token</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Pull the patient case data and explore some aspects of the publicly available cases</span></span>
+<span><span class="va">patient_cases</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/tidy_depot_api.html">tidy_depot_api</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"Patient-Case"</span>, token <span class="op">=</span> <span class="va">TOKEN</span><span class="op">)</span></span></code></pre></div>
 <p>Now that patient case data has been pulled, let’s explore structure of the resulting data. The request is returned as its own class with the structured data from the API call in the “content”, the endpoint url in the “path”, and the actually http response in the “response”.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Dimensions of the resulting JSON data from the API call</span>
-<span class="va">patient_cases</span><span class="op">$</span><span class="va">content</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; [1] 6853  205</span>
-
-<span class="co"># End point used for the API call</span>
-<span class="va">patient_cases</span><span class="op">$</span><span class="va">path</span>
-<span class="co">#&gt; [1] "Patient-Case"</span>
-
-<span class="co"># The httr response content containing the specific information about the call</span>
-<span class="va">patient_cases</span><span class="op">$</span><span class="va">response</span>
-<span class="co">#&gt; Response [https://analytic.tbportals.niaid.nih.gov/api/Patient-Case?returnCsv=false&amp;cohortId=]</span>
-<span class="co">#&gt;   Date: 2022-03-28 19:21</span>
-<span class="co">#&gt;   Status: 200</span>
-<span class="co">#&gt;   Content-Type: application/json; charset=utf-8</span>
-<span class="co">#&gt;   Size: 53.2 MB</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Dimensions of the resulting JSON data from the API call</span></span>
+<span><span class="va">patient_cases</span><span class="op">$</span><span class="va">content</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 6853  205</span></span>
+<span></span>
+<span><span class="co"># End point used for the API call</span></span>
+<span><span class="va">patient_cases</span><span class="op">$</span><span class="va">path</span></span>
+<span><span class="co">#&gt; [1] "Patient-Case"</span></span>
+<span></span>
+<span><span class="co"># The httr response content containing the specific information about the call</span></span>
+<span><span class="va">patient_cases</span><span class="op">$</span><span class="va">response</span></span>
+<span><span class="co">#&gt; Response [https://analytic.tbportals.niaid.nih.gov/api/Patient-Case?returnCsv=false&amp;cohortId=]</span></span>
+<span><span class="co">#&gt;   Date: 2022-03-28 19:21</span></span>
+<span><span class="co">#&gt;   Status: 200</span></span>
+<span><span class="co">#&gt;   Content-Type: application/json; charset=utf-8</span></span>
+<span><span class="co">#&gt;   Size: 53.2 MB</span></span></code></pre></div>
 <p>Let’s explore some aspects of the patient cases stratifying by the type of drug resistance associated with the case to get a sense of the number of publicly shared data available.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Store data.frame of patient case characteristics</span>
-<span class="va">patient_cases_df</span> <span class="op">&lt;-</span> <span class="va">patient_cases</span><span class="op">$</span><span class="va">content</span>
-
-<span class="co"># Select attributes of interest</span>
-<span class="va">patient_cases_df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/compound.html" class="external-link">%&lt;&gt;%</a></span>
-  <span class="fu">select</span><span class="op">(</span><span class="va">condition_id</span>, <span class="va">patient_id</span>, <span class="va">age_of_onset</span>, <span class="va">gender</span>, <span class="va">bmi</span>, <span class="va">case_definition</span>, <span class="va">type_of_resistance</span><span class="op">)</span>
-
-<span class="co"># Summarise number of conditions by patient_id</span>
-<span class="va">patient_cases_df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/compound.html" class="external-link">%&lt;&gt;%</a></span>
-  <span class="fu">group_by</span><span class="op">(</span><span class="va">patient_id</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">mutate</span><span class="op">(</span>num_conditions <span class="op">=</span> <span class="fu">n_distinct</span><span class="op">(</span><span class="va">condition_id</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">select</span><span class="op">(</span><span class="op">-</span><span class="va">condition_id</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">distinct</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="https://rdrr.io/r/utils/type.convert.html" class="external-link">type.convert</a></span><span class="op">(</span><span class="op">)</span>
-
-<span class="co"># Patient counts by type of resistance and other case characteristics</span>
-<span class="fu">tableby</span><span class="op">(</span><span class="va">type_of_resistance</span> <span class="op">~</span> <span class="va">age_of_onset</span> <span class="op">+</span> <span class="va">gender</span> <span class="op">+</span> <span class="va">bmi</span> <span class="op">+</span> <span class="va">case_definition</span>, data <span class="op">=</span> <span class="va">patient_cases_df</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Store data.frame of patient case characteristics</span></span>
+<span><span class="va">patient_cases_df</span> <span class="op">&lt;-</span> <span class="va">patient_cases</span><span class="op">$</span><span class="va">content</span></span>
+<span></span>
+<span><span class="co"># Select attributes of interest</span></span>
+<span><span class="va">patient_cases_df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/compound.html" class="external-link">%&lt;&gt;%</a></span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">condition_id</span>, <span class="va">patient_id</span>, <span class="va">age_of_onset</span>, <span class="va">gender</span>, <span class="va">bmi</span>, <span class="va">case_definition</span>, <span class="va">type_of_resistance</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Summarise number of conditions by patient_id</span></span>
+<span><span class="va">patient_cases_df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/compound.html" class="external-link">%&lt;&gt;%</a></span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">patient_id</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>num_conditions <span class="op">=</span> <span class="fu">n_distinct</span><span class="op">(</span><span class="va">condition_id</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="op">-</span><span class="va">condition_id</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">distinct</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/type.convert.html" class="external-link">type.convert</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Patient counts by type of resistance and other case characteristics</span></span>
+<span><span class="fu">tableby</span><span class="op">(</span><span class="va">type_of_resistance</span> <span class="op">~</span> <span class="va">age_of_onset</span> <span class="op">+</span> <span class="va">gender</span> <span class="op">+</span> <span class="va">bmi</span> <span class="op">+</span> <span class="va">case_definition</span>, data <span class="op">=</span> <span class="va">patient_cases_df</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <colgroup>
 <col width="13%">
@@ -373,9 +373,9 @@
 </table>
 <p>If interested in other available endpoints, you can use the list_endpoints function for a data.frame of currently available endpoints.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># This function lists endpoints as a data.frame along with a brief description. </span>
-<span class="co"># To show it in this markdown file, we add knitr::kable()</span>
-<span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="fu"><a href="reference/list_endpoints.html">list_endpoints</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># This function lists endpoints as a data.frame along with a brief description. </span></span>
+<span><span class="co"># To show it in this markdown file, we add knitr::kable()</span></span>
+<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="fu"><a href="reference/list_endpoints.html">list_endpoints</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="left">endpoint</th>
@@ -487,7 +487,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

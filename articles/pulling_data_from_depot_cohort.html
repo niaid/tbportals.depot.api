@@ -101,90 +101,90 @@
 <h4 id="pulling-data-from-an-endpoint-for-just-the-cases-in-the-depot-cohort-of-interest">Pulling data from an endpoint for just the cases in the DEPOT cohort of interest<a class="anchor" aria-label="anchor" href="#pulling-data-from-an-endpoint-for-just-the-cases-in-the-depot-cohort-of-interest"></a>
 </h4>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># See an example of making a request for the data contained in the Biochemistry end point</span>
-<span class="va">REQUEST</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tidy_depot_api.html">tidy_depot_api</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"Biochemistry"</span>, token <span class="op">=</span> <span class="va">TOKEN</span>, cohortId <span class="op">=</span> <span class="st">"PASTE cohort ID number Here"</span><span class="op">)</span>
-
-<span class="co"># The JSON data from the API is returned in the content section as a data.frame</span>
-<span class="va">REQUEST</span><span class="op">$</span><span class="va">content</span>
-
-<span class="co"># The end point can be found in the path section</span>
-<span class="va">REQUEST</span><span class="op">$</span><span class="va">path</span>
-
-<span class="co"># Specific information about the httr request can be found in the response section</span>
-<span class="va">REQUEST</span><span class="op">$</span><span class="va">response</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># See an example of making a request for the data contained in the Biochemistry end point</span></span>
+<span><span class="va">REQUEST</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tidy_depot_api.html">tidy_depot_api</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"Biochemistry"</span>, token <span class="op">=</span> <span class="va">TOKEN</span>, cohortId <span class="op">=</span> <span class="st">"PASTE cohort ID number Here"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># The JSON data from the API is returned in the content section as a data.frame</span></span>
+<span><span class="va">REQUEST</span><span class="op">$</span><span class="va">content</span></span>
+<span></span>
+<span><span class="co"># The end point can be found in the path section</span></span>
+<span><span class="va">REQUEST</span><span class="op">$</span><span class="va">path</span></span>
+<span></span>
+<span><span class="co"># Specific information about the httr request can be found in the response section</span></span>
+<span><span class="va">REQUEST</span><span class="op">$</span><span class="va">response</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="filtering-on-the-records-relating-to-the-cohort-id-of-interest">Filtering on the records relating to the cohort ID of interest<a class="anchor" aria-label="anchor" href="#filtering-on-the-records-relating-to-the-cohort-id-of-interest"></a>
 </h4>
 <p>Given the requirements of TB portals, the following example below will be for purely fake hypothetical data that has similar structure as you would receive from the API call. Only the first few columns showing fake records with ids, relative dates, and specimen info columns are shown without corresponding lab test types. The final column for filtering on the cohort records is also shown.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'dplyr'</span>
-<span class="co">#&gt; The following objects are masked from 'package:stats':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     filter, lag</span>
-<span class="co">#&gt; The following objects are masked from 'package:base':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     intersect, setdiff, setequal, union</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://www.rforge.net/uuid" class="external-link">uuid</a></span><span class="op">)</span>
-
-<span class="co"># Structure of a hypothetical data.frame from REQUESTS$content</span>
-<span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="st">"patient_id"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/uuid/man/UUIDgenerate.html" class="external-link">UUIDgenerate</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,
-                 <span class="st">"condition_id"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/uuid/man/UUIDgenerate.html" class="external-link">UUIDgenerate</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,
-                 <span class="st">"specimen_id"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/uuid/man/UUIDgenerate.html" class="external-link">UUIDgenerate</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,
-                 <span class="st">"observationfhir_id"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/uuid/man/UUIDgenerate.html" class="external-link">UUIDgenerate</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,
-                 <span class="st">"test_date"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">100</span>, size <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,
-                 <span class="st">"specimen_collection_site"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"blood"</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>
-    specimen_collection_date <span class="op">=</span> <span class="va">test_date</span>,
-    in_requested_cohort <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"No"</span>, <span class="st">"Yes"</span>, <span class="st">"Yes"</span>, <span class="st">"No"</span>, <span class="st">"No"</span><span class="op">)</span><span class="op">)</span>
-
-
-<span class="va">df</span>
-<span class="co">#&gt;                             patient_id                         condition_id</span>
-<span class="co">#&gt; 1 2cb82f52-5f95-4d9b-9fcd-830ffcf2690e 08c6e1ed-8d16-43e5-af36-8ef5d77a89a4</span>
-<span class="co">#&gt; 2 b3ea34cf-d8d1-479d-b4d9-f4816bcf1726 11fd2f3f-195e-4404-8389-e59025fa3b5b</span>
-<span class="co">#&gt; 3 c1a39b5c-1d12-4114-a76d-27831c8e9701 0b266b8b-d4c0-40e9-92e1-111937d1ccec</span>
-<span class="co">#&gt; 4 0280d84e-2469-4561-91ad-9255cd2d582a 9f76071a-a7d9-4143-9e21-22d397709c62</span>
-<span class="co">#&gt; 5 d639f524-a344-4a9e-9ba6-4172832d6b88 eb5e0866-cc1a-4f30-be31-ad5f0e16c03a</span>
-<span class="co">#&gt;                            specimen_id                   observationfhir_id</span>
-<span class="co">#&gt; 1 745e1ddd-21f5-4062-8b06-e0d36a7912e4 7f247c43-01db-4cbe-a0e1-fe6c952152d5</span>
-<span class="co">#&gt; 2 d86e4fa3-fa0f-47f2-8217-f80ea167bd0d 5fcaf79c-de11-4677-91f2-fc2cd4bee24d</span>
-<span class="co">#&gt; 3 20e7b723-2cfa-4785-a5c0-c9b584f50f9b 70316ab5-891c-4333-9ed1-c06bc3c7c5e3</span>
-<span class="co">#&gt; 4 fc76411f-c4ff-40ed-8fad-36da2e485ae3 12bd2179-12d7-4130-9508-99df553b86f7</span>
-<span class="co">#&gt; 5 0b629abe-e545-4f4a-ab0b-edc2882b0dab de7da8e3-320b-41fd-aa5f-1ee9bc1b43da</span>
-<span class="co">#&gt;   test_date specimen_collection_site specimen_collection_date</span>
-<span class="co">#&gt; 1        97                    blood                       97</span>
-<span class="co">#&gt; 2        30                    blood                       30</span>
-<span class="co">#&gt; 3        70                    blood                       70</span>
-<span class="co">#&gt; 4        72                    blood                       72</span>
-<span class="co">#&gt; 5        26                    blood                       26</span>
-<span class="co">#&gt;   in_requested_cohort</span>
-<span class="co">#&gt; 1                  No</span>
-<span class="co">#&gt; 2                 Yes</span>
-<span class="co">#&gt; 3                 Yes</span>
-<span class="co">#&gt; 4                  No</span>
-<span class="co">#&gt; 5                  No</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Attaching package: 'dplyr'</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     filter, lag</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://www.rforge.net/uuid" class="external-link">uuid</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Structure of a hypothetical data.frame from REQUESTS$content</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="st">"patient_id"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/uuid/man/UUIDgenerate.html" class="external-link">UUIDgenerate</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,</span>
+<span>                 <span class="st">"condition_id"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/uuid/man/UUIDgenerate.html" class="external-link">UUIDgenerate</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,</span>
+<span>                 <span class="st">"specimen_id"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/uuid/man/UUIDgenerate.html" class="external-link">UUIDgenerate</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,</span>
+<span>                 <span class="st">"observationfhir_id"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/uuid/man/UUIDgenerate.html" class="external-link">UUIDgenerate</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,</span>
+<span>                 <span class="st">"test_date"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">100</span>, size <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,</span>
+<span>                 <span class="st">"specimen_collection_site"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"blood"</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
+<span>    specimen_collection_date <span class="op">=</span> <span class="va">test_date</span>,</span>
+<span>    in_requested_cohort <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"No"</span>, <span class="st">"Yes"</span>, <span class="st">"Yes"</span>, <span class="st">"No"</span>, <span class="st">"No"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="va">df</span></span>
+<span><span class="co">#&gt;                             patient_id                         condition_id</span></span>
+<span><span class="co">#&gt; 1 38e801b0-6ed6-495b-acd8-80ad97e2b103 621a5769-f5da-4486-beba-04fed904d35c</span></span>
+<span><span class="co">#&gt; 2 72ca4112-f4b4-4beb-bcb2-93b504753345 66cfbba9-02ea-4b93-96ce-24059e4eb640</span></span>
+<span><span class="co">#&gt; 3 92669296-7c69-41e7-80b9-d6d65a35440c 21b75180-9247-453a-903e-fe8722adbf63</span></span>
+<span><span class="co">#&gt; 4 1a791662-fd95-4c8f-9833-4cf916d48e55 0285c77c-40e5-4dbd-a7dd-194469e70157</span></span>
+<span><span class="co">#&gt; 5 eb7c84ce-2f3d-4ea6-9d52-cda8d8c5f534 3914cf7d-c350-4e2c-98be-b59a4e9d80ba</span></span>
+<span><span class="co">#&gt;                            specimen_id                   observationfhir_id</span></span>
+<span><span class="co">#&gt; 1 32df1a1a-b317-4818-b63f-24adf53af0d6 db44a858-9290-4572-b6f1-1b39b2b94574</span></span>
+<span><span class="co">#&gt; 2 8b0a0b75-bc41-4aa6-98d4-a4f9e921ed4f f2ca6149-ab88-4e5a-a706-0faa702478fe</span></span>
+<span><span class="co">#&gt; 3 6c97d63e-4074-4ae0-a80c-abaccde1d02b 5f57cd23-cee2-4d43-894d-b65a49eccebe</span></span>
+<span><span class="co">#&gt; 4 55d7cf66-95a7-4718-b067-69fc435504ca bddef406-99dc-45c1-8f66-802b8d15818e</span></span>
+<span><span class="co">#&gt; 5 35069480-24e8-41e4-afbb-262e96dd9e20 d8d8728d-f760-478f-89ce-46172271a731</span></span>
+<span><span class="co">#&gt;   test_date specimen_collection_site specimen_collection_date</span></span>
+<span><span class="co">#&gt; 1        90                    blood                       90</span></span>
+<span><span class="co">#&gt; 2        13                    blood                       13</span></span>
+<span><span class="co">#&gt; 3        29                    blood                       29</span></span>
+<span><span class="co">#&gt; 4        48                    blood                       48</span></span>
+<span><span class="co">#&gt; 5       100                    blood                      100</span></span>
+<span><span class="co">#&gt;   in_requested_cohort</span></span>
+<span><span class="co">#&gt; 1                  No</span></span>
+<span><span class="co">#&gt; 2                 Yes</span></span>
+<span><span class="co">#&gt; 3                 Yes</span></span>
+<span><span class="co">#&gt; 4                  No</span></span>
+<span><span class="co">#&gt; 5                  No</span></span></code></pre></div>
 <p>To filter on records within the DEPOT cohort of interest, a user can use the in_requested_cohort column matching on records with a “Yes”.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Filter on a hypothetical data.frame using only the records from a cohort ID of interest from the API call</span>
-<span class="va">df_cohort</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">in_requested_cohort</span> <span class="op">==</span> <span class="st">"Yes"</span><span class="op">)</span>
-
-<span class="va">df_cohort</span>
-<span class="co">#&gt;                             patient_id                         condition_id</span>
-<span class="co">#&gt; 1 b3ea34cf-d8d1-479d-b4d9-f4816bcf1726 11fd2f3f-195e-4404-8389-e59025fa3b5b</span>
-<span class="co">#&gt; 2 c1a39b5c-1d12-4114-a76d-27831c8e9701 0b266b8b-d4c0-40e9-92e1-111937d1ccec</span>
-<span class="co">#&gt;                            specimen_id                   observationfhir_id</span>
-<span class="co">#&gt; 1 d86e4fa3-fa0f-47f2-8217-f80ea167bd0d 5fcaf79c-de11-4677-91f2-fc2cd4bee24d</span>
-<span class="co">#&gt; 2 20e7b723-2cfa-4785-a5c0-c9b584f50f9b 70316ab5-891c-4333-9ed1-c06bc3c7c5e3</span>
-<span class="co">#&gt;   test_date specimen_collection_site specimen_collection_date</span>
-<span class="co">#&gt; 1        30                    blood                       30</span>
-<span class="co">#&gt; 2        70                    blood                       70</span>
-<span class="co">#&gt;   in_requested_cohort</span>
-<span class="co">#&gt; 1                 Yes</span>
-<span class="co">#&gt; 2                 Yes</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Filter on a hypothetical data.frame using only the records from a cohort ID of interest from the API call</span></span>
+<span><span class="va">df_cohort</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">in_requested_cohort</span> <span class="op">==</span> <span class="st">"Yes"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">df_cohort</span></span>
+<span><span class="co">#&gt;                             patient_id                         condition_id</span></span>
+<span><span class="co">#&gt; 1 72ca4112-f4b4-4beb-bcb2-93b504753345 66cfbba9-02ea-4b93-96ce-24059e4eb640</span></span>
+<span><span class="co">#&gt; 2 92669296-7c69-41e7-80b9-d6d65a35440c 21b75180-9247-453a-903e-fe8722adbf63</span></span>
+<span><span class="co">#&gt;                            specimen_id                   observationfhir_id</span></span>
+<span><span class="co">#&gt; 1 8b0a0b75-bc41-4aa6-98d4-a4f9e921ed4f f2ca6149-ab88-4e5a-a706-0faa702478fe</span></span>
+<span><span class="co">#&gt; 2 6c97d63e-4074-4ae0-a80c-abaccde1d02b 5f57cd23-cee2-4d43-894d-b65a49eccebe</span></span>
+<span><span class="co">#&gt;   test_date specimen_collection_site specimen_collection_date</span></span>
+<span><span class="co">#&gt; 1        13                    blood                       13</span></span>
+<span><span class="co">#&gt; 2        29                    blood                       29</span></span>
+<span><span class="co">#&gt;   in_requested_cohort</span></span>
+<span><span class="co">#&gt; 1                 Yes</span></span>
+<span><span class="co">#&gt; 2                 Yes</span></span></code></pre></div>
 </div>
   </div>
 
@@ -203,7 +203,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>
