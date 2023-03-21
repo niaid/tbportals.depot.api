@@ -4,7 +4,8 @@ Title: Convenient R Wrapper for TB Portals DEPOT Tidy API
 Version: 1.0.0
 Authors@R: c(
     person("Gabriel", "Rosenfeld", , "gabriel.rosenfeld@nih.gov", role = "aut"),
-    person("Qinlu", "Wang", , "qinlu.wang@nih.gov", role = "cre")
+    person("Jingwen", "Gu", , "jingwen.gu@nih.gov", role = "cre"),
+    person("Qinlu", "Wang", , "qinlu.w@gmail.com", role = "ctb")
   )
 Description: Provides a convenient way of interacting with the TB Portals
     DEPOT Tidy API.  Includes methods for setting up authorization as well
