@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pulling data from the API and filtering on records in a DEPOT created cohort • tbportals.depot.api</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
@@ -78,10 +78,11 @@
 
       
 
-      </header><script src="pulling_data_from_depot_cohort_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Pulling data from the API and filtering on records in a DEPOT created cohort</h1>
+      <h1 data-toc-skip>Pulling data from the API and filtering on
+records in a DEPOT created cohort</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/niaid/tbportals.depot.api/blob/HEAD/vignettes/pulling_data_from_depot_cohort.Rmd" class="external-link"><code>vignettes/pulling_data_from_depot_cohort.Rmd</code></a></small>
@@ -94,11 +95,19 @@
 <div class="section level4">
 <h4 id="identifying-the-right-cohort-from-depot">Identifying the right cohort from DEPOT<a class="anchor" aria-label="anchor" href="#identifying-the-right-cohort-from-depot"></a>
 </h4>
-<p>Prior to using this functionality, a user must be registered to use the <a href="https://depot.tbportals.niaid.nih.gov" class="external-link">DEPOT tool</a> and must have created and saved a cohort with the tool. Users can find the cohorts they saved <a href="https://depot.tbportals.niaid.nih.gov/#/saved-cohorts" class="external-link">here</a>.</p>
-<p>In the website above with your saved cohorts, you will see a table with the following columns “NAME” corresponding to the name of the cohort you created using DEPOT and “ID” which is the unique cohort ID you will need if wanting to pull the data for just these cases using the tbportals.depot.api package.</p>
+<p>Prior to using this functionality, a user must be registered to use
+the <a href="https://depot.tbportals.niaid.nih.gov" class="external-link">DEPOT tool</a> and
+must have created and saved a cohort with the tool. Users can find the
+cohorts they saved <a href="https://depot.tbportals.niaid.nih.gov/#/saved-cohorts" class="external-link">here</a>.</p>
+<p>In the website above with your saved cohorts, you will see a table
+with the following columns “NAME” corresponding to the name of the
+cohort you created using DEPOT and “ID” which is the unique cohort ID
+you will need if wanting to pull the data for just these cases using the
+tbportals.depot.api package.</p>
 </div>
 <div class="section level4">
-<h4 id="pulling-data-from-an-endpoint-for-just-the-cases-in-the-depot-cohort-of-interest">Pulling data from an endpoint for just the cases in the DEPOT cohort of interest<a class="anchor" aria-label="anchor" href="#pulling-data-from-an-endpoint-for-just-the-cases-in-the-depot-cohort-of-interest"></a>
+<h4 id="pulling-data-from-an-endpoint-for-just-the-cases-in-the-depot-cohort-of-interest">Pulling data from an endpoint for just the cases in the DEPOT cohort
+of interest<a class="anchor" aria-label="anchor" href="#pulling-data-from-an-endpoint-for-just-the-cases-in-the-depot-cohort-of-interest"></a>
 </h4>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># See an example of making a request for the data contained in the Biochemistry end point</span></span>
@@ -116,7 +125,12 @@
 <div class="section level4">
 <h4 id="filtering-on-the-records-relating-to-the-cohort-id-of-interest">Filtering on the records relating to the cohort ID of interest<a class="anchor" aria-label="anchor" href="#filtering-on-the-records-relating-to-the-cohort-id-of-interest"></a>
 </h4>
-<p>Given the requirements of TB portals, the following example below will be for purely fake hypothetical data that has similar structure as you would receive from the API call. Only the first few columns showing fake records with ids, relative dates, and specimen info columns are shown without corresponding lab test types. The final column for filtering on the cohort records is also shown.</p>
+<p>Given the requirements of TB portals, the following example below
+will be for purely fake hypothetical data that has similar structure as
+you would receive from the API call. Only the first few columns showing
+fake records with ids, relative dates, and specimen info columns are
+shown without corresponding lab test types. The final column for
+filtering on the cohort records is also shown.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -126,8 +140,9 @@
 <span><span class="co">#&gt;     filter, lag</span></span>
 <span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://www.rforge.net/uuid" class="external-link">uuid</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://www.rforge.net/uuid" class="external-link">uuid</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Structure of a hypothetical data.frame from REQUESTS$content</span></span>
 <span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="st">"patient_id"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/uuid/man/UUIDgenerate.html" class="external-link">UUIDgenerate</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,</span>
@@ -143,45 +158,46 @@
 <span></span>
 <span><span class="va">df</span></span>
 <span><span class="co">#&gt;                             patient_id                         condition_id</span></span>
-<span><span class="co">#&gt; 1 667305cc-295c-4915-950e-ac9cf36766a3 ebd812de-4d16-42be-bfca-b6eaebb2a314</span></span>
-<span><span class="co">#&gt; 2 e9282b0a-f34f-457a-91f2-329b166f8fe2 de402457-b791-4d83-a726-a0d14a511f15</span></span>
-<span><span class="co">#&gt; 3 95e9cc2a-8091-494c-8957-8bac0351f480 fce6c544-2e24-4818-abba-6057b1ead28b</span></span>
-<span><span class="co">#&gt; 4 f84bfccb-82ee-4046-836e-47b9858cd91f 0ce80626-bb53-4f6d-b083-1562978d46d1</span></span>
-<span><span class="co">#&gt; 5 494b671a-746a-44cd-964d-61f005e3e9c7 a3a306d7-f455-4222-9180-6e817181782f</span></span>
+<span><span class="co">#&gt; 1 dfa3ceb3-38bb-47cb-b1b7-17e6659d7e4d 95768621-e04e-47cc-a835-96cfbcd8fe12</span></span>
+<span><span class="co">#&gt; 2 ca7f21a5-85f6-461e-bfe2-034f517ad5ca 5f51e03c-ecb9-43fb-b289-4da52b9c44c8</span></span>
+<span><span class="co">#&gt; 3 b7f889e4-358a-4dee-b17d-16496514634e d5fc5f93-a8f1-4341-8fdd-87dbab279fd4</span></span>
+<span><span class="co">#&gt; 4 9acf855e-bcc7-4cc3-8325-11d6595b5cbc 9ea3778d-0e67-420e-9b95-9d6c5f82c2a2</span></span>
+<span><span class="co">#&gt; 5 1bf2742c-ef36-4379-add1-fdc36ea48791 85daac8a-07e4-463e-9d52-2af81e55a03b</span></span>
 <span><span class="co">#&gt;                            specimen_id                   observationfhir_id</span></span>
-<span><span class="co">#&gt; 1 a89df642-5f3c-4422-9a72-0a5a6da78f62 e21550e6-c59c-4252-9299-ac0c0e345719</span></span>
-<span><span class="co">#&gt; 2 9b3219a0-42c3-4e80-a417-3140eb28dc97 9e4b37c6-9369-42e2-8e28-dc3542db9432</span></span>
-<span><span class="co">#&gt; 3 efb73b65-0897-4e8d-bc66-88c8cfcf0783 fd18ddf4-6b83-432b-aee9-d7951314d5da</span></span>
-<span><span class="co">#&gt; 4 31e7b5f1-d869-4989-8aa3-8adc69b26738 7a36cf1e-fb57-4b99-9222-a71bc15f4420</span></span>
-<span><span class="co">#&gt; 5 7c9f1be3-1ca6-43f1-bf0c-d04f2d8f06d2 59e4cbb5-1ddd-40e5-8a0b-b1f6be551eb3</span></span>
+<span><span class="co">#&gt; 1 75d51497-acd9-4804-a2a8-d8d0573d20dc 5772932d-19a8-4b1b-8907-021d998962b8</span></span>
+<span><span class="co">#&gt; 2 9e24896f-f6b8-4ccf-abc5-4b9732220cc5 f8d339d0-a416-4278-b0ed-f7c94a2d1ffb</span></span>
+<span><span class="co">#&gt; 3 5705d156-a75f-4391-85e9-0df6d60e9714 f39cf79c-f893-4db0-b35f-c0afd74afb98</span></span>
+<span><span class="co">#&gt; 4 309cf0a9-8b8e-44c0-b526-138ca9a7953d 61eff69f-c681-45bc-98de-1c1f5c22189b</span></span>
+<span><span class="co">#&gt; 5 a1825e95-6c1e-4be9-b8ce-28b604621bbe d45fcdcb-472a-4ff6-9690-939d5f6ada49</span></span>
 <span><span class="co">#&gt;   test_date specimen_collection_site specimen_collection_date</span></span>
-<span><span class="co">#&gt; 1        94                    blood                       94</span></span>
-<span><span class="co">#&gt; 2        91                    blood                       91</span></span>
-<span><span class="co">#&gt; 3        29                    blood                       29</span></span>
-<span><span class="co">#&gt; 4        11                    blood                       11</span></span>
-<span><span class="co">#&gt; 5        90                    blood                       90</span></span>
+<span><span class="co">#&gt; 1        44                    blood                       44</span></span>
+<span><span class="co">#&gt; 2        22                    blood                       22</span></span>
+<span><span class="co">#&gt; 3        75                    blood                       75</span></span>
+<span><span class="co">#&gt; 4        62                    blood                       62</span></span>
+<span><span class="co">#&gt; 5        46                    blood                       46</span></span>
 <span><span class="co">#&gt;   in_requested_cohort</span></span>
 <span><span class="co">#&gt; 1                  No</span></span>
 <span><span class="co">#&gt; 2                 Yes</span></span>
 <span><span class="co">#&gt; 3                 Yes</span></span>
 <span><span class="co">#&gt; 4                  No</span></span>
 <span><span class="co">#&gt; 5                  No</span></span></code></pre></div>
-<p>To filter on records within the DEPOT cohort of interest, a user can use the in_requested_cohort column matching on records with a “Yes”.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<p>To filter on records within the DEPOT cohort of interest, a user can
+use the in_requested_cohort column matching on records with a “Yes”.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Filter on a hypothetical data.frame using only the records from a cohort ID of interest from the API call</span></span>
 <span><span class="va">df_cohort</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">in_requested_cohort</span> <span class="op">==</span> <span class="st">"Yes"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">df_cohort</span></span>
 <span><span class="co">#&gt;                             patient_id                         condition_id</span></span>
-<span><span class="co">#&gt; 1 e9282b0a-f34f-457a-91f2-329b166f8fe2 de402457-b791-4d83-a726-a0d14a511f15</span></span>
-<span><span class="co">#&gt; 2 95e9cc2a-8091-494c-8957-8bac0351f480 fce6c544-2e24-4818-abba-6057b1ead28b</span></span>
+<span><span class="co">#&gt; 1 ca7f21a5-85f6-461e-bfe2-034f517ad5ca 5f51e03c-ecb9-43fb-b289-4da52b9c44c8</span></span>
+<span><span class="co">#&gt; 2 b7f889e4-358a-4dee-b17d-16496514634e d5fc5f93-a8f1-4341-8fdd-87dbab279fd4</span></span>
 <span><span class="co">#&gt;                            specimen_id                   observationfhir_id</span></span>
-<span><span class="co">#&gt; 1 9b3219a0-42c3-4e80-a417-3140eb28dc97 9e4b37c6-9369-42e2-8e28-dc3542db9432</span></span>
-<span><span class="co">#&gt; 2 efb73b65-0897-4e8d-bc66-88c8cfcf0783 fd18ddf4-6b83-432b-aee9-d7951314d5da</span></span>
+<span><span class="co">#&gt; 1 9e24896f-f6b8-4ccf-abc5-4b9732220cc5 f8d339d0-a416-4278-b0ed-f7c94a2d1ffb</span></span>
+<span><span class="co">#&gt; 2 5705d156-a75f-4391-85e9-0df6d60e9714 f39cf79c-f893-4db0-b35f-c0afd74afb98</span></span>
 <span><span class="co">#&gt;   test_date specimen_collection_site specimen_collection_date</span></span>
-<span><span class="co">#&gt; 1        91                    blood                       91</span></span>
-<span><span class="co">#&gt; 2        29                    blood                       29</span></span>
+<span><span class="co">#&gt; 1        22                    blood                       22</span></span>
+<span><span class="co">#&gt; 2        75                    blood                       75</span></span>
 <span><span class="co">#&gt;   in_requested_cohort</span></span>
 <span><span class="co">#&gt; 1                 Yes</span></span>
 <span><span class="co">#&gt; 2                 Yes</span></span></code></pre></div>
@@ -203,7 +219,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
 </div>
 
       </footer>

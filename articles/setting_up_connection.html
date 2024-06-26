@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Setting up connection to API • tbportals.depot.api</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
@@ -78,7 +78,7 @@
 
       
 
-      </header><script src="setting_up_connection_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Setting up connection to API</h1>
@@ -94,8 +94,17 @@
 <div class="section level4">
 <h4 id="establishing-credentials-and-saving-them-locally-into--renviron">Establishing credentials and saving them locally into .Renviron<a class="anchor" aria-label="anchor" href="#establishing-credentials-and-saving-them-locally-into--renviron"></a>
 </h4>
-<p>Prior to using the tbportals.depot.api R package, it will be necessary to request access to the data from <a href="https://tbportals.niaid.nih.gov/download-data" class="external-link">TB portals website</a>. Once the DUA process has been completed, you will be able to request access to the API that serves the tidy analytic data from TB Portals.</p>
-<p>You should receive an email with a secret that is only for your use and which can be used along with the email address you provided to establish an API token. After you have this information, see below for the code to save these credentials locally to create your unique token. You will need to be running Rstudio as the code below will generate an interactive window to input this information securely.</p>
+<p>Prior to using the tbportals.depot.api R package, it will be
+necessary to request access to the data from <a href="https://tbportals.niaid.nih.gov/download-data" class="external-link">TB portals
+website</a>. Once the DUA process has been completed, you will be able
+to request access to the API that serves the tidy analytic data from TB
+Portals.</p>
+<p>You should receive an email with a secret that is only for your use
+and which can be used along with the email address you provided to
+establish an API token. After you have this information, see below for
+the code to save these credentials locally to create your unique token.
+You will need to be running Rstudio as the code below will generate an
+interactive window to input this information securely.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/niaid/tbportals.depot.api" class="external-link">tbportals.depot.api</a></span><span class="op">)</span></span>
 <span></span>
@@ -109,7 +118,14 @@
 <div class="section level4">
 <h4 id="generating-an-api-token">Generating an API token<a class="anchor" aria-label="anchor" href="#generating-an-api-token"></a>
 </h4>
-<p>Once secret credentials have been saved locally, they will be available for generating the API token. A convenience function is provided to allow for generation of a token, which needs to be done periodically without having to directly input the secret or email address associated with the secret provided these have been saved locally. Alternatively, these arguments can be provided to the function but this is not best practice as it is stored to your local R history file. Be sure to delete your history if using the latter approach.</p>
+<p>Once secret credentials have been saved locally, they will be
+available for generating the API token. A convenience function is
+provided to allow for generation of a token, which needs to be done
+periodically without having to directly input the secret or email
+address associated with the secret provided these have been saved
+locally. Alternatively, these arguments can be provided to the function
+but this is not best practice as it is stored to your local R history
+file. Be sure to delete your history if using the latter approach.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Generate a temporary token for use with API calls, no arguments necessary if secret credentials saved</span></span>
 <span><span class="va">TOKEN</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_token.html">get_token</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -120,7 +136,13 @@
 <div class="section level4">
 <h4 id="making-an-api-call">Making an API call<a class="anchor" aria-label="anchor" href="#making-an-api-call"></a>
 </h4>
-<p>After you have generated a temporary token string, you can now make API calls. For a list of end points that are available, please see <a href="https://analytic.tbportals.niaid.nih.gov/index.html" class="external-link">API documentation</a>. A convenience function is provided that can take the name of an end point and return a class of tidy_depot_api with the resulting data.frame of the returned JSON content along with information about the specific call itself including status codes in the case of a malformed request.</p>
+<p>After you have generated a temporary token string, you can now make
+API calls. For a list of end points that are available, please see <a href="https://analytic.tbportals.niaid.nih.gov/index.html" class="external-link">API
+documentation</a>. A convenience function is provided that can take the
+name of an end point and return a class of tidy_depot_api with the
+resulting data.frame of the returned JSON content along with information
+about the specific call itself including status codes in the case of a
+malformed request.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># See an example of making a request for the data contained in the Biochemistry end point</span></span>
 <span><span class="va">REQUEST</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tidy_depot_api.html">tidy_depot_api</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"Biochemistry"</span>, token <span class="op">=</span> <span class="va">TOKEN</span><span class="op">)</span></span>
@@ -151,7 +173,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
 </div>
 
       </footer>
