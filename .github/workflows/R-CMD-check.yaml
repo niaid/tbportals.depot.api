@@ -17,9 +17,9 @@ jobs:
   preliminary_test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v2   # Check out your repository content to github runner
     - name: Set up Python 3.7
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v2 # Set up python 3.7
       with:
         python-version: 3.7
     - name: Install and run trufflehog3 secrets scanner
