@@ -19,7 +19,7 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -45,7 +45,7 @@
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
@@ -65,7 +65,7 @@
 <li>
   <a href="https://github.com/niaid/tbportals.depot.api/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
-     
+
   </a>
 </li>
       </ul>
@@ -76,7 +76,7 @@
 </div>
 <!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="contents col-md-9">
@@ -90,13 +90,16 @@
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Install development version from GitHub</span></span>
+<code class="sourceCode R"><span><span class="co"># Install release version from CRAN</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"tbportals.depot.api"</span><span class="op">)</span> <span class="co"># Not available yet</span></span>
+<span></span>
+<span><span class="co"># Install development version from GitHub</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"niaid/tbportals.depot.api"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h2>
-<p>Please see Article, <a href="https://niaid.github.io/tbportals.depot.api/articles/setting_up_connection.html" class="external-link">Setting up connection to API</a>, before following along with the code example below as it assumes you have saved your credentials locally which are required for interacting with the API.</p>
+<p>Please see Article, “Setting up connection to API”, before following along with the code example below as it assumes you have saved your credentials locally which are required for interacting with the API.</p>
 <p>This is a basic example which shows you how to solve a common problem of pulling all the data from an endpoint (for other end points check out <a href="https://analytic.tbportals.niaid.nih.gov/index.html" class="external-link">link</a>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/niaid/tbportals.depot.api" class="external-link">tbportals.depot.api</a></span><span class="op">)</span></span>
@@ -113,7 +116,7 @@
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Dimensions of the resulting JSON data from the API call</span></span>
 <span><span class="va">patient_cases</span><span class="op">$</span><span class="va">content</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 6853  205</span></span>
+<span><span class="co">#&gt; [1] 16905   207</span></span>
 <span></span>
 <span><span class="co"># End point used for the API call</span></span>
 <span><span class="va">patient_cases</span><span class="op">$</span><span class="va">path</span></span>
@@ -122,10 +125,10 @@
 <span><span class="co"># The httr response content containing the specific information about the call</span></span>
 <span><span class="va">patient_cases</span><span class="op">$</span><span class="va">response</span></span>
 <span><span class="co">#&gt; Response [https://analytic.tbportals.niaid.nih.gov/api/Patient-Case?returnCsv=false&amp;cohortId=]</span></span>
-<span><span class="co">#&gt;   Date: 2022-03-28 19:21</span></span>
+<span><span class="co">#&gt;   Date: 2025-02-20 19:24</span></span>
 <span><span class="co">#&gt;   Status: 200</span></span>
 <span><span class="co">#&gt;   Content-Type: application/json; charset=utf-8</span></span>
-<span><span class="co">#&gt;   Size: 53.2 MB</span></span></code></pre></div>
+<span><span class="co">#&gt;   Size: 137 MB</span></span></code></pre></div>
 <p>Let’s explore some aspects of the patient cases stratifying by the type of drug resistance associated with the case to get a sense of the number of publicly shared data available.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Store data.frame of patient case characteristics</span></span>
@@ -133,7 +136,7 @@
 <span></span>
 <span><span class="co"># Select attributes of interest</span></span>
 <span><span class="va">patient_cases_df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/compound.html" class="external-link">%&lt;&gt;%</a></span></span>
-<span>  <span class="fu">select</span><span class="op">(</span><span class="va">condition_id</span>, <span class="va">patient_id</span>, <span class="va">age_of_onset</span>, <span class="va">gender</span>, <span class="va">bmi</span>, <span class="va">case_definition</span>, <span class="va">type_of_resistance</span><span class="op">)</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">condition_id</span>, <span class="va">patient_id</span>, <span class="va">age_of_onset</span>, <span class="va">sex</span>, <span class="va">bmi</span>, <span class="va">case_definition</span>, <span class="va">type_of_resistance</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Summarise number of conditions by patient_id</span></span>
 <span><span class="va">patient_cases_df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/compound.html" class="external-link">%&lt;&gt;%</a></span></span>
@@ -142,31 +145,49 @@
 <span>  <span class="fu">select</span><span class="op">(</span><span class="op">-</span><span class="va">condition_id</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">distinct</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/type.convert.html" class="external-link">type.convert</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in type.convert.default(x[[i]], ...): 'as.is' should be specified by</span></span>
+<span><span class="co">#&gt; the caller; using TRUE</span></span>
+<span><span class="co">#&gt; Warning in type.convert.default(x[[i]], ...): 'as.is' should be specified by</span></span>
+<span><span class="co">#&gt; the caller; using TRUE</span></span>
+<span><span class="co">#&gt; Warning in type.convert.default(x[[i]], ...): 'as.is' should be specified by</span></span>
+<span><span class="co">#&gt; the caller; using TRUE</span></span>
+<span><span class="co">#&gt; Warning in type.convert.default(x[[i]], ...): 'as.is' should be specified by</span></span>
+<span><span class="co">#&gt; the caller; using TRUE</span></span>
+<span><span class="co">#&gt; Warning in type.convert.default(x[[i]], ...): 'as.is' should be specified by</span></span>
+<span><span class="co">#&gt; the caller; using TRUE</span></span>
+<span><span class="co">#&gt; Warning in type.convert.default(x[[i]], ...): 'as.is' should be specified by</span></span>
+<span><span class="co">#&gt; the caller; using TRUE</span></span>
+<span><span class="co">#&gt; Warning in type.convert.default(x[[i]], ...): 'as.is' should be specified by</span></span>
+<span><span class="co">#&gt; the caller; using TRUE</span></span>
 <span></span>
 <span><span class="co"># Patient counts by type of resistance and other case characteristics</span></span>
-<span><span class="fu">tableby</span><span class="op">(</span><span class="va">type_of_resistance</span> <span class="op">~</span> <span class="va">age_of_onset</span> <span class="op">+</span> <span class="va">gender</span> <span class="op">+</span> <span class="va">bmi</span> <span class="op">+</span> <span class="va">case_definition</span>, data <span class="op">=</span> <span class="va">patient_cases_df</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span><span class="fu">tableby</span><span class="op">(</span><span class="va">type_of_resistance</span> <span class="op">~</span> <span class="va">age_of_onset</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">bmi</span> <span class="op">+</span> <span class="va">case_definition</span>, data <span class="op">=</span> <span class="va">patient_cases_df</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <colgroup>
-<col width="13%">
-<col width="13%">
+<col width="11%">
+<col width="11%">
+<col width="9%">
+<col width="8%">
 <col width="10%">
+<col width="8%">
+<col width="9%">
 <col width="10%">
-<col width="10%">
-<col width="12%">
-<col width="10%">
-<col width="10%">
-<col width="7%">
+<col width="8%">
+<col width="8%">
+<col width="5%">
 </colgroup>
 <thead><tr class="header">
 <th align="left"></th>
-<th align="center">MDR non XDR (N=3030)</th>
-<th align="center">Mono DR (N=507)</th>
-<th align="center">Poly DR (N=199)</th>
-<th align="center">Pre-XDR (N=141)</th>
-<th align="center">Sensitive (N=1963)</th>
-<th align="center">XDR (N=1013)</th>
-<th align="center">Total (N=6853)</th>
+<th align="center">MDR non XDR (N=7410)</th>
+<th align="center">Mono DR (N=1171)</th>
+<th align="center">Negative (N=1)</th>
+<th align="center">Not Reported (N=3)</th>
+<th align="center">Poly DR (N=383)</th>
+<th align="center">Pre-XDR (N=1225)</th>
+<th align="center">Sensitive (N=5255)</th>
+<th align="center">XDR (N=1457)</th>
+<th align="center">Total (N=16905)</th>
 <th align="right">p value</th>
 </tr></thead>
 <tbody>
@@ -179,32 +200,38 @@
 <td align="center"></td>
 <td align="center"></td>
 <td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 <td align="right">&lt; 0.001</td>
 </tr>
 <tr class="even">
 <td align="left">   Mean (SD)</td>
-<td align="center">41.267 (13.320)</td>
-<td align="center">41.690 (15.113)</td>
-<td align="center">42.231 (14.784)</td>
-<td align="center">43.809 (13.441)</td>
-<td align="center">43.364 (15.492)</td>
-<td align="center">41.609 (12.865)</td>
-<td align="center">42.030 (14.119)</td>
+<td align="center">42.476 (13.253)</td>
+<td align="center">43.691 (14.988)</td>
+<td align="center">54.000 (NA)</td>
+<td align="center">34.333 (14.012)</td>
+<td align="center">43.225 (15.419)</td>
+<td align="center">43.691 (12.716)</td>
+<td align="center">44.085 (16.007)</td>
+<td align="center">42.484 (12.887)</td>
+<td align="center">43.166 (14.288)</td>
 <td align="right"></td>
 </tr>
 <tr class="odd">
 <td align="left">   Range</td>
-<td align="center">3.000 - 86.000</td>
-<td align="center">7.000 - 87.000</td>
-<td align="center">18.000 - 93.000</td>
-<td align="center">17.000 - 90.000</td>
-<td align="center">2.000 - 89.000</td>
-<td align="center">15.000 - 84.000</td>
-<td align="center">2.000 - 93.000</td>
+<td align="center">1.000 - 94.000</td>
+<td align="center">4.000 - 88.000</td>
+<td align="center">54.000 - 54.000</td>
+<td align="center">23.000 - 50.000</td>
+<td align="center">1.000 - 93.000</td>
+<td align="center">7.000 - 90.000</td>
+<td align="center">1.000 - 95.000</td>
+<td align="center">3.000 - 84.000</td>
+<td align="center">1.000 - 95.000</td>
 <td align="right"></td>
 </tr>
 <tr class="even">
-<td align="left"><strong>gender</strong></td>
+<td align="left"><strong>sex</strong></td>
 <td align="center"></td>
 <td align="center"></td>
 <td align="center"></td>
@@ -212,28 +239,34 @@
 <td align="center"></td>
 <td align="center"></td>
 <td align="center"></td>
-<td align="right">0.242</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="right">&lt; 0.001</td>
 </tr>
 <tr class="odd">
 <td align="left">   Female</td>
-<td align="center">788 (26.0%)</td>
-<td align="center">147 (29.0%)</td>
-<td align="center">61 (30.7%)</td>
-<td align="center">29 (20.6%)</td>
-<td align="center">534 (27.2%)</td>
-<td align="center">267 (26.4%)</td>
-<td align="center">1826 (26.6%)</td>
+<td align="center">1875 (25.3%)</td>
+<td align="center">321 (27.4%)</td>
+<td align="center">0 (0.0%)</td>
+<td align="center">2 (66.7%)</td>
+<td align="center">115 (30.0%)</td>
+<td align="center">268 (21.9%)</td>
+<td align="center">1501 (28.6%)</td>
+<td align="center">374 (25.7%)</td>
+<td align="center">4456 (26.4%)</td>
 <td align="right"></td>
 </tr>
 <tr class="even">
 <td align="left">   Male</td>
-<td align="center">2242 (74.0%)</td>
-<td align="center">360 (71.0%)</td>
-<td align="center">138 (69.3%)</td>
-<td align="center">112 (79.4%)</td>
-<td align="center">1429 (72.8%)</td>
-<td align="center">746 (73.6%)</td>
-<td align="center">5027 (73.4%)</td>
+<td align="center">5535 (74.7%)</td>
+<td align="center">850 (72.6%)</td>
+<td align="center">1 (100.0%)</td>
+<td align="center">1 (33.3%)</td>
+<td align="center">268 (70.0%)</td>
+<td align="center">957 (78.1%)</td>
+<td align="center">3754 (71.4%)</td>
+<td align="center">1083 (74.3%)</td>
+<td align="center">12449 (73.6%)</td>
 <td align="right"></td>
 </tr>
 <tr class="odd">
@@ -245,39 +278,47 @@
 <td align="center"></td>
 <td align="center"></td>
 <td align="center"></td>
-<td align="right">0.056</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="right"></td>
 </tr>
 <tr class="even">
 <td align="left">   N-Miss</td>
-<td align="center">414</td>
-<td align="center">160</td>
-<td align="center">82</td>
-<td align="center">3</td>
-<td align="center">900</td>
-<td align="center">69</td>
-<td align="center">1628</td>
+<td align="center">675</td>
+<td align="center">396</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">113</td>
+<td align="center">43</td>
+<td align="center">2811</td>
+<td align="center">79</td>
+<td align="center">4118</td>
 <td align="right"></td>
 </tr>
 <tr class="odd">
 <td align="left">   Mean (SD)</td>
-<td align="center">20.653 (3.774)</td>
-<td align="center">20.807 (4.347)</td>
-<td align="center">20.375 (3.844)</td>
-<td align="center">20.325 (4.327)</td>
-<td align="center">21.003 (3.691)</td>
-<td align="center">20.573 (3.587)</td>
-<td align="center">20.705 (3.784)</td>
+<td align="center">20.631 (3.492)</td>
+<td align="center">20.770 (3.991)</td>
+<td align="center">NA</td>
+<td align="center">16.667 (2.108)</td>
+<td align="center">20.543 (3.807)</td>
+<td align="center">20.646 (4.045)</td>
+<td align="center">20.779 (4.154)</td>
+<td align="center">20.538 (3.541)</td>
+<td align="center">20.656 (3.723)</td>
 <td align="right"></td>
 </tr>
 <tr class="even">
 <td align="left">   Range</td>
-<td align="center">10.400 - 83.900</td>
+<td align="center">10.400 - 48.600</td>
 <td align="center">11.000 - 61.100</td>
-<td align="center">13.400 - 40.700</td>
-<td align="center">12.100 - 35.400</td>
-<td align="center">11.700 - 36.500</td>
+<td align="center">NA</td>
+<td align="center">15.400 - 19.100</td>
+<td align="center">13.200 - 40.700</td>
+<td align="center">10.300 - 47.900</td>
+<td align="center">10.500 - 93.700</td>
 <td align="center">11.800 - 38.600</td>
-<td align="center">10.400 - 83.900</td>
+<td align="center">10.300 - 93.700</td>
 <td align="right"></td>
 </tr>
 <tr class="odd">
@@ -289,83 +330,99 @@
 <td align="center"></td>
 <td align="center"></td>
 <td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 <td align="right">&lt; 0.001</td>
 </tr>
 <tr class="even">
 <td align="left">   Chronic TB</td>
-<td align="center">72 (2.4%)</td>
-<td align="center">1 (0.2%)</td>
+<td align="center">182 (2.5%)</td>
+<td align="center">8 (0.7%)</td>
 <td align="center">0 (0.0%)</td>
-<td align="center">30 (21.3%)</td>
-<td align="center">2 (0.1%)</td>
-<td align="center">60 (5.9%)</td>
-<td align="center">165 (2.4%)</td>
+<td align="center">0 (0.0%)</td>
+<td align="center">1 (0.3%)</td>
+<td align="center">87 (7.1%)</td>
+<td align="center">11 (0.2%)</td>
+<td align="center">93 (6.4%)</td>
+<td align="center">382 (2.3%)</td>
 <td align="right"></td>
 </tr>
 <tr class="odd">
 <td align="left">   Failure</td>
-<td align="center">307 (10.1%)</td>
-<td align="center">30 (5.9%)</td>
-<td align="center">9 (4.5%)</td>
-<td align="center">3 (2.1%)</td>
-<td align="center">30 (1.5%)</td>
-<td align="center">293 (28.9%)</td>
-<td align="center">672 (9.8%)</td>
+<td align="center">399 (5.4%)</td>
+<td align="center">40 (3.4%)</td>
+<td align="center">0 (0.0%)</td>
+<td align="center">0 (0.0%)</td>
+<td align="center">12 (3.1%)</td>
+<td align="center">27 (2.2%)</td>
+<td align="center">39 (0.7%)</td>
+<td align="center">340 (23.3%)</td>
+<td align="center">857 (5.1%)</td>
 <td align="right"></td>
 </tr>
 <tr class="even">
 <td align="left">   Lost to follow up</td>
-<td align="center">229 (7.6%)</td>
-<td align="center">15 (3.0%)</td>
-<td align="center">14 (7.0%)</td>
-<td align="center">7 (5.0%)</td>
-<td align="center">45 (2.3%)</td>
-<td align="center">62 (6.1%)</td>
-<td align="center">372 (5.4%)</td>
+<td align="center">355 (4.8%)</td>
+<td align="center">25 (2.1%)</td>
+<td align="center">0 (0.0%)</td>
+<td align="center">0 (0.0%)</td>
+<td align="center">19 (5.0%)</td>
+<td align="center">38 (3.1%)</td>
+<td align="center">85 (1.6%)</td>
+<td align="center">78 (5.4%)</td>
+<td align="center">600 (3.5%)</td>
 <td align="right"></td>
 </tr>
 <tr class="odd">
 <td align="left">   New</td>
-<td align="center">1635 (54.0%)</td>
-<td align="center">381 (75.1%)</td>
-<td align="center">145 (72.9%)</td>
-<td align="center">67 (47.5%)</td>
-<td align="center">1640 (83.5%)</td>
-<td align="center">276 (27.2%)</td>
-<td align="center">4144 (60.5%)</td>
+<td align="center">4557 (61.5%)</td>
+<td align="center">917 (78.3%)</td>
+<td align="center">1 (100.0%)</td>
+<td align="center">1 (33.3%)</td>
+<td align="center">294 (76.8%)</td>
+<td align="center">671 (54.8%)</td>
+<td align="center">4524 (86.1%)</td>
+<td align="center">447 (30.7%)</td>
+<td align="center">11412 (67.5%)</td>
 <td align="right"></td>
 </tr>
 <tr class="even">
 <td align="left">   Other</td>
-<td align="center">63 (2.1%)</td>
-<td align="center">7 (1.4%)</td>
-<td align="center">6 (3.0%)</td>
-<td align="center">3 (2.1%)</td>
-<td align="center">25 (1.3%)</td>
-<td align="center">46 (4.5%)</td>
-<td align="center">150 (2.2%)</td>
+<td align="center">219 (3.0%)</td>
+<td align="center">26 (2.2%)</td>
+<td align="center">0 (0.0%)</td>
+<td align="center">2 (66.7%)</td>
+<td align="center">10 (2.6%)</td>
+<td align="center">33 (2.7%)</td>
+<td align="center">81 (1.5%)</td>
+<td align="center">65 (4.5%)</td>
+<td align="center">436 (2.6%)</td>
 <td align="right"></td>
 </tr>
 <tr class="odd">
 <td align="left">   Relapse</td>
-<td align="center">723 (23.9%)</td>
-<td align="center">71 (14.0%)</td>
-<td align="center">24 (12.1%)</td>
-<td align="center">31 (22.0%)</td>
-<td align="center">219 (11.2%)</td>
-<td align="center">275 (27.1%)</td>
-<td align="center">1343 (19.6%)</td>
+<td align="center">1693 (22.8%)</td>
+<td align="center">154 (13.2%)</td>
+<td align="center">0 (0.0%)</td>
+<td align="center">0 (0.0%)</td>
+<td align="center">46 (12.0%)</td>
+<td align="center">368 (30.0%)</td>
+<td align="center">512 (9.7%)</td>
+<td align="center">433 (29.7%)</td>
+<td align="center">3206 (19.0%)</td>
 <td align="right"></td>
 </tr>
 <tr class="even">
 <td align="left">   Unknown</td>
-<td align="center">1 (0.0%)</td>
-<td align="center">2 (0.4%)</td>
-<td align="center">1 (0.5%)</td>
-<td align="center">0 (0.0%)</td>
-<td align="center">2 (0.1%)</td>
+<td align="center">5 (0.1%)</td>
 <td align="center">1 (0.1%)</td>
-<td align="center">7 (0.1%)</td>
+<td align="center">0 (0.0%)</td>
+<td align="center">0 (0.0%)</td>
+<td align="center">1 (0.3%)</td>
+<td align="center">1 (0.1%)</td>
+<td align="center">3 (0.1%)</td>
+<td align="center">1 (0.1%)</td>
+<td align="center">12 (0.1%)</td>
 <td align="right"></td>
 </tr>
 </tbody>
@@ -490,16 +547,16 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
       </footer>
 </div>
 
-  
 
 
-  
+
+
 
   </body>
 </html>

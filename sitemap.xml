@@ -1,51 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>/404.html</loc>
-  </url>
-  <url>
-    <loc>/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>/articles/pulling_data_from_depot_cohort.html</loc>
-  </url>
-  <url>
-    <loc>/articles/setting_up_connection.html</loc>
-  </url>
-  <url>
-    <loc>/authors.html</loc>
-  </url>
-  <url>
-    <loc>/index.html</loc>
-  </url>
-  <url>
-    <loc>/news/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/get_secret.html</loc>
-  </url>
-  <url>
-    <loc>/reference/get_secret_email.html</loc>
-  </url>
-  <url>
-    <loc>/reference/get_token.html</loc>
-  </url>
-  <url>
-    <loc>/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/list_endpoints.html</loc>
-  </url>
-  <url>
-    <loc>/reference/store_secret_credentials.html</loc>
-  </url>
-  <url>
-    <loc>/reference/tidy_depot_api.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>/404.html</loc></url>
+<url><loc>/LICENSE-text.html</loc></url>
+<url><loc>/LICENSE.html</loc></url>
+<url><loc>/articles/index.html</loc></url>
+<url><loc>/articles/pulling_data_from_depot_cohort.html</loc></url>
+<url><loc>/articles/setting_up_connection.html</loc></url>
+<url><loc>/authors.html</loc></url>
+<url><loc>/index.html</loc></url>
+<url><loc>/news/index.html</loc></url>
+<url><loc>/reference/get_secret.html</loc></url>
+<url><loc>/reference/get_secret_email.html</loc></url>
+<url><loc>/reference/get_token.html</loc></url>
+<url><loc>/reference/index.html</loc></url>
+<url><loc>/reference/list_endpoints.html</loc></url>
+<url><loc>/reference/store_secret_credentials.html</loc></url>
+<url><loc>/reference/tidy_depot_api.html</loc></url>
 </urlset>
+
