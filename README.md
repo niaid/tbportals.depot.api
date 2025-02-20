@@ -17,13 +17,16 @@ website](https://tbportals.niaid.nih.gov/).
 ## Installation
 
 ``` r
+# Install release version from CRAN
+install.packages("tbportals.depot.api") # Not available yet
+
 # Install development version from GitHub
 devtools::install_github("niaid/tbportals.depot.api")
 ```
 
 ## Usage
 
-Please see Article, [Setting up connection to API](https://niaid.github.io/tbportals.depot.api/articles/setting_up_connection.html), before following
+Please see Article, “Setting up connection to API”, before following
 along with the code example below as it assumes you have saved your
 credentials locally which are required for interacting with the API.
 
@@ -52,7 +55,7 @@ the “path”, and the actually http response in the “response”.
 ``` r
 # Dimensions of the resulting JSON data from the API call
 patient_cases$content %>% dim()
-#> [1] 6853  205
+#> [1] 16905   207
 
 # End point used for the API call
 patient_cases$path
@@ -61,10 +64,10 @@ patient_cases$path
 # The httr response content containing the specific information about the call
 patient_cases$response
 #> Response [https://analytic.tbportals.niaid.nih.gov/api/Patient-Case?returnCsv=false&cohortId=]
-#>   Date: 2022-03-28 19:21
+#>   Date: 2025-02-20 19:24
 #>   Status: 200
 #>   Content-Type: application/json; charset=utf-8
-#>   Size: 53.2 MB
+#>   Size: 137 MB
 ```
 
 Let’s explore some aspects of the patient cases stratifying by the type
@@ -77,7 +80,7 @@ patient_cases_df <- patient_cases$content
 
 # Select attributes of interest
 patient_cases_df %<>%
-  select(condition_id, patient_id, age_of_onset, gender, bmi, case_definition, type_of_resistance)
+  select(condition_id, patient_id, age_of_onset, sex, bmi, case_definition, type_of_resistance)
 
 # Summarise number of conditions by patient_id
 patient_cases_df %<>%
@@ -86,35 +89,49 @@ patient_cases_df %<>%
   select(-condition_id) %>%
   distinct() %>%
   type.convert()
+#> Warning in type.convert.default(x[[i]], ...): 'as.is' should be specified by
+#> the caller; using TRUE
+#> Warning in type.convert.default(x[[i]], ...): 'as.is' should be specified by
+#> the caller; using TRUE
+#> Warning in type.convert.default(x[[i]], ...): 'as.is' should be specified by
+#> the caller; using TRUE
+#> Warning in type.convert.default(x[[i]], ...): 'as.is' should be specified by
+#> the caller; using TRUE
+#> Warning in type.convert.default(x[[i]], ...): 'as.is' should be specified by
+#> the caller; using TRUE
+#> Warning in type.convert.default(x[[i]], ...): 'as.is' should be specified by
+#> the caller; using TRUE
+#> Warning in type.convert.default(x[[i]], ...): 'as.is' should be specified by
+#> the caller; using TRUE
 
 # Patient counts by type of resistance and other case characteristics
-tableby(type_of_resistance ~ age_of_onset + gender + bmi + case_definition, data = patient_cases_df) %>%
+tableby(type_of_resistance ~ age_of_onset + sex + bmi + case_definition, data = patient_cases_df) %>%
   summary()
 ```
 
-|                      | MDR non XDR (N=3030) | Mono DR (N=507) | Poly DR (N=199) | Pre-XDR (N=141) | Sensitive (N=1963) |  XDR (N=1013)   | Total (N=6853)  |    p value |
-|:---------------------|:--------------------:|:---------------:|:---------------:|:---------------:|:------------------:|:---------------:|:---------------:|-----------:|
-| **age\_of\_onset**   |                      |                 |                 |                 |                    |                 |                 | &lt; 0.001 |
-|    Mean (SD)         |   41.267 (13.320)    | 41.690 (15.113) | 42.231 (14.784) | 43.809 (13.441) |  43.364 (15.492)   | 41.609 (12.865) | 42.030 (14.119) |            |
-|    Range             |    3.000 - 86.000    | 7.000 - 87.000  | 18.000 - 93.000 | 17.000 - 90.000 |   2.000 - 89.000   | 15.000 - 84.000 | 2.000 - 93.000  |            |
-| **gender**           |                      |                 |                 |                 |                    |                 |                 |      0.242 |
-|    Female            |     788 (26.0%)      |   147 (29.0%)   |   61 (30.7%)    |   29 (20.6%)    |    534 (27.2%)     |   267 (26.4%)   |  1826 (26.6%)   |            |
-|    Male              |     2242 (74.0%)     |   360 (71.0%)   |   138 (69.3%)   |   112 (79.4%)   |    1429 (72.8%)    |   746 (73.6%)   |  5027 (73.4%)   |            |
-| **bmi**              |                      |                 |                 |                 |                    |                 |                 |      0.056 |
-|    N-Miss            |         414          |       160       |       82        |        3        |        900         |       69        |      1628       |            |
-|    Mean (SD)         |    20.653 (3.774)    | 20.807 (4.347)  | 20.375 (3.844)  | 20.325 (4.327)  |   21.003 (3.691)   | 20.573 (3.587)  | 20.705 (3.784)  |            |
-|    Range             |   10.400 - 83.900    | 11.000 - 61.100 | 13.400 - 40.700 | 12.100 - 35.400 |  11.700 - 36.500   | 11.800 - 38.600 | 10.400 - 83.900 |            |
-| **case\_definition** |                      |                 |                 |                 |                    |                 |                 | &lt; 0.001 |
-|    Chronic TB        |      72 (2.4%)       |    1 (0.2%)     |    0 (0.0%)     |   30 (21.3%)    |      2 (0.1%)      |    60 (5.9%)    |   165 (2.4%)    |            |
-|    Failure           |     307 (10.1%)      |    30 (5.9%)    |    9 (4.5%)     |    3 (2.1%)     |     30 (1.5%)      |   293 (28.9%)   |   672 (9.8%)    |            |
-|    Lost to follow up |      229 (7.6%)      |    15 (3.0%)    |    14 (7.0%)    |    7 (5.0%)     |     45 (2.3%)      |    62 (6.1%)    |   372 (5.4%)    |            |
-|    New               |     1635 (54.0%)     |   381 (75.1%)   |   145 (72.9%)   |   67 (47.5%)    |    1640 (83.5%)    |   276 (27.2%)   |  4144 (60.5%)   |            |
-|    Other             |      63 (2.1%)       |    7 (1.4%)     |    6 (3.0%)     |    3 (2.1%)     |     25 (1.3%)      |    46 (4.5%)    |   150 (2.2%)    |            |
-|    Relapse           |     723 (23.9%)      |   71 (14.0%)    |   24 (12.1%)    |   31 (22.0%)    |    219 (11.2%)     |   275 (27.1%)   |  1343 (19.6%)   |            |
-|    Unknown           |       1 (0.0%)       |    2 (0.4%)     |    1 (0.5%)     |    0 (0.0%)     |      2 (0.1%)      |    1 (0.1%)     |    7 (0.1%)     |            |
+|                      | MDR non XDR (N=7410) | Mono DR (N=1171) | Negative (N=1)  | Not Reported (N=3) | Poly DR (N=383) | Pre-XDR (N=1225) | Sensitive (N=5255) |  XDR (N=1457)   | Total (N=16905) |  p value |
+|:---------------------|:--------------------:|:----------------:|:---------------:|:------------------:|:---------------:|:----------------:|:------------------:|:---------------:|:---------------:|---------:|
+| **age_of_onset**     |                      |                  |                 |                    |                 |                  |                    |                 |                 | \< 0.001 |
+|    Mean (SD)         |   42.476 (13.253)    | 43.691 (14.988)  |   54.000 (NA)   |  34.333 (14.012)   | 43.225 (15.419) | 43.691 (12.716)  |  44.085 (16.007)   | 42.484 (12.887) | 43.166 (14.288) |          |
+|    Range             |    1.000 - 94.000    |  4.000 - 88.000  | 54.000 - 54.000 |  23.000 - 50.000   | 1.000 - 93.000  |  7.000 - 90.000  |   1.000 - 95.000   | 3.000 - 84.000  | 1.000 - 95.000  |          |
+| **sex**              |                      |                  |                 |                    |                 |                  |                    |                 |                 | \< 0.001 |
+|    Female            |     1875 (25.3%)     |   321 (27.4%)    |    0 (0.0%)     |     2 (66.7%)      |   115 (30.0%)   |   268 (21.9%)    |    1501 (28.6%)    |   374 (25.7%)   |  4456 (26.4%)   |          |
+|    Male              |     5535 (74.7%)     |   850 (72.6%)    |   1 (100.0%)    |     1 (33.3%)      |   268 (70.0%)   |   957 (78.1%)    |    3754 (71.4%)    |  1083 (74.3%)   |  12449 (73.6%)  |          |
+| **bmi**              |                      |                  |                 |                    |                 |                  |                    |                 |                 |          |
+|    N-Miss            |         675          |       396        |        1        |         0          |       113       |        43        |        2811        |       79        |      4118       |          |
+|    Mean (SD)         |    20.631 (3.492)    |  20.770 (3.991)  |       NA        |   16.667 (2.108)   | 20.543 (3.807)  |  20.646 (4.045)  |   20.779 (4.154)   | 20.538 (3.541)  | 20.656 (3.723)  |          |
+|    Range             |   10.400 - 48.600    | 11.000 - 61.100  |       NA        |  15.400 - 19.100   | 13.200 - 40.700 | 10.300 - 47.900  |  10.500 - 93.700   | 11.800 - 38.600 | 10.300 - 93.700 |          |
+| **case_definition**  |                      |                  |                 |                    |                 |                  |                    |                 |                 | \< 0.001 |
+|    Chronic TB        |      182 (2.5%)      |     8 (0.7%)     |    0 (0.0%)     |      0 (0.0%)      |    1 (0.3%)     |    87 (7.1%)     |     11 (0.2%)      |    93 (6.4%)    |   382 (2.3%)    |          |
+|    Failure           |      399 (5.4%)      |    40 (3.4%)     |    0 (0.0%)     |      0 (0.0%)      |    12 (3.1%)    |    27 (2.2%)     |     39 (0.7%)      |   340 (23.3%)   |   857 (5.1%)    |          |
+|    Lost to follow up |      355 (4.8%)      |    25 (2.1%)     |    0 (0.0%)     |      0 (0.0%)      |    19 (5.0%)    |    38 (3.1%)     |     85 (1.6%)      |    78 (5.4%)    |   600 (3.5%)    |          |
+|    New               |     4557 (61.5%)     |   917 (78.3%)    |   1 (100.0%)    |     1 (33.3%)      |   294 (76.8%)   |   671 (54.8%)    |    4524 (86.1%)    |   447 (30.7%)   |  11412 (67.5%)  |          |
+|    Other             |      219 (3.0%)      |    26 (2.2%)     |    0 (0.0%)     |     2 (66.7%)      |    10 (2.6%)    |    33 (2.7%)     |     81 (1.5%)      |    65 (4.5%)    |   436 (2.6%)    |          |
+|    Relapse           |     1693 (22.8%)     |   154 (13.2%)    |    0 (0.0%)     |      0 (0.0%)      |   46 (12.0%)    |   368 (30.0%)    |     512 (9.7%)     |   433 (29.7%)   |  3206 (19.0%)   |          |
+|    Unknown           |       5 (0.1%)       |     1 (0.1%)     |    0 (0.0%)     |      0 (0.0%)      |    1 (0.3%)     |     1 (0.1%)     |      3 (0.1%)      |    1 (0.1%)     |    12 (0.1%)    |          |
 
 If interested in other available endpoints, you can use the
-list\_endpoints function for a data.frame of currently available
+list_endpoints function for a data.frame of currently available
 endpoints.
 
 ``` r

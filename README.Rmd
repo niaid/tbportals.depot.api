@@ -71,7 +71,7 @@ patient_cases_df <- patient_cases$content
 
 # Select attributes of interest
 patient_cases_df %<>%
-  select(condition_id, patient_id, age_of_onset, gender, bmi, case_definition, type_of_resistance)
+  select(condition_id, patient_id, age_of_onset, sex, bmi, case_definition, type_of_resistance)
 
 # Summarise number of conditions by patient_id
 patient_cases_df %<>%
@@ -82,7 +82,7 @@ patient_cases_df %<>%
   type.convert()
 
 # Patient counts by type of resistance and other case characteristics
-tableby(type_of_resistance ~ age_of_onset + gender + bmi + case_definition, data = patient_cases_df) %>%
+tableby(type_of_resistance ~ age_of_onset + sex + bmi + case_definition, data = patient_cases_df) %>%
   summary()
 ```
 
